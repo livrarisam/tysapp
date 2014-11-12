@@ -280,7 +280,7 @@ letter-spacing: 1px;}
 
 /*CSS Home*/
 .bloco1_home {background:url(../img/bg_home.jpg) 50% 50% no-repeat; 
-height: 100%; padding-top: 70px;}
+height: 640px; padding-top: 70px;}
 .logo {text-align: center; margin-bottom: 50px;}
 .form_login {text-align: center; margin: 0 !important;}
 .link_criar_conta {margin: 0 !important;}
@@ -291,7 +291,7 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; letter-spacing: 1px;
 
 /*CSS Cadastro*/
 .bloco1_cadastro {background: #fc140b; 
-height: 100%; text-align: center;}
+height: 640px; text-align: center;}
 .bloco1_cadastro h1 {font-size: 14px; color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px;}
 .title_cadastro {margin-bottom: 30px; position: relative; background: #FFFFFF;}
 .link_voltar {position: absolute; width: 12px !important; height: 20px !important; z-index: 99999999; top: 10px;
@@ -306,7 +306,7 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';  }
 
 /*CSS Cadastro Final*/
 .bloco1_cadastro_final {background:url(../img/bg_cadastro.jpg) 50% 60% no-repeat; 
-height: 100%; text-align: center; background-color: #ff0008;}
+height: 640px; text-align: center; background-color: #ff0008;}
 .bloco1_cadastro_final h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_cadastro_final p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
@@ -318,7 +318,7 @@ img.loading {margin: 30px 0;}
 
 /*CSS Iniciar Rota*/
 .bloco1_inicar_rota {background: #FFFFFF;
-height: 100%; text-align: center;}
+height: 640px; text-align: center;}
 .bloco1_inicar_rota h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_inicar_rota p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
@@ -330,7 +330,7 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 
 /*CSS Começar Agora*/
 .bloco1_comecar_agora {background: #FFFFFF;
-height: 100%; text-align: center;}
+height: 640px; text-align: center;}
 .bloco1_comecar_agora h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_comecar_agora p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
@@ -341,7 +341,7 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 
 /*CSS Final Trajeto*/
 .bloco1_final_trajeto {background: #FFFFFF;
-height: 100%; text-align: center;}
+height: 640px; text-align: center;}
 .bloco1_final_trajeto h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_final_trajeto p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
@@ -352,7 +352,7 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 
 /*CSS Ponto de Partida*/
 .bloco1_ponto_partida {background: #FFFFFF;
-height: 100%; text-align: center;}
+height: 640px; text-align: center;}
 .bloco1_ponto_partida h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_ponto_partida p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
