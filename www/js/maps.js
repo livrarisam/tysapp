@@ -45,7 +45,7 @@ var map = {
         var longitude = position.coords.longitude;
         var latitude = position.coords.latitude;
         alert(longitude+" - "+latitude);
-        function loadMap() {
+        
             alert("loading map!");
             var mapOptions = {
                 zoom: 14,
@@ -54,9 +54,6 @@ var map = {
             };
 
             map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        }
-
-        google.maps.event.addDomListener(window, 'load', loadMap);
     },
 
     onError: function(error){
