@@ -59,11 +59,11 @@ var app = {
         $("#btn_cadastro").on("click", function(e) {
             e.preventDefault();
             $("#btn_cadastro").attr('disabled','disabled');
-            var nome = $("#nome", this).val();
-            var login = $("#login", this).val();
-            var email = $("#email", this).val();
-            var senha = $("#senha", this).val();
-            $.post("http://walkey.com.br/api/usuarios/create", {data: '{"nome":"'+nome+'","sobrenome":"'+login+'","email":"'+email+'","senha":"'+senha+'"}'}, 
+            var nome = $("#nome").val();
+            var login = $("#login").val();
+            var email = $("#email").val();
+            var senha = $("#senha").val();
+            $.post("http://walkey.com.br/api/usuarios/create", {data: "{\"nome\":\""+nome+"\",\"sobrenome\":\""+login+"\",\"email\":\""+email+"\",\"senha\":\""+senha+"\"}'"}, 
                 function(data) {
                     if (data.result = "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
