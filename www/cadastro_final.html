@@ -60,8 +60,9 @@
         </div>
         <!-- Conteúdo -->
        <script type="text/javascript">
-            setTimeout(function() { $("frm_cadfinal").submit() }, 5000);
-            
+            $(function() {
+                setTimeout(function() { alert("recarrega"); $("frm_cadfinal").submit(); }, 3000);
+            });
        </script>
     </body>
 </html>

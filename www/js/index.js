@@ -37,11 +37,13 @@ var app = {
 
         $("#btn_login").on("click", function(e) {
             e.preventDefault();
+            alert("login submit!");
             $("#btn_login").attr('disabled','disabled');
             var u = $("#login_email").val();
             var p = $("#login_senha").val();
             $.post("http://walkey.com.br/api/usuarios/login", {data: "{\"email\":\""+u+"\",\"senha\":\""+p+"\"}"}, 
                 function(data) {
+                    alert(data.result);
                     if (data.result = "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
                         window.localStorage["nome"] = data.nome;
@@ -58,6 +60,7 @@ var app = {
 
         $("#btn_cadastro").on("click", function(e) {
             e.preventDefault();
+            alert("cadastro submit!");
             $("#btn_cadastro").attr('disabled','disabled');
             var nome = $("#nome").val();
             var login = $("#login").val();
@@ -65,6 +68,7 @@ var app = {
             var senha = $("#senha").val();
             $.post("http://walkey.com.br/api/usuarios/create", {data: "{\"nome\":\""+nome+"\",\"sobrenome\":\""+login+"\",\"email\":\""+email+"\",\"senha\":\""+senha+"\"}'"}, 
                 function(data) {
+                    alert(data.result);
                     if (data.result = "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
                         window.localStorage["nome"] = data.nome;
