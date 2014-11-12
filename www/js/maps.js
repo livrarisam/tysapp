@@ -29,6 +29,7 @@ var map = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        alert("getting location!");
         navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
     },
 
@@ -42,13 +43,21 @@ var map = {
     
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
-        alert(map.longitude);
         map.latitude = position.coords.latitude;
-        alert(map.latitude);
+        var mapOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(map.latitude, map.longitude),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        alert("loading map.");
+        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        alert("map loaded.");
+           
+        // google.maps.event.addDomListener(window, 'load', initialize);        
     },
 
     onError: function(error){
-        alert("error!");
+        alert("error getting location!");
     }
 };
 
