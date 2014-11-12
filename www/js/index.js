@@ -27,17 +27,15 @@ var app = {
             e.preventDefault();
             var u = $("#login_email").val();
             var p = $("#login_senha").val();
-            alert("cliquei");
             $.post("http://walkey.com.br/api/usuarios/login", {data: "{\"email\":\""+u+"\",\"senha\":\""+p+"\"}"}, 
                 function(data) {
-                    alert(data.result);
                     if (data.result = "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
                         window.localStorage["nome"] = data.nome;
                         window.localStorage["sobrenome"] = data.sobrenome;
                         window.localStorage["email"] = data.email;
                         window.localStorage["logged"] = true;
-                        $("#frm_login").submit();
+                        navigator.notification.alert("Login efetuado com sucesso", function() { $("#frm_login").submit() });
                     } else {
                         navigator.notification.alert(data.error_string, function() {});
                     }
