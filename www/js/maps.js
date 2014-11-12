@@ -46,6 +46,7 @@ var map = {
         var latitude = position.coords.latitude;
         alert(longitude+" - "+latitude);
         function loadMap() {
+            alert("loading map!");
             var mapOptions = {
                 zoom: 14,
                 center: new google.maps.LatLng(-34.397, 150.644),
