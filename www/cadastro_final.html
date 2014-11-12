@@ -52,9 +52,9 @@
                         <img class="loading" src="img/loading.png" alt="">
 
                         <p>por favor, aguarde.</p>
-                        <form method="post" action="perfil.html" id="frm_cadfinal">
+                        <!-- <form method="post" action="perfil.html" id="frm_cadfinal">
                             <input type="hidden" name="page" value="perfil">
-                        </form>
+                        </form> -->
 
                     </div>
                 </div>                
@@ -63,7 +63,7 @@
         <!-- Conteúdo -->
        <script type="text/javascript">
             $(function() {
-                setTimeout(function() { $("#frm_cadfinal").submit(); }, 3000);
+                setTimeout(function() { window.location.replace("perfil.html"); }, 3000);
             });
        </script>
     </body>
