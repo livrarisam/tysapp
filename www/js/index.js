@@ -64,8 +64,7 @@ var app = {
             var login = $("#login").val();
             var email = $("#email").val();
             var senha = $("#senha").val();
-            alert(nome+login+email+senha);
-            $.post("http://walkey.com.br/api/usuarios/create", {data: "{\"nome\":\""+nome+"\",\"sobrenome\":\""+login+"\",\"email\":\""+email+"\",\"senha\":\""+senha+"\"}'"}, 
+            $.post("http://walkey.com.br/api/usuarios/create", {data: "{\"nome\":\""+nome+"\",\"sobrenome\":\""+login+"\",\"email\":\""+email+"\",\"senha\":\""+senha+"\"}"}, 
                 function(data) {
                     if (data.result == "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
