@@ -22,6 +22,18 @@ var app = {
     latitude: "0",
     longitude: "0",
     initialize: function() {
+        $("#btn_login").attr('disabled','disabled');
+        $("#btn_cadastro").attr('disabled','disabled');
+        this.bindEvents();
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+
+        $("#btn_login").removeAttr('disabled');
+        $("#btn_cadastro").removeAttr('disabled');
 
         $("#btn_login").on("click", function(e) {
             e.preventDefault();
@@ -65,15 +77,6 @@ var app = {
             );
         });
 
-        // this.bindEvents();
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        initializeMedia();
-        navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
     },
 
     // Bind Event Listeners
@@ -82,15 +85,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    
-    onSuccess: function(position) {
-        app.longitude = position.coords.longitude;
-        app.latitude = position.coords.latitude;
-    },
-
-    onError: function(error){
-        alert("error!");
     }
 };
 
