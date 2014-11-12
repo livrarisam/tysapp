@@ -1,0 +1,265 @@
+/*CSS Reset*/
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+/*CSS Reset*/
+
+/*font_face*/
+@font-face {
+    font-family: 'sf_fourchebold_italic';
+    src: url('../fonts/sffourchebolditalic-webfont.eot');
+    src: url('../fonts/sffourchebolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourchebolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/sffourchebolditalic-webfont.woff') format('woff'),
+         url('../fonts/sffourchebolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/sffourchebolditalic-webfont.svg#sf_fourchebold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourchebold';
+    src: url('../fonts/sffourchebold-webfont.eot');
+    src: url('../fonts/sffourchebold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourchebold-webfont.woff2') format('woff2'),
+         url('../fonts/sffourchebold-webfont.woff') format('woff'),
+         url('../fonts/sffourchebold-webfont.ttf') format('truetype'),
+         url('../fonts/sffourchebold-webfont.svg#sf_fourchebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourcheregular';
+    src: url('../fonts/sffourche-webfont.eot');
+    src: url('../fonts/sffourche-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourche-webfont.woff2') format('woff2'),
+         url('../fonts/sffourche-webfont.woff') format('woff'),
+         url('../fonts/sffourche-webfont.ttf') format('truetype'),
+         url('../fonts/sffourche-webfont.svg#sf_fourcheregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourcheitalic';
+    src: url('../fonts/sffourcheitalic-webfont.eot');
+    src: url('../fonts/sffourcheitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourcheitalic-webfont.woff2') format('woff2'),
+         url('../fonts/sffourcheitalic-webfont.woff') format('woff'),
+         url('../fonts/sffourcheitalic-webfont.ttf') format('truetype'),
+         url('../fonts/sffourcheitalic-webfont.svg#sf_fourcheitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourche_condenseditalic';
+    src: url('../fonts/sffourchecondenseditalic-webfont.eot');
+    src: url('../fonts/sffourchecondenseditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourchecondenseditalic-webfont.woff2') format('woff2'),
+         url('../fonts/sffourchecondenseditalic-webfont.woff') format('woff'),
+         url('../fonts/sffourchecondenseditalic-webfont.ttf') format('truetype'),
+         url('../fonts/sffourchecondenseditalic-webfont.svg#sf_fourche_condenseditalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourche_condensedregular';
+    src: url('../fonts/sffourchecondensed-webfont.eot');
+    src: url('../fonts/sffourchecondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourchecondensed-webfont.woff2') format('woff2'),
+         url('../fonts/sffourchecondensed-webfont.woff') format('woff'),
+         url('../fonts/sffourchecondensed-webfont.ttf') format('truetype'),
+         url('../fonts/sffourchecondensed-webfont.svg#sf_fourche_condensedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourche_scitalic';
+    src: url('../fonts/sffourchescitalic-webfont.eot');
+    src: url('../fonts/sffourchescitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourchescitalic-webfont.woff2') format('woff2'),
+         url('../fonts/sffourchescitalic-webfont.woff') format('woff'),
+         url('../fonts/../fonts/sffourchescitalic-webfont.ttf') format('truetype'),
+         url('../fonts/sffourchescitalic-webfont.svg#sf_fourche_scitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sf_fourche_scregular';
+    src: url('../fonts/sffourchesc-webfont.eot');
+    src: url('../fonts/sffourchesc-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sffourchesc-webfont.woff2') format('woff2'),
+         url('../fonts/sffourchesc-webfont.woff') format('woff'),
+         url('../fonts/sffourchesc-webfont.ttf') format('truetype'),
+         url('../fonts/sffourchesc-webfont.svg#sf_fourche_scregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/*font_face*/
+
+/*Clearfix*/
+.clearfix:after {content:".";display:block;height:0; clear:both; visibility: hidden; } 
+.clearfix {display:inline;} 
+* html .clearfix {height: 1%;} 
+.clearfix {display: block;} 
+/*Clearfix*/
+
+body {background-color: #c3c3c3 !important}
+
+h1, h2, h3, h4, h5, h6 {font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';}
+
+h1 {font-size: 18px !important; text-transform: uppercase !important;}
+
+a:hover {text-decoration: none !important;}
+
+.btn{background:url(../img/button_bg.png) !important;
+width: 250px !important;
+height: 54px !important;
+color: #FFFFFF !important;
+font-size: 14px !important;
+text-transform: uppercase !important;
+text-align: center !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';
+letter-spacing: 1px;
+}
+
+
+input {background-color: transparent !important;
+border-radius: 40px !important;
+ -webkit-border-radius: 40px;
+     -moz-border-radius: 40px;
+width: 230px !important;
+height: 40px !important;
+border: 3px solid white !important;
+color: #FFFFFF !important;
+font-size: 14px !important;
+text-transform: uppercase !important;
+text-align: center !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';
+letter-spacing: 1px;}
+
+.map {position: relative;}
+.pin {position: absolute; top: 25%; left: 50%;}
+.pin2 {position: absolute; top: 35%; left: 60%;}
+
+/*CSS Home*/
+.bloco1_home {background:url(../img/bg_home.jpg) 50% 50% no-repeat; 
+height: 640px; padding-top: 70px;}
+.logo {text-align: center; margin-bottom: 50px;}
+.form_login {text-align: center; margin: 0 !important;}
+.link_criar_conta {margin: 0 !important;}
+.link_criar_conta a {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi'; letter-spacing: 1px;}
+/*CSS Home*/
+
+
+/*CSS Cadastro*/
+.bloco1_cadastro {background:url(../img/bg_cadastro.jpg) 50% 25% no-repeat; 
+height: 640px; text-align: center;}
+.bloco1_cadastro h1 {font-size: 14px; color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px;}
+.title_cadastro {margin-bottom: 30px; position: relative;}
+.link_voltar {position: absolute; width: 12px !important; height: 20px !important; z-index: 99999999; top: 10px;
+left: 10%;}
+.form_cadastro {text-align: center; margin: 0 !important;}
+.bloco_tumbnail {background-color: #000000;}
+span.thumbnail_foto {width: 70px; height: 70px; border-radius: 50%; background: #cccccc; position: absolute; bottom: -30px;}
+.link_upload {position: relative; width: 250px; margin: auto; margin-bottom: 40px;}
+.link_upload a {margin-left: 80px; color: #FFFFFF !important; font-size: 12px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';  }
+/*CSS Cadastro*/
+
+/*CSS Cadastro Final*/
+.bloco1_cadastro_final {background:url(../img/bg_cadastro.jpg) 50% 25% no-repeat; 
+height: 640px; text-align: center;}
+.bloco1_cadastro_final h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_cadastro_final p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';}
+.title_cadastro_final {margin-bottom: 30px; position: relative;}
+.logo2 {text-align: center; margin-bottom: 50px;}
+img.loading {margin: 30px 0;}
+/*CSS Cadastro Final*/
+
+
+/*CSS Iniciar Rota*/
+.bloco1_inicar_rota {background: #FFFFFF;
+height: 640px; text-align: center;}
+.bloco1_inicar_rota h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_inicar_rota p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';}
+.title_iniciar_rota {position: relative;}
+.buttons_velocidade {width: 163px; height: 80px; background: #36acea; border-radius: 60px; position: absolute; top: 0; left: 25%; top: 55%;}
+.btn_carro {background: url(../img/button_carro.png) no-repeat center center; width: 67px; height: 67px; float: left; margin-top: 6px; margin-left: 10px;}
+.btn_pe {background: url(../img/button_pe.png) no-repeat center center; width: 67px; height: 67px; float: right; margin-top: 6px; margin-right: 10px;}
+/*CSS Iniciar Rota*/
+
+/*CSS Começar Agora*/
+.bloco1_comecar_agora {background: #FFFFFF;
+height: 640px; text-align: center;}
+.bloco1_comecar_agora h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_comecar_agora p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';}
+.title_comecar_agora {position: relative;}
+.button_comecar {position: absolute;top: 0; left: 10%; top: 55%;}
+.btn_comecar {background: url(../img/select_pe.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
+/*CSS Começar Agora*/
+
+/*CSS Final Trajeto*/
+.bloco1_final_trajeto {background: #FFFFFF;
+height: 640px; text-align: center;}
+.bloco1_final_trajeto h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_final_trajeto p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';}
+.title_final_trajeto {position: relative;}
+.button_final_trajeto {position: absolute;top: 0; left: 10%; top: 55%;}
+.btn_final {background: url(../img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
+/*CSS Finbal Trajeto*/
+
+/*CSS Ponto de Partida*/
+.bloco1_ponto_partida {background: #FFFFFF;
+height: 640px; text-align: center;}
+.bloco1_ponto_partida h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_ponto_partida p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'sf_fourcheregular', 'Arial', 'sans-serfi';}
+.title_ponto_partida {position: relative;}
+.partida {width: 245px; height: 53px; background:url(../img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 10%; padding-left: 10px; padding-top: 3px;}
+.partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 13px !important; text-align: left !important; box-shadow: none !important;}
+/*CSS Ponto de Partida*/
+
+
+
