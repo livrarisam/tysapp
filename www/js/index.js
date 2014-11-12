@@ -43,7 +43,7 @@ var app = {
             );            
         });
 
-        $("#btn_login").on("click", function(e) {
+        $("#btn_cadastro").on("click", function(e) {
             e.preventDefault();
             var nome = $("#nome", this).val();
             var login = $("#login", this).val();
