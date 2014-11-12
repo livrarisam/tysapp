@@ -44,16 +44,18 @@ var map = {
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
-        var mapOptions = {
-            zoom: 14,
-            center: new google.maps.LatLng(map.latitude, map.longitude),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        alert("loading map.");
-        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        alert("map loaded.");
-           
-        // google.maps.event.addDomListener(window, 'load', initialize);        
+        alert(map.longitude+" - "+map.latitude);
+        function loadMap() {
+            var mapOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng(-34.397, 150.644),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        }
+
+        google.maps.event.addDomListener(window, 'load', loadMap);
     },
 
     onError: function(error){
