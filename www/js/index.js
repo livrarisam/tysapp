@@ -37,6 +37,7 @@ var app = {
 
         $("#btn_login").on("click", function(e) {
             e.preventDefault();
+            $("#btn_login").attr('disabled','disabled');
             var u = $("#login_email").val();
             var p = $("#login_senha").val();
             $.post("http://walkey.com.br/api/usuarios/login", {data: "{\"email\":\""+u+"\",\"senha\":\""+p+"\"}"}, 
@@ -57,6 +58,7 @@ var app = {
 
         $("#btn_cadastro").on("click", function(e) {
             e.preventDefault();
+            $("#btn_cadastro").attr('disabled','disabled');
             var nome = $("#nome", this).val();
             var login = $("#login", this).val();
             var email = $("#email", this).val();
