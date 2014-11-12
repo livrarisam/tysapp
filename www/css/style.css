@@ -248,7 +248,7 @@ h1 {font-size: 18px !important; text-transform: uppercase !important;}
 
 a:hover {text-decoration: none !important;}
 
-.btn{background:url(http://www.walkey.com.br/app/img/button_bg.png) !important;
+.btn{background:url(../img/button_bg.png) !important;
 width: 250px !important;
 height: 54px !important;
 color: #FFFFFF !important;
@@ -279,8 +279,8 @@ letter-spacing: 1px;}
 .pin2 {position: absolute; top: 35%; left: 60%;}
 
 /*CSS Home*/
-.bloco1_home {background:url(http://www.walkey.com.br/app/img/bg_home.jpg) 50% 50% no-repeat; 
-height: 640px; padding-top: 70px;}
+.bloco1_home {background:url(../img/bg_home.jpg) 50% 50% no-repeat; 
+height: 100%; padding-top: 70px;}
 .logo {text-align: center; margin-bottom: 50px;}
 .form_login {text-align: center; margin: 0 !important;}
 .link_criar_conta {margin: 0 !important;}
@@ -291,7 +291,7 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; letter-spacing: 1px;
 
 /*CSS Cadastro*/
 .bloco1_cadastro {background: #fc140b; 
-height: 640px; text-align: center;}
+height: 100%; text-align: center;}
 .bloco1_cadastro h1 {font-size: 14px; color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px;}
 .title_cadastro {margin-bottom: 30px; position: relative; background: #FFFFFF;}
 .link_voltar {position: absolute; width: 12px !important; height: 20px !important; z-index: 99999999; top: 10px;
@@ -305,8 +305,8 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';  }
 /*CSS Cadastro*/
 
 /*CSS Cadastro Final*/
-.bloco1_cadastro_final {background:url(http://www.walkey.com.br/app/img/bg_cadastro.jpg) 50% 60% no-repeat; 
-height: 640px; text-align: center; background-color: #ff0008;}
+.bloco1_cadastro_final {background:url(../img/bg_cadastro.jpg) 50% 60% no-repeat; 
+height: 100%; text-align: center; background-color: #ff0008;}
 .bloco1_cadastro_final h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_cadastro_final p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
@@ -318,46 +318,46 @@ img.loading {margin: 30px 0;}
 
 /*CSS Iniciar Rota*/
 .bloco1_inicar_rota {background: #FFFFFF;
-height: 640px; text-align: center;}
+height: 100%; text-align: center;}
 .bloco1_inicar_rota h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_inicar_rota p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_iniciar_rota {position: relative;}
 .buttons_velocidade {width: 163px; height: 80px; background: #36acea; border-radius: 60px; position: absolute; top: 0; left: 25%; top: 55%;}
-.btn_carro {background: url(http://www.walkey.com.br/app/img/button_carro.png) no-repeat center center; width: 67px; height: 67px; float: left; margin-top: 6px; margin-left: 10px;}
-.btn_pe {background: url(http://www.walkey.com.br/app/img/button_pe.png) no-repeat center center; width: 67px; height: 67px; float: right; margin-top: 6px; margin-right: 10px;}
+.btn_carro {background: url(../img/button_carro.png) no-repeat center center; width: 67px; height: 67px; float: left; margin-top: 6px; margin-left: 10px;}
+.btn_pe {background: url(../img/button_pe.png) no-repeat center center; width: 67px; height: 67px; float: right; margin-top: 6px; margin-right: 10px;}
 /*CSS Iniciar Rota*/
 
 /*CSS Começar Agora*/
 .bloco1_comecar_agora {background: #FFFFFF;
-height: 640px; text-align: center;}
+height: 100%; text-align: center;}
 .bloco1_comecar_agora h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_comecar_agora p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_comecar_agora {position: relative;}
 .button_comecar {position: absolute;top: 0; left: 10%; top: 55%;}
-.btn_comecar {background: url(http://www.walkey.com.br/app/img/select_pe.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
+.btn_comecar {background: url(../img/select_pe.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
 /*CSS Começar Agora*/
 
 /*CSS Final Trajeto*/
 .bloco1_final_trajeto {background: #FFFFFF;
-height: 640px; text-align: center;}
+height: 100%; text-align: center;}
 .bloco1_final_trajeto h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_final_trajeto p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_final_trajeto {position: relative;}
 .button_final_trajeto {position: absolute;top: 0; left: 10%; top: 55%;}
-.btn_final {background: url(http://www.walkey.com.br/app/img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
+.btn_final {background: url(../img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
 /*CSS Finbal Trajeto*/
 
 /*CSS Ponto de Partida*/
 .bloco1_ponto_partida {background: #FFFFFF;
-height: 640px; text-align: center;}
+height: 100%; text-align: center;}
 .bloco1_ponto_partida h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_ponto_partida p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_ponto_partida {position: relative;}
-.partida {width: 245px; height: 53px; background:url(http://www.walkey.com.br/app/img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 10%; padding-left: 10px; padding-top: 3px;}
+.partida {width: 245px; height: 53px; background:url(../img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 10%; padding-left: 10px; padding-top: 3px;}
 .partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 13px !important; text-align: left !important; box-shadow: none !important;}
 /*CSS Ponto de Partida*/
 
@@ -368,10 +368,10 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .bloco1_perfil p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_perfil {position: relative; background: #FFFFFF;}
-.box_perfil {background: url(http://www.walkey.com.br/app/img/box_perfil.png) no-repeat; width: 100%; height: 100%;}
+.box_perfil {background: url(../img/box_perfil.png) no-repeat; width: 100%; height: 100%;}
 .box_perfil h1 {color: #FFFFFF !important; font-size: 18px !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; line-height: 20px;
 }
 .box_iniciar_trajeto {width: 100%; min-height: 210px; background: #e5e5e5; padding-top: 60px;}
 .box_iniciar_trajeto p {color: #9f9f9f !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; font-size: 18px !important; margin-top: 10px !important;}
-.foto_perfil {width: 124px !important; height: 124px !important; background: url(http://www.walkey.com.br/app/img/foto_perfil.png) no-repeat; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; border: 1px solid #FFFFFF; margin-top: 60%;}
+.foto_perfil {width: 124px !important; height: 124px !important; background: url(../img/foto_perfil.png) no-repeat; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; border: 1px solid #FFFFFF; margin-top: 60%;}
 /*CSS Perfil*/
