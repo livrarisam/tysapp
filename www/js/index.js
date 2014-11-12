@@ -50,6 +50,7 @@ var app = {
                         window.localStorage["logged"] = true;
                         navigator.notification.alert("Login efetuado com sucesso", function() { $("#frm_login").submit() });
                     } else {
+                        $("#btn_login").removeAttr('disabled');
                         navigator.notification.alert(data.error_string, function() {});
                     }
                 }, "json"
@@ -63,6 +64,7 @@ var app = {
             var login = $("#login").val();
             var email = $("#email").val();
             var senha = $("#senha").val();
+            alert(nome+login+email+senha);
             $.post("http://walkey.com.br/api/usuarios/create", {data: "{\"nome\":\""+nome+"\",\"sobrenome\":\""+login+"\",\"email\":\""+email+"\",\"senha\":\""+senha+"\"}'"}, 
                 function(data) {
                     if (data.result == "sucesso") {
@@ -73,6 +75,7 @@ var app = {
                         window.localStorage["logged"] = true;
                         navigator.notification.alert("Cadastro efetuado com sucesso", function() { $("#frm_cadastro").submit() });
                     } else {
+                        $("#btn_cadastro").removeAttr('disabled');
                         navigator.notification.alert(data.error_string, function() {});
                     }
                 }, "json"
