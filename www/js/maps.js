@@ -42,9 +42,9 @@ var map = {
     },
     
     onSuccess: function(position) {
-        map.longitude = position.coords.longitude;
-        map.latitude = position.coords.latitude;
-        alert(map.longitude+" - "+map.latitude);
+        var longitude = position.coords.longitude;
+        var latitude = position.coords.latitude;
+        alert(longitude+" - "+latitude);
         function loadMap() {
             var mapOptions = {
                 zoom: 14,
