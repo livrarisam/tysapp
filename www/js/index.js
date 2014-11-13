@@ -32,6 +32,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
+        var networkState = navigator.network.connection.type
+        alrt("networkState");
+
         $("#btn_login").removeAttr('disabled');
         $("#btn_cadastro").removeAttr('disabled');
 
