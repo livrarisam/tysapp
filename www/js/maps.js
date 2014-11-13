@@ -21,7 +21,35 @@ var map = {
     // Application Constructor
     latitude: "0",
     longitude: "0",
+    velocidade: "", // carro | pe
+    partida: "",
+    destino: "",
     initialize: function() {
+        $(".btn_carro").on("click", function() {
+            map.velocidade = "carro";
+            alert(map.velocidade);
+            $(".buttons_velocidade").fadeOut();
+            $(".partida").fadeIn();
+            $(".button_comecar").fadeIn();
+        });
+
+        $(".btn_pe").on("click", function() {
+            map.velocidade = "pe";
+            alert(map.velocidade);
+            $(".buttons_velocidade").fadeOut();
+            $(".partida").fadeIn();
+            $(".button_comecar").fadeIn();
+        });
+
+        $(".btn_comecar").on("click"), function() {
+            map.partida = $("ponto_partida").val();
+            alert(map.partida);
+            map.destino = $("ponto_destino").val();
+            alert(map.destino);
+            $(".button_comecar").fadeOut();            
+            $(".button_final_trajeto").fadeIn();
+        }
+
         this.bindEvents();
     },
     // deviceready Event Handler
