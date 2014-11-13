@@ -70,7 +70,7 @@ var map = {
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
-        var posicao_atual = new google.maps.LatLng(latitude, longitude);
+        var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
             zoom: 16,
             center: posicao_atual,
