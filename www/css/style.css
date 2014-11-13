@@ -326,17 +326,17 @@ height: 640px; text-align: center;}
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_iniciar_rota {position: relative;}
 
-.buttons_velocidade {width: 163px; height: 80px; background: #36acea; border-radius: 60px; position: absolute; top: 0; left: 25%; top: 55%;}
+.buttons_velocidade {width: 163px; height: 80px; background: #36acea; border-radius: 60px; position: absolute; bottom: 60px; left: 25%; top: 55%;}
 .btn_carro {background: url(../img/button_carro.png) no-repeat center center; width: 67px; height: 67px; float: left; margin-top: 6px; margin-left: 10px;}
 .btn_pe {background: url(../img/button_pe.png) no-repeat center center; width: 67px; height: 67px; float: right; margin-top: 6px; margin-right: 10px;}
 
-.partida {width: 245px; height: 53px; background:url(../img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 10%; padding-left: 10px; padding-top: 3px; display: none;}
+.partida {width: 245px; height: 53px; background:url(../img/bg_ponto_partida.png) !important; position: absolute; bottom: 10%; left: 10%; padding-left: 10px; padding-top: 3px; display: none;}
 .partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 13px !important; text-align: left !important; box-shadow: none !important;}
 
-.button_comecar {position: absolute;top: 0; left: 10%; top: 55%; display: none;}
+.button_comecar {position: absolute; bottom: 10%; left: 10%; top: 55%; display: none;}
 .btn_comecar {background: url(../img/select_pe.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
 
-.button_final_trajeto {position: absolute;top: 0; left: 10%; top: 55%; display: none;}
+.button_final_trajeto {position: absolute; bottom: 10%; left: 10%; top: 55%; display: none;}
 .btn_final {background: url(../img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
 /*CSS Iniciar Rota*/
 
