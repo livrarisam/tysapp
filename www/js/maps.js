@@ -70,10 +70,10 @@ var map = {
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
-        var position = 
+        var posicao_atual = new google.maps.LatLng(latitude, longitude);
         var mapOptions = {
             zoom: 16,
-            center: new google.maps.LatLng(latitude, longitude),
+            center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -82,7 +82,7 @@ var map = {
         marker1 = new google.maps.Marker({
             map: map,
             draggable: true,
-            position: new google.maps.LatLng(40.71435280, -74.0059731)
+            position: posicao_atual
         });
     },
 
