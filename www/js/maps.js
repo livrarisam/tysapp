@@ -42,9 +42,9 @@ var map = {
         });
 
         $(".btn_comecar").on("click"), function() {
-            map.partida = $("ponto_partida").val();
+            map.partida = $("#ponto_partida").val();
             alert(map.partida);
-            map.destino = $("ponto_destino").val();
+            map.destino = $("#ponto_destino").val();
             alert(map.destino);
             $(".button_comecar").fadeOut();            
             $(".button_final_trajeto").fadeIn();
