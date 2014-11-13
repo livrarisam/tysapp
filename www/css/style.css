@@ -275,7 +275,8 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';
 letter-spacing: 1px;}
 
 .map {position: relative;}
-#map_canvas {position: absolute; top: 60px; left: 0; bottom:0; right: 0;}
+#map_canvas {position: absolute; top: 60px; left: 0; bottom:0; right: 0; }
+#imgHolder {z-index: 1; visibility: hidden; }
 
 .pin {position: absolute; top: 25%; left: 50%;}
 .pin2 {position: absolute; top: 35%; left: 60%;}

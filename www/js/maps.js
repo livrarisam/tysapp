@@ -41,13 +41,12 @@ var map = {
 
         $(".btn_comecar").on("click", function() {
             map.partida = $("#ponto_partida").val();
-            alert(map.partida);
             map.destino = $("#ponto_destino").val();
-            alert(map.destino);
             $(".button_comecar").fadeOut();            
             $(".partida").fadeOut();
             $(".button_final_trajeto").fadeIn();
         });
+        
 
         this.bindEvents();
     },
