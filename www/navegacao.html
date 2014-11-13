@@ -52,10 +52,24 @@
                     <div id="map_canvas"></div>
                     <div class="map"><img src="img/maps_api.png" alt="" style="visibility:hidden">
                         <div class="pin"><img src="img/pin_maps.png" alt=""></div>
+
                         <div class="buttons_velocidade">
                             <button type="submit" class="btn_carro"></button>
                             <button type="submit" class="btn_pe"></button>
                         </div>
+
+                        <div class="partida">
+                            <input type="text" onblur="if(this.value == '') this.value='Escolha o ponto de partida';" onfocus="if(this.value=='Escolha o ponto de partida') this.value='';" value="Escolha o ponto de partida" name="Escolha o ponto de partida"><br>
+                           <input type="text" onblur="if(this.value == '') this.value='Escolha o destino';" onfocus="if(this.value=='Escolha o destino') this.value='';" value="Escolha o destino" name="Escolha o destino"><br>
+                        </div>
+
+                        <div class="button_comecar">
+                             <button type="submit" class="btn btn_comecar">Começar agora</button>
+                        </div>
+
+                        <div class="button_final_trajeto">
+                             <button type="submit" class="btn btn_final">finalizar trajeto</button>
+                        </div>                        
                     </div>
                 </div>
             </div>                
