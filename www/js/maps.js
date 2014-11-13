@@ -45,6 +45,7 @@ var map = {
             map.destino = $("#ponto_destino").val();
             alert(map.destino);
             $(".button_comecar").fadeOut();            
+            $(".partida").fadeOut();
             $(".button_final_trajeto").fadeIn();
         });
 
@@ -67,9 +68,9 @@ var map = {
     },
     
     onSuccess: function(position) {
-        var longitude = position.coords.longitude;
-        var latitude = position.coords.latitude;
-        
+        map.longitude = position.coords.longitude;
+        map.latitude = position.coords.latitude;
+        var position = 
         var mapOptions = {
             zoom: 16,
             center: new google.maps.LatLng(latitude, longitude),
@@ -77,6 +78,12 @@ var map = {
         };
 
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+        marker1 = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: new google.maps.LatLng(40.71435280, -74.0059731)
+        });
     },
 
     onError: function(error){
