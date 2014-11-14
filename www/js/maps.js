@@ -19,8 +19,8 @@
 
 var map = {
     // Application Constructor
-    latitude: "0",
-    longitude: "0",
+    latitude: "-23.557060",
+    longitude: "-46.633065",
     velocidade: "", // carro | pe
     partida: "",
     destino: "",
@@ -63,13 +63,15 @@ var map = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        setTimeout(map.loadMap, 2000);
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    
-    onSuccess: function(position) {
-        map.longitude = position.coords.longitude;
-        map.latitude = position.coords.latitude;
-        var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
+
+    loadMap: function(lat, long) {
+        alert(lat);
+        alert(long);
+
+        var posicao_atual = new google.maps.LatLng(lat, long);
         var mapOptions = {
             zoom: 16,
             center: posicao_atual,
@@ -77,7 +79,11 @@ var map = {
         };
 
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
+    }
+    
+    onSuccess: function(position) {
+        map.longitude = position.coords.longitude;
+        map.latitude = position.coords.latitude;
         marker1 = new google.maps.Marker({
             map: map,
             draggable: true,
