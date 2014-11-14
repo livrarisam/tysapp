@@ -56,7 +56,7 @@ var map = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         alert('deviceready');
-        setTimeout(map.loadMap(), 2000);
+        setTimeout(map.loadMap(app.latitude, app.longitude), 2000);
         // navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
     },
 
