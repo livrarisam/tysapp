@@ -74,8 +74,8 @@ var map = {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        google.maps.event.addListenerOnce(map, 'idle', function(){
+        mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        google.maps.event.addListenerOnce(mapa, 'idle', function(){
             alert("map loaded.");
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
         });
