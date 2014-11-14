@@ -55,7 +55,9 @@ var map = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
+        alert('deviceready');
+        setTimeout(map.loadMap(), 2000);
+        // navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
     },
 
     // Bind Event Listeners
@@ -63,8 +65,7 @@ var map = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        setTimeout(map.loadMap, 2000);
-        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     loadMap: function(lat, long) {
