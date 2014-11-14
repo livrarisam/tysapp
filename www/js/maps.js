@@ -85,17 +85,19 @@ var map = {
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
-        alert(map.latitude);
-        alert(map.longitude);
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         map.mapa.panTo(posicao_atual);
-        
+
         marker1 = new google.maps.Marker({
-            map: map,
+            map: map.mapa,
             draggable: true,
             position: posicao_atual
         });
     },
+
+    findRoute: function() {
+        alert("Route!");
+    }
 
     onError: function(error){
         alert("error getting location!");
