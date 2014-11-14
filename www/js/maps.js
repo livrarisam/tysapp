@@ -111,14 +111,14 @@ var map = {
         alert(partida_address);
         alert(destino_address);
         var modo = null;
-        if (app.velocidade == "carro") {
+        if (map.velocidade == "carro") {
             modo = google.maps.TravelMode.DRIVING;
         } else {
             modo = google.maps.TravelMode.WALKING;
         }
         var request = {
-            origin:partida_address,
-            destination:destino_address,
+            origin: partida_address,
+            destination: destino_address,
             travelMode: modo
         };
         alert("request");
