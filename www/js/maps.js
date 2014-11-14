@@ -56,6 +56,7 @@ var map = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         map.loadMap();
+        navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
     },
 
     // Bind Event Listeners
@@ -77,8 +78,6 @@ var map = {
         };
 
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        
-        navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
     },
     
     onSuccess: function(position) {
@@ -87,7 +86,7 @@ var map = {
         alert(map.latitude);
         alert(map.longitude);
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
-                
+
         marker1 = new google.maps.Marker({
             map: map,
             draggable: true,
