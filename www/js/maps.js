@@ -125,6 +125,8 @@ var map = {
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
+            } else {
+                alert(status);
             }
         });
         alert("route");
