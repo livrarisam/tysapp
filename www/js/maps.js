@@ -80,7 +80,7 @@ var map = {
         };
 
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-    }
+    },
     
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
