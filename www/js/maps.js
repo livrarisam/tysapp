@@ -131,7 +131,7 @@ var map = {
     getWeather: function() {
         $.post("http://walkey.com.br/api/weather", { lat: map.latitude, lon: map.longitude }, 
             function(data) {
-                map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+"\r Temperatura: "+data.main.temp+".";
+                map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+",\r Temperatura: "+data.main.temp+"ºC. Ponto de partida: "+$("#ponto_partida").val()+". Destino: "+ $("#ponto_destino").val()+".";
                 $(".button_final_trajeto").fadeIn();
             }, "json"
         );
