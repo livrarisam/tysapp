@@ -109,8 +109,6 @@ var map = {
     findRoute: function() {
         var partida_address = document.getElementById("ponto_partida").value;
         var destino_address = document.getElementById("ponto_destino").value;
-        alert(partida_address);
-        alert(destino_address);
         var modo = null;
         if (map.velocidade == "carro") {
             modo = google.maps.TravelMode.DRIVING;
@@ -122,16 +120,13 @@ var map = {
             destination: destino_address,
             travelMode: modo
         };
-        alert("request");
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 map.directionsDisplay.setDirections(response);
-                alert(status);
             } else {
                 alert(status);
             }
         });
-        alert("route");
         $(".button_final_trajeto").fadeIn();
     },
 
