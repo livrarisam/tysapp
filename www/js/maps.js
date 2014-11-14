@@ -88,12 +88,6 @@ var map = {
         map.latitude = position.coords.latitude;
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         map.mapa.panTo(posicao_atual);
-
-        marker1 = new google.maps.Marker({
-            map: map.mapa,
-            draggable: true,
-            position: posicao_atual
-        });
     },
 
     getCoords: function(address) {
@@ -124,10 +118,14 @@ var map = {
             if (status == google.maps.DirectionsStatus.OK) {
                 map.directionsDisplay.setDirections(response);
             } else {
-                alert(status);
+                alert("Error: "+status);
             }
         });
         $(".button_final_trajeto").fadeIn();
+    },
+
+    getWeather: function() {
+        alert("getWeather");
     },
 
     onError: function(error){
