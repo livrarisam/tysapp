@@ -126,12 +126,10 @@ var map = {
     },
 
     getWeather: function() {
-        alert(map.latitude);
-        alert(map.longitude);
-        
         $.post("http://walkey.com.br/api/weather", { lat: map.latitude, lon: map.longitude }, 
             function(data) {
-                alert(data.weather.main);
+                alert(data.weather[0].main);
+                alert(data.main.temp);
             }, "json"
         );
     },
