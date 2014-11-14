@@ -117,6 +117,7 @@ var map = {
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 map.directionsDisplay.setDirections(response);
+                map.getWeather();
             } else {
                 alert("Error: "+status);
             }
@@ -125,7 +126,11 @@ var map = {
     },
 
     getWeather: function() {
-        alert("getWeather");
+        $.post("http://walkey.com.br/api/weather", { lat: map.latiture, lon: map.longitude }, 
+            function(data) {
+                alert(data.weather.main);
+            }, "json"
+        );
     },
 
     onError: function(error){
