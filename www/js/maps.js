@@ -25,6 +25,9 @@ var map = {
     partida: "",
     destino: "",
     mapa: null,
+    directionsService: null,
+    directionsDisplay: null,
+
     initialize: function() {
         $(".btn_carro").on("click", function() {
             map.velocidade = "carro";
@@ -61,6 +64,9 @@ var map = {
     },
 
     loadMap: function() {
+        map.directionsService = new google.maps.DirectionsService();
+        map.directionsDisplay = new google.maps.DirectionsRenderer();
+
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
             zoom: 15,
@@ -70,6 +76,7 @@ var map = {
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
+            map.directionsDisplay.setMap(map.mapa);
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
         });
         
@@ -88,22 +95,35 @@ var map = {
         });
     },
 
+    getCoords: function(address) {
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                return results[0].geometry.location.LatLng;
+            } else{
+                return status;
+            }
+        });
+    },
+
     findRoute: function() {
         alert("Route!");
-        var address = document.getElementById("ponto_destino").value;
-
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
-            alert(results[0].geometry.location.LatLng);
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: mapa, 
-                position: results[0].geometry.location
-            });
-          } else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
+        var destino_address = document.getElementById("ponto_destino").value;
+        var partida_address = document.getElementById("ponto_partida").value;
+        var modo = null;
+        if (app.velocidade == "carro") {
+            modo = google.maps.TravelMode.DRIVING;
+        } else {
+            modo = google.maps.TravelMode.WALKING;
+        }
+        var request = {
+            origin:partida_address,
+            destination:destino_address,
+            travelMode: modo
+        };
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
         });
         $(".button_final_trajeto").fadeIn();
     },
