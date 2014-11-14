@@ -24,6 +24,7 @@ var map = {
     velocidade: "", // carro | pe
     partida: "",
     destino: "",
+    mapa: null,
     initialize: function() {
         $(".btn_carro").on("click", function() {
             map.velocidade = "carro";
@@ -74,9 +75,8 @@ var map = {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        google.maps.event.addListenerOnce(mapa, 'idle', function(){
-            alert("map loaded.");
+        map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
         });
         
@@ -88,7 +88,8 @@ var map = {
         alert(map.latitude);
         alert(map.longitude);
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
-
+        map.mapa.panTo(posicao_atual);
+        
         marker1 = new google.maps.Marker({
             map: map,
             draggable: true,
