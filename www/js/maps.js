@@ -55,9 +55,7 @@ var map = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        alert('deviceready');
-        setTimeout(map.loadMap(app.latitude, app.longitude), 2000);
-        // navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
+        map.loadMap();
     },
 
     // Bind Event Listeners
@@ -68,11 +66,10 @@ var map = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
-    loadMap: function(lat, long) {
-        alert(lat);
-        alert(long);
-
-        var posicao_atual = new google.maps.LatLng(lat, long);
+    loadMap: function() {
+        alert(map.latitude);
+        alert(map.longitude);
+        var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
             zoom: 16,
             center: posicao_atual,
@@ -80,11 +77,17 @@ var map = {
         };
 
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        
+        navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
     },
     
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
+        alert(map.latitude);
+        alert(map.longitude);
+        var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
+                
         marker1 = new google.maps.Marker({
             map: map,
             draggable: true,
