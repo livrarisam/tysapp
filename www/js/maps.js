@@ -97,7 +97,7 @@ var map = {
 
     findRoute: function() {
         alert("Route!");
-    }
+    },
 
     onError: function(error){
         alert("error getting location!");
