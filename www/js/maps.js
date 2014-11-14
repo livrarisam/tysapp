@@ -27,6 +27,7 @@ var map = {
     mapa: null,
     directionsService: null,
     directionsDisplay: null,
+    texto: "",
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -51,6 +52,9 @@ var map = {
             map.findRoute();
         });
         
+        $(".button_final_trajeto").on("click", function() {
+            alert(app.texto);
+        });
 
         this.bindEvents();
     },
@@ -122,14 +126,13 @@ var map = {
                 alert("Error: "+status);
             }
         });
-        $(".button_final_trajeto").fadeIn();
     },
 
     getWeather: function() {
         $.post("http://walkey.com.br/api/weather", { lat: map.latitude, lon: map.longitude }, 
             function(data) {
-                alert(data.weather[0].main);
-                alert(data.main.temp);
+                map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+"\r Temperatura: "+data.main.temp+".";
+                $(".button_final_trajeto").fadeIn();
             }, "json"
         );
     },
