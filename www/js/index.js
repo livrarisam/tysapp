@@ -51,7 +51,8 @@ var app = {
                         window.localStorage["sobrenome"] = data.sobrenome;
                         window.localStorage["email"] = data.email;
                         window.localStorage["logged"] = true;
-                        navigator.notification.alert("Login efetuado com sucesso", function() { $("#frm_login").submit() });
+                        // navigator.notification.alert("Login efetuado com sucesso", function() { $("#frm_login").submit() });
+                        $("#frm_login").submit();
                     } else {
                         $("#btn_login").removeAttr('disabled');
                         navigator.notification.alert(data.error_string, function() {});

@@ -44,8 +44,8 @@ var map = {
         });
 
         $(".btn_comecar").on("click", function() {
-            map.partida = $("#ponto_partida").val();
-            map.destino = $("#ponto_destino").val();
+            // map.partida = $("#ponto_partida").val();
+            // map.destino = $("#ponto_destino").val();
             $(".button_comecar").fadeOut();            
             $(".partida").fadeOut();
             map.findRoute();
@@ -60,6 +60,7 @@ var map = {
     },
 
     bindEvents: function() {
+        // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
@@ -106,8 +107,8 @@ var map = {
     },
 
     findRoute: function() {
-        var destino_address = document.getElementById("ponto_destino").value;
         var partida_address = document.getElementById("ponto_partida").value;
+        var destino_address = document.getElementById("ponto_destino").value;
         alert(partida_address);
         alert(destino_address);
         var modo = null;
@@ -124,7 +125,8 @@ var map = {
         alert("request");
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
+                map.directionsDisplay.setDirections(response);
+                alert(status);
             } else {
                 alert(status);
             }
