@@ -45,24 +45,17 @@ var map = {
             map.destino = $("#ponto_destino").val();
             $(".button_comecar").fadeOut();            
             $(".partida").fadeOut();
-            $(".button_final_trajeto").fadeIn();
+            map.findRoute();
         });
         
 
         this.bindEvents();
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
+
     onDeviceReady: function() {
         map.loadMap();
     },
 
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
@@ -70,7 +63,7 @@ var map = {
     loadMap: function() {
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
-            zoom: 16,
+            zoom: 15,
             center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -97,6 +90,22 @@ var map = {
 
     findRoute: function() {
         alert("Route!");
+        var address = document.getElementById("ponto_destino").value;
+
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+            alert(results[0].geometry.location.LatLng);
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: mapa, 
+                position: results[0].geometry.location
+            });
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+        $(".button_final_trajeto").fadeIn();
     },
 
     onError: function(error){
