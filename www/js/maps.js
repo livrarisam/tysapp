@@ -53,7 +53,7 @@ var map = {
         });
         
         $(".button_final_trajeto").on("click", function() {
-            alert(app.texto);
+            alert(map.texto);
         });
 
         this.bindEvents();
