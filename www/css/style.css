@@ -246,6 +246,7 @@ h1, h2, h3, h4, h5, h6 {font-family: 'uni_sans_boldregular', 'Arial', 'sans-serf
 
 h1 {font-size: 18px !important; text-transform: uppercase !important;}
 
+a { -webkit-tap-highlight-color: transparent; }
 a:hover {text-decoration: none !important;}
 
 .btn{background:url(../img/button_bg.png) !important;
