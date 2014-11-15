@@ -1,6 +1,12 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR"> <!--<![endif]-->
     <head>
         <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Walkey"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Walkey</title>
 
@@ -15,15 +21,15 @@
 
         <!-- jQuery -->
         <script src="js/jquery-2.1.1.min.js"></script>
-        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/jquery.mobile-1.4.4.min.js"></script>
         <!-- jQuery -->
 
         <!-- JavaScript @Font-Face -->
-        <!-- <link rel="stylesheet" href="js/specimen_stylesheet.css"> -->
+        <link rel="stylesheet" href="js/specimen_stylesheet.css">
         <!-- JavaScript @Font-Face -->
 
         <!-- JavaScript Bootstrap -->
-        <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
         <!-- JavaScript Bootstrap -->
     
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -31,12 +37,13 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     </head>
     <body>          
+
         <!-- Conteúdo -->
-        <div class="container" role="main">
+        <div class="container">
             <div class="row-fluid">
                 <div class="span12 bloco1_cadastro">
                     <div class="span12 title_cadastro">
-                        <a data-transition="pop" class="link_voltar" href="index.html"><img src="img/bt_voltar.jpg" width="12" height="20" alt=""></a>
+                        <a data-ftrans="slide reverse" class="link_voltar" href="index.html"><img src="img/bt_voltar.jpg" width="12" height="20" alt=""></a>
                         <h1>Cadastro</h1></div>
                     <div class="link_upload"><span class="thumbnail_foto"></span><a href="#">Faça o upload da foto</a></div>
                     
@@ -56,6 +63,7 @@
             </div>
         </div>
         <!-- Conteúdo -->
+        <script type="text/javascript" src="js/media.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">

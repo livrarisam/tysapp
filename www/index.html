@@ -1,6 +1,12 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR"> <!--<![endif]-->
     <head>
         <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Walkey"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Walkey</title>
 
@@ -15,76 +21,43 @@
 
         <!-- jQuery -->
         <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/jquery.mobile-1.4.4.min.js"></script>
         <!-- jQuery -->
 
         <!-- JavaScript @Font-Face -->
-        <!-- <link rel="stylesheet" href="js/specimen_stylesheet.css"> -->
+        <link rel="stylesheet" href="js/specimen_stylesheet.css">
         <!-- JavaScript @Font-Face -->
 
         <!-- JavaScript Bootstrap -->
-        <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
         <!-- JavaScript Bootstrap -->
     
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     </head>
-    <body>
-        <div data-role="page" id="home">
-            <div data-role="header" data-theme="a"> </div><!-- /header -->
-            <!-- Conteúdo -->
-            <div role="main" class="container">
-                <div class="row-fluid">
-                    <div class="span12 bloco1_home">
-                        <div class="span12 logo"><img src="img/logo.png" alt=""></div>
-                        <div class="span12 form_login">
-                            <form method="post" action="perfil.html" id="frm_login">
-                                <input type="text" onblur="if(this.value == '') this.value='Email';" onfocus="if(this.value=='Email') this.value='';" value="Email" name="Email" id="login_email"><br>
-                                <input type="password" onblur="if(this.value == '') this.value='Senha';" onfocus="if(this.value=='Senha') this.value='';" value="Senha" name="Senha" id="login_senha"><br>
+    <body>  
+        <!-- Conteúdo -->
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span12 bloco1_home">
+                    <div class="span12 logo"><img src="img/logo.png" alt=""></div>
+                    <div class="span12 form_login">
+                        <form method="post" action="perfil.html" id="frm_login">
+                            <input type="text" onblur="if(this.value == '') this.value='Email';" onfocus="if(this.value=='Email') this.value='';" value="Email" name="Email" id="login_email"><br>
+                            <input type="password" onblur="if(this.value == '') this.value='Senha';" onfocus="if(this.value=='Senha') this.value='';" value="Senha" name="Senha" id="login_senha"><br>
 
-                                <button id="btn_login" class="btn btn_login">Login</button>
-                            </form>
-                            <div class="span12 link_criar_conta"><a data-transition="pop" href="#cadastro">Criar uma Conta</a></div>
-                        </div>
-                    </div>                
-                </div>
+                            <button id="btn_login" class="btn btn_login">Login</button>
+                        </form>
+                        <div class="span12 link_criar_conta"><a data-ftrans="slide" href="cadastro.html">Criar uma Conta</a></div>
+                    </div>
+                </div>                
             </div>
-            <!-- Conteúdo -->
-            <div data-role="footer" data-theme="a"> </div><!-- /header -->
         </div>
-
-        <div data-role="page" id="cadastro">
-            <div data-role="header" data-theme="a"> </div><!-- /header -->
-            <!-- Conteúdo -->
-            <div role="main" class="container">
-                <div class="row-fluid">
-                    <div class="span12 bloco1_cadastro">
-                        <div class="span12 title_cadastro">
-                            <a data-transition="pop" class="link_voltar" href="index.html"><img src="img/bt_voltar.jpg" width="12" height="20" alt=""></a>
-                            <h1>Cadastro</h1></div>
-                        <div class="link_upload"><span class="thumbnail_foto"></span><a href="#">Faça o upload da foto</a></div>
-                        
-                        <div class="span12">
-                            <form method="post" action="cadastro_final.html" id="frm_cadastro">
-                              <fieldset>
-                                <input type="text" onblur="if(this.value == '') this.value='Nome';" onfocus="if(this.value=='Nome') this.value='';" value="Nome" name="Nome" id="nome"><br>
-                               <input type="text" onblur="if(this.value == '') this.value='Login';" onfocus="if(this.value=='Login') this.value='';" value="Login" name="Login" id="login"><br>
-                                <input type="text" onblur="if(this.value == '') this.value='Email';" onfocus="if(this.value=='Email') this.value='';" value="Email" name="Email" id="email"><br>
-                               <input type="password" onblur="if(this.value == '') this.value='Senha';" onfocus="if(this.value=='Senha') this.value='';" value="Senha" name="Senha" id="senha"><br>                          
-                                <button id="btn_cadastro" class="btn btn_login">Concluir Cadastro</button>
-                              </fieldset>
-                            </form>
-                           
-                        </div>
-                    </div>                
-                </div>
-            </div>
-            <!-- Conteúdo -->
-            <div data-role="footer" data-theme="a"> </div><!-- /header -->
-        </div>
+        <!-- Conteúdo -->
+    <script type="text/javascript" src="js/media.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
