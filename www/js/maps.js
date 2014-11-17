@@ -55,6 +55,7 @@ var map = {
         });
         
         $(".button_final_trajeto").on("click", function() {
+            clearWatch(map.watchID);
             alert(map.texto);
         });
 
@@ -142,7 +143,7 @@ var map = {
                     map: map.mapa,
                     title:"Hello World!"
                 });
-                
+
                 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
@@ -150,6 +151,7 @@ var map = {
     },
     onWatchSuccess: function (position) {
         var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.mapa.panTo(posicao_atual);
         map.marker.setPosition(posicao_atual);
         alert(position.speed);
     },
