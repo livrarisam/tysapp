@@ -157,9 +157,8 @@ var map = {
          $.post("http://walkey.com.br/api/usuarios/teste", position, 
             function(data) {
                 alert(data.result);
-            }
+            }, "json"
         );
-        // alert(position.speed);
     },
 
     onError: function(error){
