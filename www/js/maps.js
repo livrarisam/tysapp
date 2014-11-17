@@ -55,7 +55,7 @@ var map = {
         });
         
         $(".button_final_trajeto").on("click", function() {
-            clearWatch(map.watchID);
+            navigator.geolocation.clearWatch(map.watchID);
             alert(map.texto);
         });
 
