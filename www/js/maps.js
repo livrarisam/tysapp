@@ -134,13 +134,18 @@ var map = {
             function(data) {
                 map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+",\r Temperatura: "+data.main.temp+"ºC. Ponto de partida: "+$("#ponto_partida").val()+". Destino: "+ $("#ponto_destino").val()+".";
                 $(".button_final_trajeto").fadeIn();
-                var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+                var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
     },
     onWatchSuccess: function (position) {
-        alert("OK!");
+        var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map.mapa,
+            title:"Hello World!"
+        });
         alert(position.speed);
     },
 
