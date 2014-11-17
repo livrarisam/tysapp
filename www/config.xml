@@ -70,10 +70,9 @@
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
 
-    <!-- <feature name="debug-server" required="true">
-        <param name="domain" value="http://192.168.0.3:8080"/>
-        <param name="key" value="123"/>
-    </feature> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
 
 </widget>

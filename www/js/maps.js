@@ -28,6 +28,7 @@ var map = {
     directionsService: null,
     directionsDisplay: null,
     texto: "",
+    watchID: null,
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -123,7 +124,7 @@ var map = {
                 map.directionsDisplay.setDirections(response);
                 map.getWeather();
             } else {
-                alert("Error: "+status);
+                alert("Error: Endereço não encontrado.");
             }
         });
     },
@@ -133,12 +134,18 @@ var map = {
             function(data) {
                 map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+",\r Temperatura: "+data.main.temp+"ºC. Ponto de partida: "+$("#ponto_partida").val()+". Destino: "+ $("#ponto_destino").val()+".";
                 $(".button_final_trajeto").fadeIn();
+                var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+                map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
     },
+    onWatchSuccess: function (position) {
+        alert("OK!");
+        alert(position.speed);
+    },
 
     onError: function(error){
-        alert("error getting location!");
+        alert("We got some error!");
     }
 };
 
