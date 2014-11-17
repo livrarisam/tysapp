@@ -154,11 +154,16 @@ var map = {
         var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         map.mapa.panTo(posicao_atual);
         map.marker.setPosition(posicao_atual);
-        alert(position.speed);
+         $.post("http://walkey.com.br/api/usuarios/teste", position, 
+            function(data) {
+                alert(data.result);
+            }
+        );
+        // alert(position.speed);
     },
 
     onError: function(error){
-        alert("We got some error!");
+        // alert("We got some error!");
     }
 };
 
