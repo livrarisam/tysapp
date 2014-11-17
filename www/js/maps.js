@@ -29,6 +29,7 @@ var map = {
     directionsDisplay: null,
     texto: "",
     watchID: null,
+    marker: null,
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -134,18 +135,22 @@ var map = {
             function(data) {
                 map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+",\r Temperatura: "+data.main.temp+"ºC. Ponto de partida: "+$("#ponto_partida").val()+". Destino: "+ $("#ponto_destino").val()+".";
                 $(".button_final_trajeto").fadeIn();
+
+                var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
+                map.marker = new google.maps.Marker({
+                    position: posicao_atual,
+                    map: map.mapa,
+                    title:"Hello World!"
+                });
+                
                 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
     },
     onWatchSuccess: function (position) {
-        var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map.mapa,
-            title:"Hello World!"
-        });
+        var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.marker.setPosition(posicao_atual);
         alert(position.speed);
     },
 
