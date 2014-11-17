@@ -98,8 +98,9 @@ var map = {
             map: map.mapa,
             anchorPoint: new google.maps.Point(0, -29)
         });
-
+        alert("peguei input.")
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            alert("place change!");
             infowindow.close();
             marker.setVisible(false);
             var place = autocomplete.getPlace();
