@@ -84,55 +84,7 @@ var map = {
         };
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
-            
-            var input = document.getElementById('ponto_destino');
-
-            map.mapa.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map.mapa);
-
-            var infowindow = new google.maps.InfoWindow();
-            var marker = new google.maps.Marker({
-                map: map.mapa,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
-            alert("peguei input.")
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                alert("place change!");
-                infowindow.close();
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    return;
-                }
-
-                // If the place has a geometry, then present it on a map.
-                if (place.geometry.viewport) {
-                    map.mapa.fitBounds(place.geometry.viewport);
-                } else {
-                    map.mapa.setCenter(place.geometry.location);
-                    map.mapa.setZoom(17);  // Why 17? Because it looks good.
-                }
-      
-                marker.setPosition(place.geometry.location);
-                marker.setVisible(true);
-
-                var address = '';
-                if (place.address_components) {
-                    address = [
-                    (place.address_components[0] && place.address_components[0].short_name || ''),
-                    (place.address_components[1] && place.address_components[1].short_name || ''),
-                    (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-                }
-
-                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-                infowindow.open(map.mapa, marker);
-            });
-
             map.directionsDisplay.setMap(map.mapa);
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
         });
