@@ -80,7 +80,8 @@ var map = {
         var mapOptions = {
             zoom: 15,
             center: posicao_atual,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
         };
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
@@ -156,7 +157,7 @@ var map = {
         map.marker.setPosition(posicao_atual);
          $.post("http://walkey.com.br/api/usuarios/teste", position, 
             function(data) {
-                alert(data.result);
+                $(".status_panel").text(data.result);
             }, "json"
         );
     },

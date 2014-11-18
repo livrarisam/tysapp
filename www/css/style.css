@@ -354,3 +354,5 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .box_iniciar_trajeto p {color: #9f9f9f !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; font-size: 18px !important; margin-top: 10px !important;}
 .foto_perfil {width: 124px !important; height: 124px !important; background: url(../img/foto_perfil.png) no-repeat; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; border: 1px solid #FFFFFF; margin-top: 60%;}
 /*CSS Perfil*/
+
+.status_panel {width: 150px; height: 60px; position: absolute; bottom: 300px; right: 10px; border: 1px solid black; z-index: 9999; font-size: 12px; }
