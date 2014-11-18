@@ -150,7 +150,7 @@ var map = {
                 });
                 map.mapa.setZoom(17);
 
-                var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
+                var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 2 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
@@ -159,20 +159,23 @@ var map = {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         var speed = position.coords.speed;
+        var end = "";
 
          $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
             function(data) {
-                alert(data.results[0].geometry.location.lat);
-                alert(data.results[0].geometry.location.lng);
+                lat = data.results[0].geometry.location.lat;
+                lon = data.results[0].geometry.location.lng;
+                end = data.results[0].address_components[1].long_name;
 
                 var posicao_atual = new google.maps.LatLng(lat, lon);
                 map.mapa.panTo(posicao_atual);
                 map.marker.setPosition(posicao_atual);
 
-                var result  = "Latitude: "+lat+"\n";
-                    result += "Longitude: "+lon+"\n";
-                    result += "velocidade: "+speed;
-                $(".status_panel").text(result);
+                var result  = "Latitude: "+lat+"<br>";
+                    result += "Longitude: "+lon+"<br>";
+                    result += "velocidade: "+speed+"<br>";
+                    result += "Endereço: "+end+"<br>";
+                $(".status_panel").html(result);
 
             }, "json"
         );
