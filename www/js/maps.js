@@ -158,7 +158,9 @@ var map = {
         var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         map.mapa.panTo(posicao_atual);
         map.marker.setPosition(posicao_atual);
-        var result = JSON.stringify(position);
+        var result  = "Latitude: "+position.coords.latitude+"<br>";
+            result += "Longitude: "+position.coords.longitude+"<br>";
+            result += "velocidade: "+position.coords.speed+"<br>";
         $(".status_panel").text(result);
         //  $.post("http://walkey.com.br/api/usuarios/teste", position, 
         //     function(data) {
