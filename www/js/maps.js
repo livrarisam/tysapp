@@ -64,21 +64,24 @@ var map = {
     },
 
     onDeviceReady: function() {
+        alert("onDeviceReady");
         map.loadMap();
     },
 
     bindEvents: function() {
+        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     loadMap: function() {
+        alert("loadMap");
         map.directionsService = new google.maps.DirectionsService();
         map.directionsDisplay = new google.maps.DirectionsRenderer();
 
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
-            zoom: 15,
+            zoom: 16,
             center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -92,6 +95,7 @@ var map = {
     },
     
     onSuccess: function(position) {
+        alert("getCurrentPosition");
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
