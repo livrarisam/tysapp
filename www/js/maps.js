@@ -80,8 +80,7 @@ var map = {
         var mapOptions = {
             zoom: 15,
             center: posicao_atual,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            disableDefaultUI: true
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
