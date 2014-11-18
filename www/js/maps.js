@@ -68,8 +68,8 @@ var map = {
     },
 
     bindEvents: function() {
-        // this.onDeviceReady();
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        this.onDeviceReady();
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     loadMap: function() {
