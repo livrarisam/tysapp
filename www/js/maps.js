@@ -59,39 +59,35 @@ var map = {
             navigator.geolocation.clearWatch(map.watchID);
             alert(map.texto);
         });
+
         this.bindEvents();
     },
 
     onDeviceReady: function() {
-        alert("onDeviceReady");
-        map.loadMape();
+        map.loadMap();
     },
 
     bindEvents: function() {
-        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
-    loadMape: function() {
-        // map.directionsService = new google.maps.DirectionsService();
-        // map.directionsDisplay = new google.maps.DirectionsRenderer();
-        alert("loadMape");
+    loadMap: function() {
+        map.directionsService = new google.maps.DirectionsService();
+        map.directionsDisplay = new google.maps.DirectionsRenderer();
+
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
-        alert("got position");
         var mapOptions = {
             zoom: 15,
             center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        alert("got options!");
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        alert("map loaded!");
-/*        google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
+        google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
-        });*/
+        });
         
     },
     

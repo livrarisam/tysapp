@@ -30,10 +30,6 @@
         <!-- JavaScript Bootstrap -->
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <!-- JavaScript Bootstrap -->
-
-        <!-- JavaScript Google Maps -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.2&sensor=false"></script>
-        <!-- JavaScript Google Maps -->
     
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -79,7 +75,14 @@
         <script type="text/javascript" src="js/maps.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
-            map.initialize();
+            $.getScript( "https://maps.googleapis.com/maps/api/js?v=3.2&sensor=false" )
+            .done(function( script, textStatus ) {
+                alert( textStatus );
+                map.initialize();
+            })
+            .fail(function( jqxhr, settings, exception ) {
+                alert("Erro erro erro");
+            });
         </script>     
     </body>
 </html>
