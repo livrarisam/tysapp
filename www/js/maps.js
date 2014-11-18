@@ -60,7 +60,7 @@ var map = {
             alert(map.texto);
         });
         alert("Aguardando...");
-        setTimeout(this.bindEvents(), 3000);
+        setTimeout(function() { this.bindEvents(); }, 5000);
     },
 
     onDeviceReady: function() {
