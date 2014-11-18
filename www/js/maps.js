@@ -64,6 +64,7 @@ var map = {
     },
 
     onDeviceReady: function() {
+        console.log("onDeviceReady");
         map.loadMap();
     },
 
@@ -73,6 +74,8 @@ var map = {
     },
 
     loadMap: function() {
+        console.log("maps");
+        console.log(google);
         map.directionsService = new google.maps.DirectionsService();
         map.directionsDisplay = new google.maps.DirectionsRenderer();
 

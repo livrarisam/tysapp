@@ -77,11 +77,11 @@
         <script type="text/javascript">
             $.getScript( "https://maps.googleapis.com/maps/api/js?v=3.2&sensor=false" )
             .done(function( script, textStatus ) {
-                alert( textStatus );
+                console.log( textStatus );
                 map.initialize();
             })
             .fail(function( jqxhr, settings, exception ) {
-                alert("Erro erro erro");
+                console.log("Erro erro erro");
             });
         </script>     
     </body>
