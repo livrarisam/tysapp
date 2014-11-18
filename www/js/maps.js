@@ -148,6 +148,7 @@ var map = {
                     map: map.mapa,
                     title:"Hello World!"
                 });
+                map.mapa.setZoom(17);
 
                 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
@@ -158,9 +159,9 @@ var map = {
         var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         map.mapa.panTo(posicao_atual);
         map.marker.setPosition(posicao_atual);
-        var result  = "Latitude: "+position.coords.latitude+"<br>";
-            result += "Longitude: "+position.coords.longitude+"<br>";
-            result += "velocidade: "+position.coords.speed+"<br>";
+        var result  = "Latitude: "+position.coords.latitude+"\n";
+            result += "Longitude: "+position.coords.longitude+"\n";
+            result += "velocidade: "+position.coords.speed;
         $(".status_panel").text(result);
         //  $.post("http://walkey.com.br/api/usuarios/teste", position, 
         //     function(data) {
