@@ -59,13 +59,12 @@ var map = {
             navigator.geolocation.clearWatch(map.watchID);
             alert(map.texto);
         });
-        alert("Aguardando...");
-        setTimeout(function() { this.bindEvents(); }, 5000);
+        this.bindEvents();
     },
 
     onDeviceReady: function() {
         alert("onDeviceReady");
-        map.loadMap();
+        map.loadMape();
     },
 
     bindEvents: function() {
@@ -74,23 +73,25 @@ var map = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
-    loadMap: function() {
-        alert("loadMap");
-        map.directionsService = new google.maps.DirectionsService();
-        map.directionsDisplay = new google.maps.DirectionsRenderer();
-        alert("map loaded!");
+    loadMape: function() {
+        // map.directionsService = new google.maps.DirectionsService();
+        // map.directionsDisplay = new google.maps.DirectionsRenderer();
+        alert("loadMape");
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
+        alert("got position");
         var mapOptions = {
             zoom: 15,
             center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+        alert("got options!");
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
+        alert("map loaded!");
+/*        google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
-        });
+        });*/
         
     },
     
