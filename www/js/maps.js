@@ -156,18 +156,26 @@ var map = {
         );
     },
     onWatchSuccess: function (position) {
-        var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        map.mapa.panTo(posicao_atual);
-        map.marker.setPosition(posicao_atual);
-        var result  = "Latitude: "+position.coords.latitude+"\n";
-            result += "Longitude: "+position.coords.longitude+"\n";
-            result += "velocidade: "+position.coords.speed;
-        $(".status_panel").text(result);
-        //  $.post("http://walkey.com.br/api/usuarios/teste", position, 
-        //     function(data) {
-        //         alert(data.result);
-        //     }, "json"
-        // );
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        var speed = position.coords.speed;
+
+         $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
+            function(data) {
+                alert(data.results[0].geometry.location.lat);
+                alert(data.results[0].geometry.location.lng);
+
+                var posicao_atual = new google.maps.LatLng(lat, lon);
+                map.mapa.panTo(posicao_atual);
+                map.marker.setPosition(posicao_atual);
+
+                var result  = "Latitude: "+lat+"\n";
+                    result += "Longitude: "+lon+"\n";
+                    result += "velocidade: "+speed;
+                $(".status_panel").text(result);
+
+            }, "json"
+        );
     },
 
     onError: function(error){
