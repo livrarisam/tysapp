@@ -75,18 +75,22 @@ var map = {
     },
 
     loadMap: function() {
-        alert("loadMap");
+        alert("loadMap1");
         map.directionsService = new google.maps.DirectionsService();
         map.directionsDisplay = new google.maps.DirectionsRenderer();
+        alert("loadMap2");
 
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
+        alert("loadMap3");
         var mapOptions = {
             zoom: 16,
             center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+        alert("loadMap4");
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        alert("loadMap5");
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
