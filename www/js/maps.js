@@ -57,40 +57,33 @@ var map = {
         $(".button_final_trajeto").on("click", function() {
             alert("Fim trajeto!");
             navigator.geolocation.clearWatch(map.watchID);
-            // alert(map.texto);
+            alert(map.texto);
         });
 
         this.bindEvents();
     },
 
     onDeviceReady: function() {
-        alert("onDeviceReady");
         map.loadMap();
     },
 
     bindEvents: function() {
-        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     loadMap: function() {
-        alert("loadMap1");
         map.directionsService = new google.maps.DirectionsService();
         map.directionsDisplay = new google.maps.DirectionsRenderer();
-        alert("loadMap2");
 
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
-        alert("loadMap3");
         var mapOptions = {
-            zoom: 16,
+            zoom: 15,
             center: posicao_atual,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        alert("loadMap4");
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        alert("loadMap5");
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
             navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
@@ -99,7 +92,6 @@ var map = {
     },
     
     onSuccess: function(position) {
-        alert("getCurrentPosition");
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
@@ -153,7 +145,7 @@ var map = {
                     title:"Hello World!"
                 });
 
-                var options = {enableHighAccuracy: true,timeout: 3000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
+                var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
@@ -162,12 +154,11 @@ var map = {
         var posicao_atual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         map.mapa.panTo(posicao_atual);
         map.marker.setPosition(posicao_atual);
-        $(".status_panel").text(JSON.stringify(position));
-         /*$.post("http://walkey.com.br/api/usuarios/teste", position, 
-            function(data) {
-                $(".status_panel").text(data.result);
-            }, "json"
-        );*/
+        //  $.post("http://walkey.com.br/api/usuarios/teste", position, 
+        //     function(data) {
+        //         alert(data.result);
+        //     }, "json"
+        // );
     },
 
     onError: function(error){
