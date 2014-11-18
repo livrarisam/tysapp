@@ -81,9 +81,10 @@ var map = {
 
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
-            zoom: 15,
+            zoom: 16,
             center: posicao_atual,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
         };
 
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);

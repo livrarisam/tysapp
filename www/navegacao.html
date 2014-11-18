@@ -30,6 +30,10 @@
         <!-- JavaScript Bootstrap -->
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <!-- JavaScript Bootstrap -->
+
+        <!-- JavaScript Google Maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.2&sensor=false"></script>
+        <!-- JavaScript Google Maps -->
     
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -45,8 +49,8 @@
                         <a class="link_voltar" href="index.html"><img src="img/icon_menu.png" width="12" height="20" alt="" id="imgHolder"></a>
                         <h1>Corrida</h1>
                     </div>
+                    <div id="map_canvas"></div>
                     <div class="map"><img src="img/maps_api.png" alt="" style="visibility:hidden">
-                        <div id="map_canvas"></div>
                         <!-- <div class="pin"><img src="img/pin_maps.png" alt=""></div> -->
 
                         <div class="buttons_velocidade">
@@ -75,14 +79,7 @@
         <script type="text/javascript" src="js/maps.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
-            $.getScript( "https://maps.googleapis.com/maps/api/js?v=3.2&sensor=false" )
-            .done(function( script, textStatus ) {
-                console.log( textStatus );
-                map.initialize();
-            })
-            .fail(function( jqxhr, settings, exception ) {
-                console.log("Erro erro erro");
-            });
+            map.initialize();
         </script>     
     </body>
 </html>
