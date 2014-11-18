@@ -59,23 +59,26 @@ var map = {
             navigator.geolocation.clearWatch(map.watchID);
             alert(map.texto);
         });
-
-        this.bindEvents();
+        alert("Aguardando...");
+        setTimeout(this.bindEvents(), 3000);
     },
 
     onDeviceReady: function() {
+        alert("onDeviceReady");
         map.loadMap();
     },
 
     bindEvents: function() {
+        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     loadMap: function() {
+        alert("loadMap");
         map.directionsService = new google.maps.DirectionsService();
         map.directionsDisplay = new google.maps.DirectionsRenderer();
-
+        alert("map loaded!");
         var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
         var mapOptions = {
             zoom: 15,
