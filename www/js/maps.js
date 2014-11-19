@@ -57,7 +57,6 @@ var map = {
         $(".button_final_trajeto").on("click", function() {
             alert("Fim trajeto!");
             navigator.geolocation.clearWatch(map.watchID);
-            alert(map.texto);
         });
 
         this.bindEvents();
@@ -150,7 +149,7 @@ var map = {
                 });
                 map.mapa.setZoom(17);
 
-                var options = {enableHighAccuracy:true, maximumAge:10000, timeout:7000, desiredAccuracy: 0, frequency: 2 };
+                var options = {enableHighAccuracy:true, maximumAge:0, timeout:20000, desiredAccuracy: 0, frequency: 2 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
