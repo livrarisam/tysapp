@@ -159,7 +159,7 @@ var map = {
                 var posicao_atual = new google.maps.LatLng(lat, lon);
                 map.coordinates.push(posicao_atual);
                 map.mapa.panTo(posicao_atual);
-                map.mapa.setZoom(16);
+                map.mapa.setZoom(17);
                 map.marker.setPosition(posicao_atual);
 
                 var result  = "Latitude: "+lat+"<br>";
