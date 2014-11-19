@@ -30,6 +30,7 @@ var map = {
     texto: "",
     watchID: null,
     marker: null,
+    navigation: false,
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -149,8 +150,8 @@ var map = {
                 });
                 map.mapa.setZoom(17);
 
-                var options = {enableHighAccuracy:true, maximumAge:0, timeout:20000, desiredAccuracy: 0, frequency: 2 };
-                map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
+                var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
+                navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
     },
@@ -159,7 +160,7 @@ var map = {
         var lon = position.coords.longitude;
         var speed = position.coords.speed;
         var end = "";
-
+        alert("coletando!");
          $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
             function(data) {
                 alert("coletou!");
@@ -179,6 +180,9 @@ var map = {
 
             }, "json"
         );
+        var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
+        setTimeout(function() { navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options ) },
+            10000);
     },
 
     onError: function(error){
