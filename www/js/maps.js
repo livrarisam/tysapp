@@ -57,7 +57,7 @@ var map = {
         
         $(".button_final_trajeto").on("click", function() {
             alert("Fim trajeto!");
-            navigator.geolocation.clearWatch(map.watchID);
+            map.navigation = false;
         });
 
         this.bindEvents();
@@ -148,8 +148,8 @@ var map = {
                     map: map.mapa,
                     title:"Hello World!"
                 });
-                map.mapa.setZoom(17);
 
+                map.navigation = true;
                 var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
                 navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
@@ -160,16 +160,15 @@ var map = {
         var lon = position.coords.longitude;
         var speed = position.coords.speed;
         var end = "";
-        alert("coletando!");
          $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
             function(data) {
-                alert("coletou!");
                 lat = data.results[0].geometry.location.lat;
                 lon = data.results[0].geometry.location.lng;
                 end = data.results[0].address_components[1].long_name;
 
                 var posicao_atual = new google.maps.LatLng(lat, lon);
                 map.mapa.panTo(posicao_atual);
+                map.mapa.setZoom(17);
                 map.marker.setPosition(posicao_atual);
 
                 var result  = "Latitude: "+lat+"<br>";
@@ -180,9 +179,11 @@ var map = {
 
             }, "json"
         );
-        var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
-        setTimeout(function() { navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options ) },
-            10000);
+        if (map.navigation) {
+            var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
+            setTimeout(function() { navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options ) },
+                20000);
+        }
     },
 
     onError: function(error){
