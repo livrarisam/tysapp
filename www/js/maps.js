@@ -189,7 +189,8 @@ var map = {
                     lon = data.results[0].geometry.location.lng;
                     end = data.results[0].address_components[1].long_name;
 
-                    var result  = "Latitude: "+lat+"<br>";
+                    var result  = "Time: "+navtime+"<br>";
+                        result += "Latitude: "+lat+"<br>";
                         result += "Longitude: "+lon+"<br>";
                         result += "velocidade: "+speed+"<br>";
                         result += "Endereço: "+end+"<br>";
