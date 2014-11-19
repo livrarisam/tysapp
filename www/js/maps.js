@@ -90,12 +90,19 @@ var map = {
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
+            navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
         });
         
     },
+    
+    onSuccess: function(position) {
+        map.longitude = position.coords.longitude;
+        map.latitude = position.coords.latitude;
+    },
 
     findRoute: function() {
-        var partida_address = document.getElementById("ponto_partida").value;
+        // var partida_address = document.getElementById("ponto_partida").value;
+        var partida_address = map.latitude+", "+map.longitude;
         var destino_address = document.getElementById("ponto_destino").value;
         var modo = null;
         if (map.velocidade == "carro") {
