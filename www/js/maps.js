@@ -137,7 +137,7 @@ var map = {
                 map.marker = new google.maps.Marker({
                     position: posicao_atual,
                     map: map.mapa,
-                    icon: "img/pin_maps.png",
+                    // icon: "img/pin_maps.png",
                 });
 
                 map.navigation = true;
@@ -193,7 +193,7 @@ var map = {
     },
 
     onError: function(error){
-        // alert("We got some error!");
+        $(".status_panel").html("<strong>Erro!</strong>");
     }
 };
 
