@@ -102,6 +102,16 @@ var map = {
         map.latitude = position.coords.latitude;
     },
 
+    getCoords: function(address) {
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                return results[0].geometry.location.LatLng;
+            } else{
+                return status;
+            }
+        });
+    },
+
     findRoute: function() {
         // var partida_address = document.getElementById("ponto_partida").value;
         var partida_address = map.latitude+", "+map.longitude;
@@ -141,7 +151,7 @@ var map = {
                 });
 
                 map.navigation = true;
-                var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
+                var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
                 navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
@@ -161,6 +171,16 @@ var map = {
         map.mapa.setZoom(17);
         map.marker.setPosition(posicao_atual);
 
+        var flightPath = new google.maps.Polyline({
+            path: map.coordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+          });
+
+          flightPath.setMap(map.mapa);
+
         if ((navtime - map.navtime) > 20) {
             map.navtime = navtime;
             $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
@@ -169,23 +189,11 @@ var map = {
                     lon = data.results[0].geometry.location.lng;
                     end = data.results[0].address_components[1].long_name;
 
-
-
                     var result  = "Latitude: "+lat+"<br>";
                         result += "Longitude: "+lon+"<br>";
                         result += "velocidade: "+speed+"<br>";
                         result += "Endereço: "+end+"<br>";
                     $(".status_panel").html(result);
-
-                    var flightPath = new google.maps.Polyline({
-                        path: map.coordinates,
-                        geodesic: true,
-                        strokeColor: '#FF0000',
-                        strokeOpacity: 1.0,
-                        strokeWeight: 2
-                      });
-
-                      flightPath.setMap(map.mapa);
 
                 }, "json"
             );
