@@ -32,6 +32,7 @@ var map = {
     marker: null,
     navigation: false,
     coordinates: [],
+    map.navtime: 0,
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -58,7 +59,7 @@ var map = {
         
         $(".button_final_trajeto").on("click", function() {
             alert("Fim trajeto!");
-            map.navigation = false;
+            navigator.geolocation.clearWatch(map.watchID);
         });
 
         this.bindEvents();
@@ -142,48 +143,52 @@ var map = {
                 map.navigation = true;
                 var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
                 navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
+                map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
     },
+
     onWatchSuccess: function (position) {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         var speed = position.coords.speed;
+        var navtime = position.timestamp;
         var end = "";
-         $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
-            function(data) {
-                lat = data.results[0].geometry.location.lat;
-                lon = data.results[0].geometry.location.lng;
-                end = data.results[0].address_components[1].long_name;
 
-                var posicao_atual = new google.maps.LatLng(lat, lon);
-                map.coordinates.push(posicao_atual);
-                map.mapa.panTo(posicao_atual);
-                map.mapa.setZoom(17);
-                map.marker.setPosition(posicao_atual);
+        var posicao_atual = new google.maps.LatLng(lat, lon);
+        map.coordinates.push(posicao_atual);
+        map.mapa.panTo(posicao_atual);
+        map.mapa.setZoom(17);
+        map.marker.setPosition(posicao_atual);
 
-                var result  = "Latitude: "+lat+"<br>";
-                    result += "Longitude: "+lon+"<br>";
-                    result += "velocidade: "+speed+"<br>";
-                    result += "Endereço: "+end+"<br>";
-                $(".status_panel").html(result);
+        if ((navtime - map.navtime) > 20) {
+            map.navtime = navtime;
+            $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
+                function(data) {
+                    lat = data.results[0].geometry.location.lat;
+                    lon = data.results[0].geometry.location.lng;
+                    end = data.results[0].address_components[1].long_name;
 
-                var flightPath = new google.maps.Polyline({
-                    path: map.coordinates,
-                    geodesic: true,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 2
-                  });
 
-                  flightPath.setMap(map.mapa);
 
-            }, "json"
-        );
-        if (map.navigation) {
-            var options = {enableHighAccuracy:true, maximumAge:0, timeout:5000 };
-            setTimeout(function() { navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options ) },
-                20000);
+                    var result  = "Latitude: "+lat+"<br>";
+                        result += "Longitude: "+lon+"<br>";
+                        result += "velocidade: "+speed+"<br>";
+                        result += "Endereço: "+end+"<br>";
+                    $(".status_panel").html(result);
+
+                    var flightPath = new google.maps.Polyline({
+                        path: map.coordinates,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                      });
+
+                      flightPath.setMap(map.mapa);
+
+                }, "json"
+            );
         }
     },
 
