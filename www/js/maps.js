@@ -90,26 +90,8 @@ var map = {
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
-            navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
         });
         
-    },
-    
-    onSuccess: function(position) {
-        map.longitude = position.coords.longitude;
-        map.latitude = position.coords.latitude;
-        var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
-        map.mapa.panTo(posicao_atual);
-    },
-
-    getCoords: function(address) {
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                return results[0].geometry.location.LatLng;
-            } else{
-                return status;
-            }
-        });
     },
 
     findRoute: function() {
@@ -168,7 +150,7 @@ var map = {
 
                 var posicao_atual = new google.maps.LatLng(lat, lon);
                 map.mapa.panTo(posicao_atual);
-                map.mapa.setZoom(17);
+                map.mapa.setZoom(16);
                 map.marker.setPosition(posicao_atual);
 
                 var result  = "Latitude: "+lat+"<br>";
