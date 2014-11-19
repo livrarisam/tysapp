@@ -32,7 +32,7 @@ var map = {
     marker: null,
     navigation: false,
     coordinates: [],
-    map.navtime: 0,
+    navtime: 0,
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
