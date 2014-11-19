@@ -31,6 +31,7 @@ var map = {
     watchID: null,
     marker: null,
     navigation: false,
+    coordinates: [],
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -135,7 +136,7 @@ var map = {
                 map.marker = new google.maps.Marker({
                     position: posicao_atual,
                     map: map.mapa,
-                    title:"Hello World!"
+                    icon: "../img/pin_maps.png",
                 });
 
                 map.navigation = true;
@@ -156,6 +157,7 @@ var map = {
                 end = data.results[0].address_components[1].long_name;
 
                 var posicao_atual = new google.maps.LatLng(lat, lon);
+                map.coordinates.push(posicao_atual);
                 map.mapa.panTo(posicao_atual);
                 map.mapa.setZoom(16);
                 map.marker.setPosition(posicao_atual);
@@ -165,6 +167,16 @@ var map = {
                     result += "velocidade: "+speed+"<br>";
                     result += "Endereço: "+end+"<br>";
                 $(".status_panel").html(result);
+
+                var flightPath = new google.maps.Polyline({
+                    path: map.coordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                  });
+
+                  flightPath.setMap(map.mapa);
 
             }, "json"
         );
