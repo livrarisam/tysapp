@@ -150,7 +150,7 @@ var map = {
                 });
                 map.mapa.setZoom(17);
 
-                var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 2 };
+                var options = {enableHighAccuracy:true, maximumAge:10000, timeout:7000, desiredAccuracy: 0, frequency: 2 };
                 map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
             }, "json"
         );
@@ -163,6 +163,7 @@ var map = {
 
          $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
             function(data) {
+                alert("coletou!");
                 lat = data.results[0].geometry.location.lat;
                 lon = data.results[0].geometry.location.lng;
                 end = data.results[0].address_components[1].long_name;
