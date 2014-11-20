@@ -10,6 +10,16 @@ var player = {
 
     playEscuro: function() {
         player.audio_escuro.play();
+        setTimeout(function() { player.lowVolume(); }, 5000);
+    },
+
+    lowVolume: function() {
+        player.audio_escuro.setVolume(20);
+        setTimeout(function() { player.lowVolume(); }, 5000);
+    },
+
+    stopEscuro: function() {
+        player.audio_escuro.stop();
     }
 
 }
