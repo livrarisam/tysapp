@@ -180,8 +180,8 @@ var map = {
           });
 
           flightPath.setMap(map.mapa);
-
-        if ((navtime - map.navtime) > 20) {
+        alert("pos: "+navtime+", map: "+map.navtime);
+        if ((navtime - map.navtime) > 30) {
             map.navtime = navtime;
             $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
                 function(data) {
