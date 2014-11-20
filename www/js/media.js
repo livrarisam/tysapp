@@ -5,11 +5,12 @@ var player = {
 
     initialize: function() {
         var path = 'android_asset/www/musicas/';
-        player.audio_escuro = new Media('http://walkey.com.br/app/musicas/escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
-        player.audio_sol    = new Media('http://walkey.com.br/app/musicas/sol.mp3', player.nothing, player.nothing, player.onStatusSol);
+        player.audio_escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
+        player.audio_sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
         player.audio_escuro.play();
         player.audio_escuro.setVolume('0.0');
         player.audio_sol.play();
+        player.audio_sol.setVolume('0.0');
         setTimeout(function() { player.playEscuro(); }, 4000);
     },
 
