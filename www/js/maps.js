@@ -131,9 +131,11 @@ var map = {
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 map.directionsDisplay.setDirections(response);
-                $.post("http://walkey.com.br/api/usuarios/startnavigation", { idUsuarioFk: 1, tipo: map.velocidade }, 
+                var params = {"idUsuario":1, "tipo":map.velocidade, "latitude": map.latitude, "longitude":map.longitude};
+
+                $.post("http://walkey.com.br/api/navegacao/create", { data: JSON.stringify(params) }, 
                     function(data) {
-                        alert(data.navId);
+                        alert(data.result);
                         map.navId = data.navId;
                         map.getWeather();
                     }, "json"
