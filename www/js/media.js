@@ -1,39 +1,52 @@
 var player = {
     // Application Constructor
-    audio_escuro: null,
-    audio_sol: null,
+    escuro: null,
+    sol: null,
+    mudanca_rua: null,
+    mudanca_rua_2: null,
+    rapido: null,
+    introd: null,
 
     initialize: function() {
         var path = 'android_asset/www/musicas/';
-        player.audio_escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
-        player.audio_sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
-        player.audio_escuro.play();
-        player.audio_escuro.setVolume('0.0');
-        player.audio_sol.play();
-        player.audio_sol.setVolume('0.0');
+        player.escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
+        player.sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
+        player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/mudanca_rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
+        player.mudanca_rua_2    = new Media('http://walkey.com.br/app/musicas/mudanca_rua_2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
+        player.rapido    = new Media('http://walkey.com.br/app/musicas/Rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
+        player.introd    = new Media('http://walkey.com.br/app/musicas/Introd..mp3', player.nothing, player.nothing, player.onStatusIntro);
+
+        player.escuro.play();
+        player.escuro.setVolume('0.0');
+        player.sol.play();
+        player.sol.setVolume('0.0');
+        player.mudanca_rua.play();
+        player.mudanca_rua.setVolume('0.0');
+        player.mudanca_rua_2.play();
+        player.mudanca_rua_2.setVolume('0.0');
+        player.rapido.play();
+        player.rapido.setVolume('0.0');
+        player.introd.play();
+        player.introd.setVolume('0.0');
         setTimeout(function() { player.playEscuro(); }, 4000);
     },
 
-    playEscuro: function() {
-        player.audio_sol.setVolume('0.0');
-        player.audio_escuro.setVolume('1.0');
-        setTimeout(function() { player.playSol(); }, 4000);
-    },
+    playSong: function() {
+        player.intro.setVolume('0.5');
+        alert("prox");
+        player.intro.setVolume('0.0');
+        player.escuro.setVolume('0.5');
+        alert("prox");
+        player.escuro.setVolume('0.0');
+        player.mudanca_rua_2.setVolume('0.5');
+        alert("prox");
+        player.mudanca_rua_2.setVolume('0.0');
+        player.escuro.setVolume('0.5');
+        alert("prox");
+        player.rapido.setVolume('0.5');
+        alert("prox");
+        player.rapido.setVolume('1.0');
 
-    lowEscuro: function() {
-        player.audio_escuro.setVolume('0.2');
-        setTimeout(function() { player.playSol(); }, 4000);
-    },
-
-    playSol: function() {
-        player.audio_escuro.setVolume('0.0');        
-        player.audio_sol.setVolume('1.0');
-        setTimeout(function() { player.playEscuro(); }, 4000);
-    },
-
-    lowSol: function() {
-        player.audio_sol.setVolume('0.2');
-        setTimeout(function() { player.playEscuro(); }, 4000);
     },
 
     nothing: function() {
@@ -42,14 +55,36 @@ var player = {
 
     onStatusEscuro: function(status) {
         if( status==Media.MEDIA_STOPPED ) {
-            player.audio_escuro.play();
+            player.escuro.play();
         }
     },
 
     onStatusSol: function(status) {
         if( status==Media.MEDIA_STOPPED ) {
-            player.audio_sol.play();
+            player.sol.play();
         }
+    },
+
+    onStatusMudanca: function(status) {
+        if( status==Media.MEDIA_STOPPED ) {
+            player.mudanca_rua.play();
+        }
+    },
+
+    onStatusMudanca2: function(status) {
+        if( status==Media.MEDIA_STOPPED ) {
+            player.mudanca_rua_2.play();
+        }
+    },
+
+    onStatusRapido: function(status) {
+        if( status==Media.MEDIA_STOPPED ) {
+            player.rapido.play();
+        }
+    },
+
+    onStatusIntro: function(status) {
+        // zzzz
     }
 
 }
