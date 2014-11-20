@@ -178,7 +178,7 @@ var map = {
         if ((navtime - map.navtime) > 20000) {
             if (map.navtime > 0) {
 
-                var params = {"idNavegacao":map.navId, "velocidade":speed, "latitude": lat, "longitude":lon};
+                var params = {"idNavegacao":map.navId, "velocidade":speed, "latitude": lat, "longitude":lon, "timestamp": navtime};
                 $.post("http://walkey.com.br/api/navegacao/monitoring", { data: JSON.stringify(params) }, 
                     function(data) {
                         lat = data.latprox;
