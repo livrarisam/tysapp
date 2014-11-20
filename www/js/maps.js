@@ -33,7 +33,7 @@ var map = {
     navigation: false,
     coordinates: [],
     navtime: 0,
-    navId: 0
+    navId: 0,
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
@@ -136,7 +136,7 @@ var map = {
                         map.directionsDisplay.setDirections(response);
                         map.getWeather();
                     }, "json"
-                };
+                );
             } else {
                 alert("Error: Endereço não encontrado.");
             }
