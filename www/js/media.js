@@ -32,9 +32,9 @@ var player = {
     },
 
     playSong: function() {
-        player.intro.setVolume('0.5');
+        player.introd.setVolume('0.5');
         alert("prox");
-        player.intro.setVolume('0.0');
+        player.introd.setVolume('0.0');
         player.escuro.setVolume('0.5');
         alert("prox");
         player.escuro.setVolume('0.0');
