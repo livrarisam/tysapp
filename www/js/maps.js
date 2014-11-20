@@ -21,7 +21,7 @@ var map = {
     // Application Constructor
     latitude: "-23.557060",
     longitude: "-46.633065",
-    velocidade: "", // carro | pe
+    velocidade: "", // A | C
     partida: "",
     destino: "",
     mapa: null,
@@ -33,17 +33,18 @@ var map = {
     navigation: false,
     coordinates: [],
     navtime: 0,
+    navId: 0
 
     initialize: function() {
         $(".btn_carro").on("click", function() {
-            map.velocidade = "carro";
+            map.velocidade = "C";
             $(".buttons_velocidade").fadeOut();
             $(".partida").fadeIn();
             $(".button_comecar").fadeIn();
         });
 
         $(".btn_pe").on("click", function() {
-            map.velocidade = "pe";
+            map.velocidade = "A";
             $(".buttons_velocidade").fadeOut();
             $(".partida").fadeIn();
             $(".button_comecar").fadeIn();
@@ -117,7 +118,7 @@ var map = {
         var partida_address = map.latitude+", "+map.longitude;
         var destino_address = document.getElementById("ponto_destino").value;
         var modo = null;
-        if (map.velocidade == "carro") {
+        if (map.velocidade == "C") {
             modo = google.maps.TravelMode.DRIVING;
         } else {
             modo = google.maps.TravelMode.WALKING;
@@ -129,8 +130,13 @@ var map = {
         };
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-                map.directionsDisplay.setDirections(response);
-                map.getWeather();
+                $.post("http://walkey.com.br/api/usuarios/start_navigation", { idUsuarioFk: 1, tipo: map.velocidade }, 
+                    function(data) {
+                        map.navId = data.navId
+                        map.directionsDisplay.setDirections(response);
+                        map.getWeather();
+                    }, "json"
+                };
             } else {
                 alert("Error: Endereço não encontrado.");
             }
@@ -177,7 +183,6 @@ var map = {
         $(".status_panel").html(result);
 
         if ((navtime - map.navtime) > 20000) {
-            alert("New: "+navtime+", Old: "+map.navtime);
             if (map.navtime > 0) {
 
                 map.coordinates.push(posicao_atual);
