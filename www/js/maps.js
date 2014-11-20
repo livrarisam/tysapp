@@ -130,10 +130,11 @@ var map = {
         };
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-                $.post("http://walkey.com.br/api/usuarios/start_navigation", { idUsuarioFk: 1, tipo: map.velocidade }, 
+                map.directionsDisplay.setDirections(response);
+                $.post("http://walkey.com.br/api/usuarios/startnavigation", { idUsuarioFk: 1, tipo: map.velocidade }, 
                     function(data) {
+                        alert(data.navId);
                         map.navId = data.navId;
-                        map.directionsDisplay.setDirections(response);
                         map.getWeather();
                     }, "json"
                 );
