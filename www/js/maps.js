@@ -177,6 +177,16 @@ var map = {
         map.mapa.setZoom(17);
         map.marker.setPosition(posicao_atual);
 
+        map.coordinates.push(posicao_atual);
+        var flightPath = new google.maps.Polyline({
+            path: map.coordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+        });
+        flightPath.setMap(map.mapa);
+        
         if ((navtime - map.navtime) > 20000) {
             if (map.navtime > 0) {
 
@@ -185,18 +195,6 @@ var map = {
                     function(data) {
                         lat = data.latprox;
                         lon = data.lonprox;
-
-                        var nova_posicai = new google.maps.LatLng(lat, lon);
-                        map.coordinates.push(nova_posicai);
-                        var flightPath = new google.maps.Polyline({
-                            path: map.coordinates,
-                            geodesic: true,
-                            strokeColor: '#FF0000',
-                            strokeOpacity: 1.0,
-                            strokeWeight: 3
-                        });
-                        flightPath.setMap(map.mapa);
-
                     }, "json"
                 );
             }
