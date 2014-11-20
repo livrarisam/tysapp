@@ -170,6 +170,12 @@ var map = {
         map.mapa.setZoom(17);
         map.marker.setPosition(posicao_atual);
 
+        var result  = "Time: "+navtime+"<br>";
+            result += "Latitude: "+lat+"<br>";
+            result += "Longitude: "+lon+"<br>";
+            result += "velocidade: "+speed+"<br>";
+        $(".status_panel").html(result);
+
         if ((navtime - map.navtime) > 20000) {
             alert("New: "+navtime+", Old: "+map.navtime);
             if (map.navtime > 0) {
@@ -183,19 +189,19 @@ var map = {
                     strokeWeight: 3
                 });
                 flightPath.setMap(map.mapa);
-                
+
                 $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
                     function(data) {
                         lat = data.results[0].geometry.location.lat;
                         lon = data.results[0].geometry.location.lng;
                         end = data.results[0].address_components[1].long_name;
 
-                        var result  = "Time: "+navtime+"<br>";
+                        /*var result  = "Time: "+navtime+"<br>";
                             result += "Latitude: "+lat+"<br>";
                             result += "Longitude: "+lon+"<br>";
                             result += "velocidade: "+speed+"<br>";
                             result += "Endereço: "+end+"<br>";
-                        $(".status_panel").html(result);
+                        $(".status_panel").html(result);*/
 
                     }, "json"
                 );
