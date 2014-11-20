@@ -132,7 +132,7 @@ var map = {
             if (status == google.maps.DirectionsStatus.OK) {
                 $.post("http://walkey.com.br/api/usuarios/start_navigation", { idUsuarioFk: 1, tipo: map.velocidade }, 
                     function(data) {
-                        map.navId = data.navId
+                        map.navId = data.navId;
                         map.directionsDisplay.setDirections(response);
                         map.getWeather();
                     }, "json"
