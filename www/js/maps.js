@@ -178,10 +178,10 @@ var map = {
             strokeOpacity: 1.0,
             strokeWeight: 3
         });
-        
+
         flightPath.setMap(map.mapa);
-        alert("New: "+navtime+", Old: "+map.navtime);
         if ((navtime - map.navtime) > 20000) {
+            alert("New: "+navtime+", Old: "+map.navtime);
             map.navtime = navtime;
             $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
                 function(data) {
