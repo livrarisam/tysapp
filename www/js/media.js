@@ -11,8 +11,8 @@ var player = {
         var path = 'android_asset/www/musicas/';
         player.escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
         player.sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
-        player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/mudanca_rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
-        player.mudanca_rua_2    = new Media('http://walkey.com.br/app/musicas/mudanca_rua_2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
+        player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
+        player.mudanca_rua_2    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua 2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
         player.rapido    = new Media('http://walkey.com.br/app/musicas/Rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
         player.introd    = new Media('http://walkey.com.br/app/musicas/Introd..mp3', player.nothing, player.nothing, player.onStatusIntro);
 
