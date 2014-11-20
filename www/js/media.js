@@ -1,7 +1,7 @@
 var player = {
     // Application Constructor
-    audio_escuro = null,
-    audio_escuro_rapido = null,
+    audio_escuro: null,
+    audio_escuro_rapido: null,
 
     initialize: function() {
         player.audio_escuro = new Media('/android_asset/www/musicas/escuro.mp3');
@@ -10,7 +10,6 @@ var player = {
 
     playEscuro: function() {
         player.audio_escuro.play();
-        // audio_escuro_rapido.stop();
     }
 
 }
