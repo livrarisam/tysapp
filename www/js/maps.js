@@ -58,8 +58,10 @@ var map = {
         });
         
         $(".button_final_trajeto").on("click", function() {
-            alert("Fim trajeto!");
             navigator.geolocation.clearWatch(map.watchID);
+            $(".button_final_trajeto").fadeOut();
+
+            player.initialize();
         });
 
         this.bindEvents();
