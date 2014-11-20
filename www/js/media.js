@@ -28,7 +28,7 @@ var player = {
         player.rapido.setVolume('0.0');
         player.introd.play();
         player.introd.setVolume('0.0');
-        setTimeout(function() { player.playEscuro(); }, 4000);
+        setTimeout(function() { player.playSong(); }, 4000);
     },
 
     playSong: function() {
