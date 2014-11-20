@@ -30,7 +30,6 @@ var map = {
     texto: "",
     watchID: null,
     marker: null,
-    navigation: false,
     coordinates: [],
     navtime: 0,
     navId: 0,
@@ -135,9 +134,12 @@ var map = {
 
                 $.post("http://walkey.com.br/api/navegacao/create", { data: JSON.stringify(params) }, 
                     function(data) {
-                        alert(data.result);
-                        map.navId = data.navId;
-                        map.getWeather();
+                        if (data.error_code == 0) { 
+                            map.navId = data.idNavegacao;
+                            map.startNavigation();
+                        } else {
+                            alert("Erro, tente novamente.");
+                        }
                     }, "json"
                 );
             } else {
@@ -146,25 +148,19 @@ var map = {
         });
     },
 
-    getWeather: function() {
-        $.post("http://walkey.com.br/api/weather", { lat: map.latitude, lon: map.longitude }, 
-            function(data) {
-                map.texto = "Sua localização: "+map.latitude+", "+map.longitude+".\r Clima atual: "+data.weather[0].main+",\r Temperatura: "+data.main.temp+"ºC. Ponto de partida: "+$("#ponto_partida").val()+". Destino: "+ $("#ponto_destino").val()+".";
-                $(".button_final_trajeto").fadeIn();
+    startNavigation: function() {
+        $(".button_final_trajeto").fadeIn();
 
-                var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
-                map.marker = new google.maps.Marker({
-                    position: posicao_atual,
-                    map: map.mapa,
-                    // icon: "img/pin_maps.png",
-                });
+        var posicao_atual = new google.maps.LatLng(map.latitude, map.longitude);
+        map.marker = new google.maps.Marker({
+            position: posicao_atual,
+            map: map.mapa,
+            // icon: "img/pin_maps.png",
+        });
 
-                map.navigation = true;
-                var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
-                navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
-                map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
-            }, "json"
-        );
+        var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
+        navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
+        map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
     },
 
     onWatchSuccess: function (position) {
@@ -179,37 +175,25 @@ var map = {
         map.mapa.setZoom(17);
         map.marker.setPosition(posicao_atual);
 
-        var result  = "Time: "+navtime+"<br>";
-            result += "Latitude: "+lat+"<br>";
-            result += "Longitude: "+lon+"<br>";
-            result += "velocidade: "+speed+"<br>";
-        $(".status_panel").html(result);
-
         if ((navtime - map.navtime) > 20000) {
             if (map.navtime > 0) {
 
-                map.coordinates.push(posicao_atual);
-                var flightPath = new google.maps.Polyline({
-                    path: map.coordinates,
-                    geodesic: true,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 3
-                });
-                flightPath.setMap(map.mapa);
-
-                $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
+                var params = {"idNavegacao":map.navId, "velocidade":speed, "latitude": lat, "longitude":lon};
+                $.post("http://walkey.com.br/api/navegacao/monitoring", { data: JSON.stringify(params) }, 
                     function(data) {
-                        lat = data.results[0].geometry.location.lat;
-                        lon = data.results[0].geometry.location.lng;
-                        end = data.results[0].address_components[1].long_name;
+                        lat = data.latprox;
+                        lon = data.lonprox;
 
-                        /*var result  = "Time: "+navtime+"<br>";
-                            result += "Latitude: "+lat+"<br>";
-                            result += "Longitude: "+lon+"<br>";
-                            result += "velocidade: "+speed+"<br>";
-                            result += "Endereço: "+end+"<br>";
-                        $(".status_panel").html(result);*/
+                        var nova_posicai = new google.maps.LatLng(lat, lon);
+                        map.coordinates.push(nova_posicai);
+                        var flightPath = new google.maps.Polyline({
+                            path: map.coordinates,
+                            geodesic: true,
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 1.0,
+                            strokeWeight: 3
+                        });
+                        flightPath.setMap(map.mapa);
 
                     }, "json"
                 );
