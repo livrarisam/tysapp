@@ -162,7 +162,7 @@ var map = {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         var speed = position.coords.speed;
-        var navtime = new Date();
+        var navtime = new Date().getTime();
         var end = "";
 
         var posicao_atual = new google.maps.LatLng(lat, lon);
@@ -177,11 +177,11 @@ var map = {
             strokeColor: '#FF0000',
             strokeOpacity: 1.0,
             strokeWeight: 3
-          });
-
+        });
+        
         flightPath.setMap(map.mapa);
-        alert(navtime.getTime());
-        if ((navtime - map.navtime) > 30) {
+        alert("New: "+navtime+", Old: "+map.navtime);
+        if ((navtime - map.navtime) > 20000) {
             map.navtime = navtime;
             $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
                 function(data) {
