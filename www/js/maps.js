@@ -166,38 +166,41 @@ var map = {
         var end = "";
 
         var posicao_atual = new google.maps.LatLng(lat, lon);
-        map.coordinates.push(posicao_atual);
         map.mapa.panTo(posicao_atual);
         map.mapa.setZoom(17);
         map.marker.setPosition(posicao_atual);
 
-        var flightPath = new google.maps.Polyline({
-            path: map.coordinates,
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 3
-        });
-
-        flightPath.setMap(map.mapa);
         if ((navtime - map.navtime) > 20000) {
             alert("New: "+navtime+", Old: "+map.navtime);
+            if (map.navtime > 0) {
+
+                map.coordinates.push(posicao_atual);
+                var flightPath = new google.maps.Polyline({
+                    path: map.coordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3
+                });
+                flightPath.setMap(map.mapa);
+                
+                $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
+                    function(data) {
+                        lat = data.results[0].geometry.location.lat;
+                        lon = data.results[0].geometry.location.lng;
+                        end = data.results[0].address_components[1].long_name;
+
+                        var result  = "Time: "+navtime+"<br>";
+                            result += "Latitude: "+lat+"<br>";
+                            result += "Longitude: "+lon+"<br>";
+                            result += "velocidade: "+speed+"<br>";
+                            result += "Endereço: "+end+"<br>";
+                        $(".status_panel").html(result);
+
+                    }, "json"
+                );
+            }
             map.navtime = navtime;
-            $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
-                function(data) {
-                    lat = data.results[0].geometry.location.lat;
-                    lon = data.results[0].geometry.location.lng;
-                    end = data.results[0].address_components[1].long_name;
-
-                    var result  = "Time: "+navtime+"<br>";
-                        result += "Latitude: "+lat+"<br>";
-                        result += "Longitude: "+lon+"<br>";
-                        result += "velocidade: "+speed+"<br>";
-                        result += "Endereço: "+end+"<br>";
-                    $(".status_panel").html(result);
-
-                }, "json"
-            );
         }
     },
 
