@@ -162,7 +162,7 @@ var map = {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         var speed = position.coords.speed;
-        var navtime = position.timestamp;
+        var navtime = new Date();
         var end = "";
 
         var posicao_atual = new google.maps.LatLng(lat, lon);
@@ -179,8 +179,8 @@ var map = {
             strokeWeight: 3
           });
 
-          flightPath.setMap(map.mapa);
-        alert("pos: "+navtime+", map: "+map.navtime);
+        flightPath.setMap(map.mapa);
+        alert(navtime.getTime());
         if ((navtime - map.navtime) > 30) {
             map.navtime = navtime;
             $.post("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true", {}, 
