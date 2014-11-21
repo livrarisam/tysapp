@@ -13,6 +13,7 @@ var player = {
     lastEndereco: "",
     nextEvent: "",
     marker: null,
+    coordinates: [],
     eventId: 0,
 
     initialize: function() {
@@ -124,7 +125,6 @@ var player = {
     },
 
     playEvent: function(detail) {
-        alert("playEvent");
         if (player.nextEvent == "") {
             player.lastEndereco = player.endereco;
             if (detail.temperatura < 20) {
@@ -185,10 +185,19 @@ var player = {
         }
 
         var posicao_atual = new google.maps.LatLng(detail.latitude, detail.longitude);
-        player.marker = new google.maps.Marker({
-            position: posicao_atual,
-            map: player.mapa
+        player.mapa.panTo(posicao_atual);
+        player.mapa.setZoom(15);
+        player.marker.setPosition(posicao_atual);
+
+        player.coordinates.push(posicao_atual);
+        var flightPath = new google.maps.Polyline({
+            path: player.coordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
         });
+        flightPath.setMap(player.mapa);
     },
 
     nothing: function() {
