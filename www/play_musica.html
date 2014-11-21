@@ -83,6 +83,17 @@
             </div>
         </div>
         <!-- Conteúdo -->
-       
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#escondida").hide();
+
+            $("a#abrir").click(function(){
+                $("#escondida").fadeIn();
+            });
+            $("a#fechar").click(function(){
+                $("#escondida").fadeOut();
+            });
+        });
+    </script>       
     </body>
 </html>
