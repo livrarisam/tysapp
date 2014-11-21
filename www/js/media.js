@@ -1,5 +1,8 @@
 var player = {
     // Application Constructor
+    latitude: "-23.557060",
+    longitude: "-46.633065",
+    mapa: null,
     escuro: null,
     sol: null,
     mudanca_rua: null,
@@ -8,7 +11,7 @@ var player = {
     introd: null,
 
     initialize: function() {
-        var path = 'android_asset/www/musicas/';
+        /*var path = 'android_asset/www/musicas/';
         player.escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
         player.sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
         player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
@@ -27,8 +30,32 @@ var player = {
         player.rapido.play();
         player.rapido.setVolume('0.0');
         player.introd.play();
-        player.introd.setVolume('0.0');
-        setTimeout(function() { player.playSong(); }, 4000);
+        player.introd.setVolume('0.0');*/
+
+        this.bindEvents();
+    },
+
+    onDeviceReady: function() {
+        player.loadMap();
+    },
+
+    bindEvents: function() {
+        this.onDeviceReady();
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
+    },    
+
+    loadMap: function() {
+        var posicao_atual = new google.maps.LatLng(player.latitude, player.longitude);
+        var mapOptions = {
+            zoom: 16,
+            center: posicao_atual,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
+        };
+
+        player.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+        $("#map_canvas").css("top", "150px");
     },
 
     playSong: function() {

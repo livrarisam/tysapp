@@ -60,6 +60,7 @@ var map = {
         $(".button_final_trajeto").on("click", function() {
             navigator.geolocation.clearWatch(map.watchID);
             $(".button_final_trajeto").fadeOut();
+            $(".title_iniciar_rota").fadeOut();
             window.location.replace("play_musica.html");
             // player.initialize();
         });

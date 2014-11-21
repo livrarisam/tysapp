@@ -19,26 +19,25 @@
         <link rel="stylesheet" href="css/style.css">
         <!--  CSS Style -->
 
+        <!-- jQuery -->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <!-- jQuery -->
+
         <!-- JavaScript @Font-Face -->
-        <script type="text/javascript" src="js/specimen_stylesheet.js"></script>
+        <link rel="stylesheet" href="js/specimen_stylesheet.css">
         <!-- JavaScript @Font-Face -->
 
         <!-- JavaScript Bootstrap -->
-        <script type="text/javascript" src="js/boostrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
         <!-- JavaScript Bootstrap -->
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
-        <!-- jQuery -->
-
-        
-        
+        <!-- JavaScript Google Maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.2&sensor=false"></script>
+        <!-- JavaScript Google Maps -->
+    
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
-        <script type="text/javascript" src="js/abrirdiv_musica.js"></script>
-
     </head>
     <body>          
 
@@ -51,33 +50,23 @@
                         <h1>Minhas Músicas</h1>
                         
                     </div>
+                    <div id="map_canvas"></div>
 
                         <div class="box_play">
                             <img class="gif_play"src="img/bg_play.png" width="100%" height="100%" alt="">
                             <button><img class="play" src="img/button_play.png" alt=""></button></div>
-
                         <div class="list_musica">
                             <p class="link_musica1"><a href="#">músicas 01</a></p>
                             <p class="link_musica2"><a id="abrir" href="#">+</a></p>
                         </div>
                         <div class="conteudo_dropdown" id="escondida">
-                                <ul>
-                                    <li><a href="#">músicas 02</a> <span class="button_hide"><a href="#" id="fechar">-</a></span></li>
-                                    <li class="bg_escuro"><a href="#">músicas 03</a></li>
+                            <ul>
+                                <li><a href="#">músicas 02</a> <span class="button_hide"><a href="#" id="fechar">-</a></span></li>
+                                <li class="bg_escuro"><a href="#">músicas 03</a></li>
 
-                                </ul>
+                            </ul>
 
-                            </div> 
-
-                     <div class="maps_musica"></div>
-                            
-                            
-
-                       
-
-                        
-                      
-
+                        </div> 
                     </div>
                 </div>                
             </div>
@@ -95,5 +84,10 @@
             });
         });
     </script>       
+    <script type="text/javascript" src="js/media.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+        player.initialize();
+    </script>     
     </body>
 </html>
