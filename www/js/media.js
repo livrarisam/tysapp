@@ -11,31 +11,25 @@ var player = {
     introd: null,
 
     initialize: function() {
-        alert("initialize");
-        // player.escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
-        // player.sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
-        // player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
-        // player.mudanca_rua_2    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua 2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
-        // player.rapido    = new Media('http://walkey.com.br/app/musicas/Rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
-        // player.introd    = new Media('http://walkey.com.br/app/musicas/Introd..mp3', player.nothing, player.nothing, player.onStatusIntro);
-
+        $(".playlink").on("click", function() {
+            var navId = $(this).attr('class').split(' ')[0];
+            alert(navId);
+            player.playSong(navId);
+        });
         player.bindEvents();
     },
 
     onDeviceReady: function() {
-        alert("onDeviceReady");
         player.loadNavigations();
         player.loadMap();
     },
 
     bindEvents: function() {
-        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },    
 
     loadNavigations: function() {
-        alert("loadNavigations");
         var params = {"idUsuario":1};
         alert("loadNavigations1");
 
@@ -44,11 +38,14 @@ var player = {
                 alert("loadNavigations2");
                 alert(data.result[0].idNavegacao);
                 $("#link1").addClass(data.result[0].idNavegacao);
+                $("#link1").addClass("playlink");
                 $("#link1").text(data.result[0].titulo);
                 $("#link2").addClass(data.result[1].idNavegacao);
                 $("#link2").text(data.result[1].titulo);
+                $("#link2").addClass("playlink");
                 $("#link3").addClass(data.result[2].idNavegacao);
                 $("#link3").text(data.result[2].titulo);
+                $("#link3").addClass("playlink");
             }, "json"
         );
     },
@@ -67,21 +64,15 @@ var player = {
         $("#map_canvas").css("top", "230px");
     },
 
-    playSong: function() {
-        player.introd.setVolume('0.5');
-        alert("prox");
-        player.introd.setVolume('0.0');
-        player.escuro.setVolume('0.5');
-        alert("prox");
-        player.escuro.setVolume('0.0');
-        player.mudanca_rua_2.setVolume('0.5');
-        alert("prox");
-        player.mudanca_rua_2.setVolume('0.0');
-        player.escuro.setVolume('0.5');
-        alert("prox");
-        player.rapido.setVolume('0.5');
-        alert("prox");
-        player.rapido.setVolume('1.0');
+    playSong: function(navId) {
+        player.escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
+        player.sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
+        player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
+        player.mudanca_rua_2    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua 2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
+        player.rapido    = new Media('http://walkey.com.br/app/musicas/Rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
+        player.introd    = new Media('http://walkey.com.br/app/musicas/Introd..mp3', player.nothing, player.nothing, player.onStatusIntro);
+
+        alert(navId);
 
     },
 
