@@ -32,9 +32,14 @@ var player = {
     },    
 
     loadNavigations: function() {
+        alert("loadNavigations");
         var params = {"idUsuario":1};
+        alert("loadNavigations1");
+
         $.post("http://walkey.com.br/api/navegacao/get_navegation", { data: JSON.stringify(params) }, 
             function(data) {
+                alert("loadNavigations2");
+                alert(data.result[0].idNavegacao);
                 $("#link1").addClass(data.result[0].idNavegacao);
                 $("#link1").text(data.result[0].titulo);
                 $("#link2").addClass(data.result[1].idNavegacao);
