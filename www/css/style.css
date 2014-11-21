@@ -282,6 +282,13 @@ letter-spacing: 1px;}
 .pin {position: absolute; top: 25%; left: 50%;}
 .pin2 {position: absolute; top: 35%; left: 60%;}
 
+/*CSS Menu*/
+.menu {width: 264px; height: 640px; background-color: #f1f1f1; position: absolute;}
+.menu ul {height: 640px; margin: 0; width: 100%;}
+.menu ul li {height: 36px !important; text-align: left; padding-left: 60px; padding-top: 30px;}
+.menu ul li a {font-size: 12px !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; color: #7d7d7d !important; text-transform: uppercase;;}
+/*CSS Menu*/
+
 /*CSS Home*/
 .bloco1_home {background:url(../img/bg_home.jpg) 50% 50% no-repeat; 
 height: 640px; padding-top: 70px;}
@@ -341,18 +348,63 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .btn_final {background: url(../img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
 /*CSS Iniciar Rota*/
 
+
+
 /*CSS Perfil*/
 .bloco1_perfil {background: #e5e5e5; height: 486px; text-align: center;}
-.bloco1_perfil h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_perfil h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 12px !important; text-align: center;}
 .bloco1_perfil p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
-.title_perfil {position: relative; background: #FFFFFF;}
-.box_perfil {background: url(../img/box_perfil.png) no-repeat; width: 100%; height: 100%;}
-.box_perfil h1 {color: #FFFFFF !important; font-size: 18px !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; line-height: 20px;
+.title_perfil {position: relative; background: #FFFFFF; height: 65px; position: relative;}
+.box_perfil {background: url(../img/box_perfil.png) center center no-repeat; width: 100%; padding-top: 40px; height: 285px; */
+background-position: center center;
+background-repeat: no-repeat;
+/* background-attachment: fixed; */
+background-size: cover;
+/* background-color: #464646; */}
+.box_perfil h1 {color: #FFFFFF !important; font-size: 12px !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; line-height: 15px;
 }
-.box_iniciar_trajeto {width: 100%; min-height: 210px; background: #e5e5e5; padding-top: 60px;}
-.box_iniciar_trajeto p {color: #9f9f9f !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; font-size: 18px !important; margin-top: 10px !important;}
-.foto_perfil {width: 124px !important; height: 124px !important; background: url(../img/foto_perfil.png) no-repeat; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; border: 1px solid #FFFFFF; margin-top: 60%;}
+.box_iniciar_trajeto {width: 100%; min-height: 275px; background: #e5e5e5; padding-top: 40px;}
+.box_iniciar_trajeto p {color: #9f9f9f !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; font-size: 12px !important; margin-top: 15px !important;}
+.foto_perfil {width: 83px !important; height: 83px !important; background: url(../img/foto_perfil.png) center center no-repeat; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; border: 1px solid #FFFFFF; margin-top: 6em;}
 /*CSS Perfil*/
+
+/*CSS Play Musica*/
+.bloco1_play {background: #e5e5e5; height: 486px; text-align: center; position: relative;}
+.bloco1_play h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 12px !important; text-align: center;}
+.bloco1_play p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
+.title_play {position: relative; background: #FFFFFF; height: 65px;}
+.box_play {background: url(../img/bg_play2.png) center center no-repeat; width: 100%; height: 105px; */
+background-position: center center;
+background-repeat: no-repeat;
+/* background-attachment: fixed; */
+background-size: cover;
+/* background-color: #464646; */}
+.box_play h1 {color: #FFFFFF !important; font-size: 12px !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; line-height: 15px;
+position: relative;}
+.box_play img.play {position: absolute; left: 50%; margin-left: -30px; margin-top: 25px;}
+.box_play img.gif_play {display: none;}
+.list_musica {height: 39px; background-color: #e5e5e5; padding: 19px 30px 0 30px;}
+.list_musica p {color: #3fb6ed !important;}
+.list_musica p.link_musica1 {float: left;}
+.list_musica p.link_musica2 {float: right;}
+.maps_musica {width: 100%; height: 359px; background: url(../img/maps_music.png) center center no-repeat; width: 100%; */
+background-position: center center;
+background-repeat: no-repeat;
+/* background-attachment: fixed; */
+background-size: cover;
+/* background-color: #464646; */}
+.conteudo_dropdown {text-align: left; position: absolute;width: 100%;}
+.conteudo_dropdown ul {width: 100%; padding: 0; margin: 0;}
+.conteudo_dropdown ul li {height: 32px; background: #f8f8f8; padding-left: 30px; padding-top: 10px; }
+.conteudo_dropdown ul li.bg_escuro {background: #f2f2f2;}
+.conteudo_dropdown ul li a { color: #c3c3c3 !important; font-size: 12px !important; text-transform: uppercase !important;
+font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
+.button_hide {float: right !important; margin-right: 33px;}
+
+
+/*Play Musica
+*/
 
 .status_panel {width: 200px; height: 110px; position: absolute; bottom: 80px; right: 10px; border: 1px solid black; z-index: 9999; font-size: 12px; background-color: #fff}

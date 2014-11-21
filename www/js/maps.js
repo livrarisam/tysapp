@@ -60,8 +60,8 @@ var map = {
         $(".button_final_trajeto").on("click", function() {
             navigator.geolocation.clearWatch(map.watchID);
             $(".button_final_trajeto").fadeOut();
-
-            player.initialize();
+            window.location.replace("play_musica.html");
+            // player.initialize();
         });
 
         this.bindEvents();
@@ -186,7 +186,7 @@ var map = {
             strokeWeight: 3
         });
         flightPath.setMap(map.mapa);
-        
+
         if ((navtime - map.navtime) > 20000) {
             if (map.navtime > 0) {
 
