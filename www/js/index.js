@@ -83,6 +83,12 @@ var app = {
             );
         });
 
+        $("#user_foto").on("click", function(e) {
+            e.preventDefault();
+            navigator.camera.getPicture(onPhotoUriSuccess, onFailCamera, { quality: 50,
+                destinationType: pictDestinationType.FILE_URI });
+        });
+
     },
 
     // Bind Event Listeners
