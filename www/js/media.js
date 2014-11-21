@@ -55,7 +55,7 @@ var player = {
 
         player.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-        $("#map_canvas").css("top", "150px");
+        $("#map_canvas").css("top", "200px");
     },
 
     playSong: function() {
