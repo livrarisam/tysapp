@@ -187,7 +187,6 @@ var player = {
         var posicao_atual = new google.maps.LatLng(detail.latitude, detail.longitude);
         player.mapa.panTo(posicao_atual);
         player.mapa.setZoom(15);
-        player.marker.setPosition(posicao_atual);
 
         player.coordinates.push(posicao_atual);
         var flightPath = new google.maps.Polyline({
