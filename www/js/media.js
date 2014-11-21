@@ -106,10 +106,9 @@ var player = {
                 player.introd.play();
                 player.introd.setVolume('0.0');
 
-                for (var key in data.details) {
-                    var detail = data.details[key];
-                    setTimeout(function() { player.playEvent(detail); }, 8000);
-                }
+                var detail = data.details[0];
+                setTimeout(function() { player.playEvent(detail); }, 8000);
+
             }, "json"
         );
     },
