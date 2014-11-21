@@ -96,19 +96,7 @@ var player = {
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
-                player.escuro.play();
-                player.escuro.setVolume('0.0');
-                player.sol.play();
-                player.sol.setVolume('0.0');
-                player.mudanca_rua.play();
-                player.mudanca_rua.setVolume('0.0');
-                player.mudanca_rua_2.play();
-                player.mudanca_rua_2.setVolume('0.0');
-                player.rapido.play();
-                player.rapido.setVolume('0.0');
-                player.introd.play();
-                player.introd.setVolume('0.0');
-
+                
                 for (var key in data.details) {
                     player.countdetails = key;
                 }
@@ -121,12 +109,26 @@ var player = {
     },
 
     songLoop: function() {
-        alert(player.eventId+" - "+player.countdetails);
+        if (player.eventId == 0) {
+            player.escuro.play();
+            player.escuro.setVolume('0.0');
+            player.sol.play();
+            player.sol.setVolume('0.0');
+            player.mudanca_rua.play();
+            player.mudanca_rua.setVolume('0.0');
+            player.mudanca_rua_2.play();
+            player.mudanca_rua_2.setVolume('0.0');
+            player.rapido.play();
+            player.rapido.setVolume('0.0');
+            player.introd.play();
+            player.introd.setVolume('0.0');
+        }
+
         if (player.eventId <= player.countdetails) {
             var detail = player.details[player.eventId];
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
-            setTimeout(function() { player.songLoop(); }, 8000)
+            setTimeout(function() { player.songLoop(); }, 9000)
         } else { 
             player.escuro.stop();
             player.sol.stop();
