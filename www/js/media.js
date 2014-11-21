@@ -13,6 +13,7 @@ var player = {
     lastEndereco: "",
     nextEvent: "",
     marker: null,
+    eventId: 0,
 
     initialize: function() {
         $("#link1").on("click", function() {
@@ -106,16 +107,24 @@ var player = {
                 player.introd.play();
                 player.introd.setVolume('0.0');
 
-                var detail = data.details[0];
-                setTimeout(function() { player.playEvent(detail); }, 8000);
+                player.details = data.details;
+                player.songLoop();
 
             }, "json"
         );
     },
 
+    songLoop: function() {
+        var detail = player.details[player.eventId];
+        if (!$.isEmptyObject(player.details[player.eventId])) {
+            player.playEvent(detail);
+            player.eventId = player.eventId + 1;
+            setTimeout(function() { player.songLoop(); }, 8000)
+        }
+    },
+
     playEvent: function(detail) {
         alert("playEvent");
-        alert(detail.timestamp);
         player.marker.setMap(null);
         if (player.nextEvent == "") {
             player.lastEndereco = player.endereco;
