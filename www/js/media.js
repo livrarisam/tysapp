@@ -125,7 +125,6 @@ var player = {
 
     playEvent: function(detail) {
         alert("playEvent");
-        player.marker.setMap(null);
         if (player.nextEvent == "") {
             player.lastEndereco = player.endereco;
             if (detail.temperatura < 20) {
