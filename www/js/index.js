@@ -85,7 +85,8 @@ var app = {
 
         $("#user_foto").on("click", function(e) {
             e.preventDefault();
-            navigator.camera.getPicture(onPhotoUriSuccess, onFailCamera, { quality: 50,
+            alert("capture");
+            navigator.camera.getPicture(app.onPhotoUriSuccess, app.onFailCamera, { quality: 50,
                 destinationType: pictDestinationType.FILE_URI });
         });
 
@@ -96,8 +97,16 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        app.onDeviceReady();
-        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        // app.onDeviceReady();
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+
+    onPhotoUriSuccess: function() {
+        alert("tirou foto!");
+    },
+
+    onFailCamera: function() {
+        alert("Erro!");
     }
 };
 
