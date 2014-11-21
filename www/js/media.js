@@ -11,6 +11,7 @@ var player = {
     introd: null,
 
     initialize: function() {
+        alert("initialize");
         player.escuro = new Media('http://walkey.com.br/app/musicas/Escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
         player.sol    = new Media('http://walkey.com.br/app/musicas/Sol.mp3', player.nothing, player.nothing, player.onStatusSol);
         player.mudanca_rua    = new Media('http://walkey.com.br/app/musicas/Mudan. Rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
@@ -18,15 +19,17 @@ var player = {
         player.rapido    = new Media('http://walkey.com.br/app/musicas/Rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
         player.introd    = new Media('http://walkey.com.br/app/musicas/Introd..mp3', player.nothing, player.nothing, player.onStatusIntro);
 
-        this.bindEvents();
+        player.bindEvents();
     },
 
     onDeviceReady: function() {
+        alert("onDeviceReady");
         player.loadNavigations();
         player.loadMap();
     },
 
     bindEvents: function() {
+        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },    
