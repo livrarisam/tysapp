@@ -110,7 +110,7 @@ var player = {
                 player.introd.setVolume('0.0');
 
                 for (var key in data.details) {
-                    var player.countdetails = key;
+                    player.countdetails = key;
                 }
 
                 player.details = data.details;

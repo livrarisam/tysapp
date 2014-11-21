@@ -31,7 +31,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        alert("deviceready");
         $("#btn_login").removeAttr('disabled');
         $("#btn_cadastro").removeAttr('disabled');
 
@@ -43,7 +42,6 @@ var app = {
             var params = {"email":u, "senha":p};
             $.post("http://walkey.com.br/api/usuarios/login", {data: JSON.stringify(params)}, 
                 function(data) {
-                    alert(data.result);
                     if (data.result == "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
                         window.localStorage["nome"] = data.nome;
