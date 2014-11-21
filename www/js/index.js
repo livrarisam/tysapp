@@ -81,12 +81,12 @@ var app = {
             );
         });
 
-        $("#user_foto").on("click", function(e) {
+        /*$("#user_foto").on("click", function(e) {
             e.preventDefault();
             alert("capture");
             navigator.camera.getPicture(app.onPhotoUriSuccess, app.onFailCamera, { quality: 50,
                 destinationType: pictDestinationType.FILE_URI });
-        });
+        });*/
 
     },
 
