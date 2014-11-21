@@ -101,8 +101,8 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        setTimeout( function() { app.onDeviceReady(); }, 5000);
-        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        // setTimeout( function() { app.onDeviceReady(); }, 5000);
+        document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     onPhotoUriSuccess: function() {
