@@ -133,7 +133,7 @@ var map = {
         map.directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 map.directionsDisplay.setDirections(response);
-                var params = {"idUsuario":1, "tipo":map.velocidade, "latitude": map.latitude, "longitude":map.longitude};
+                var params = {"idUsuario":window.localStorage["idUsuario"], "tipo":map.velocidade, "latitude": map.latitude, "longitude":map.longitude};
 
                 $.post("http://walkey.com.br/api/navegacao/create", { data: JSON.stringify(params) }, 
                     function(data) {

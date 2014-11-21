@@ -54,7 +54,7 @@ var player = {
     },    
 
     loadNavigations: function() {
-        var params = {"idUsuario":1};
+        var params = {"idUsuario":window.localStorage["idUsuario"]};
 
         $.post("http://walkey.com.br/api/navegacao/get_navegation", { data: JSON.stringify(params) }, 
             function(data) {
