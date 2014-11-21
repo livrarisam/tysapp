@@ -121,6 +121,13 @@ var player = {
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
             setTimeout(function() { player.songLoop(); }, 8000)
+        } else { 
+            player.escuro.stop();
+            player.sol.stop();
+            player.mudanca_rua.stop();
+            player.mudanca_rua_2.stop();
+            player.rapido.stop();
+            player.introd.stop();
         }
     },
 
