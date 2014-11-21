@@ -11,7 +11,7 @@ var player = {
     introd: null,
 
     initialize: function() {
-        $(".playlink").on("click", function() {
+        $("#link1").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
             alert(navId);
             player.playSong(navId);
@@ -31,12 +31,9 @@ var player = {
 
     loadNavigations: function() {
         var params = {"idUsuario":1};
-        alert("loadNavigations1");
 
         $.post("http://walkey.com.br/api/navegacao/get_navegation", { data: JSON.stringify(params) }, 
             function(data) {
-                alert("loadNavigations2");
-                alert(data.result[0].idNavegacao);
                 $("#link1").addClass(data.result[0].idNavegacao);
                 $("#link1").addClass("playlink");
                 $("#link1").text(data.result[0].titulo);
