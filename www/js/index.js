@@ -41,7 +41,9 @@ var app = {
             var u = $("#login_email").val();
             alert(u);
             var p = $("#login_senha").val();
-            $.post("http://walkey.com.br/api/usuarios/login", {data: "{\"email\":\""+u+"\",\"senha\":\""+p+"\"}"}, 
+            var params = {"email":u, "senha":p};
+            var params = {"idNavegacao":player.navId};
+            $.post("http://walkey.com.br/api/usuarios/login", {data: JSON.stringify(params)}, 
                 function(data) {
                     alert(data.result);
                     if (data.result == "sucesso") {
@@ -67,7 +69,8 @@ var app = {
             var login = $("#login").val();
             var email = $("#email").val();
             var senha = $("#senha").val();
-            $.post("http://walkey.com.br/api/usuarios/create", {data: "{\"nome\":\""+nome+"\",\"sobrenome\":\""+login+"\",\"email\":\""+email+"\",\"senha\":\""+senha+"\"}"}, 
+            var params = {"nome":nome+, "sobrenome":login, "email": email, "senha": senha}; 
+            $.post("http://walkey.com.br/api/usuarios/create", {data: JSON.stringify(params) },
                 function(data) {
                     if (data.result == "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
@@ -98,7 +101,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        app.onDeviceReady();
+        setTimeout( function() { app.onDeviceReady(); }, 5000);
         // document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
