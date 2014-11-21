@@ -42,7 +42,6 @@ var app = {
             alert(u);
             var p = $("#login_senha").val();
             var params = {"email":u, "senha":p};
-            var params = {"idNavegacao":player.navId};
             $.post("http://walkey.com.br/api/usuarios/login", {data: JSON.stringify(params)}, 
                 function(data) {
                     alert(data.result);
