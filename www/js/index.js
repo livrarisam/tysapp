@@ -39,7 +39,6 @@ var app = {
             e.preventDefault();
             $("#btn_login").attr('disabled','disabled');
             var u = $("#login_email").val();
-            alert(u);
             var p = $("#login_senha").val();
             var params = {"email":u, "senha":p};
             $.post("http://walkey.com.br/api/usuarios/login", {data: JSON.stringify(params)}, 
