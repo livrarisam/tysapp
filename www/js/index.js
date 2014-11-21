@@ -69,7 +69,7 @@ var app = {
             var login = $("#login").val();
             var email = $("#email").val();
             var senha = $("#senha").val();
-            var params = {"nome":nome+, "sobrenome":login, "email": email, "senha": senha}; 
+            var params = {"nome":nome, "sobrenome":login, "email":email, "senha":senha}; 
             $.post("http://walkey.com.br/api/usuarios/create", {data: JSON.stringify(params) },
                 function(data) {
                     if (data.result == "sucesso") {
