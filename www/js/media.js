@@ -15,6 +15,7 @@ var player = {
     marker: null,
     coordinates: [],
     eventId: 0,
+    countdetails: 0,
 
     initialize: function() {
         $("#link1").on("click", function() {
@@ -108,6 +109,10 @@ var player = {
                 player.introd.play();
                 player.introd.setVolume('0.0');
 
+                for (var key in data.details) {
+                    var player.countdetails = key;
+                }
+
                 player.details = data.details;
                 player.songLoop();
 
@@ -116,8 +121,9 @@ var player = {
     },
 
     songLoop: function() {
-        var detail = player.details[player.eventId];
-        if (!$.isEmptyObject(player.details[player.eventId])) {
+        alert(player.eventId+" - "+player.countdetails);
+        if (player.eventId <= player.countdetails) {
+            var detail = player.details[player.eventId];
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
             setTimeout(function() { player.songLoop(); }, 8000)
