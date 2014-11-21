@@ -39,9 +39,11 @@ var app = {
             e.preventDefault();
             $("#btn_login").attr('disabled','disabled');
             var u = $("#login_email").val();
+            alert(u);
             var p = $("#login_senha").val();
             $.post("http://walkey.com.br/api/usuarios/login", {data: "{\"email\":\""+u+"\",\"senha\":\""+p+"\"}"}, 
                 function(data) {
+                    alert(data.result);
                     if (data.result == "sucesso") {
                         window.localStorage["idUsuario"] = data.idUsuario;
                         window.localStorage["nome"] = data.nome;
