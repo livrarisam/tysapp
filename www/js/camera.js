@@ -33,49 +33,14 @@
   //
   function onPhotoFileSuccess(imageData) {
     // Get image handle
-    alert(JSON.stringify(imageData));
-    
+    var imgSrc = JSON.stringify(imageData);
+    $(".thumbnail_foto").html("<img src=\""+imgSrc+"\">");
   	  // Get image handle
   }
 
-  // Called when a photo is successfully retrieved
-  //
-  function onPhotoURISuccess(imageURI) {
-    // Uncomment to view the image file URI 
-    // console.log(imageURI);
-
-    // Get image handle
-    //
-    var largeImage = document.getElementById('largeImage');
-
-    // Unhide image elements
-    //
-    largeImage.style.display = 'block';
-
-    // Show the captured photo
-    // The inline CSS rules are used to resize the image
-    //
-    largeImage.src = imageURI;
-  }
-
   // A button will call this function
-  //
-  function capturePhotoWithData() {
-    // Take picture using device camera and retrieve image as base64-encoded string
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
-  }
-
   function capturePhotoWithFile() {
       navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-  }
-
-  // A button will call this function
-  //
-  function getPhoto(source) {
-    // Retrieve image file location from specified source
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
-      destinationType: destinationType.FILE_URI,
-      sourceType: source });
   }
 
   // Called if something bad happens.
@@ -83,3 +48,28 @@
   function onFail(message) {
     alert('Failed because: ' + message);
   }
+
+  $("#btn_cadastro").on("click", function(e) {
+    e.preventDefault();
+    $("#btn_cadastro").attr('disabled','disabled');
+    var nome = $("#nome").val();
+    var login = $("#login").val();
+    var email = $("#email").val();
+    var senha = $("#senha").val();
+    var params = {"nome":nome, "sobrenome":login, "email":email, "senha":senha}; 
+    $.post("http://walkey.com.br/api/usuarios/create", {data: JSON.stringify(params) },
+      function(data) {
+          if (data.result == "sucesso") {
+              window.localStorage["idUsuario"] = data.idUsuario;
+              window.localStorage["nome"] = data.nome;
+              window.localStorage["sobrenome"] = data.sobrenome;
+              window.localStorage["email"] = data.email;
+              window.localStorage["logged"] = true;
+              navigator.notification.alert("Cadastro efetuado com sucesso", function() { $("#frm_cadastro").submit() });
+          } else {
+              $("#btn_cadastro").removeAttr('disabled');
+              navigator.notification.alert(data.error_string, function() {});
+          }
+      }, "json"
+    );
+  });

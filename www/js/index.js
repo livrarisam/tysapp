@@ -58,31 +58,6 @@ var app = {
             );            
         });
 
-        $("#btn_cadastro").on("click", function(e) {
-            e.preventDefault();
-            $("#btn_cadastro").attr('disabled','disabled');
-            var nome = $("#nome").val();
-            var login = $("#login").val();
-            var email = $("#email").val();
-            var senha = $("#senha").val();
-            var params = {"nome":nome, "sobrenome":login, "email":email, "senha":senha}; 
-            $.post("http://walkey.com.br/api/usuarios/create", {data: JSON.stringify(params) },
-                function(data) {
-                    if (data.result == "sucesso") {
-                        window.localStorage["idUsuario"] = data.idUsuario;
-                        window.localStorage["nome"] = data.nome;
-                        window.localStorage["sobrenome"] = data.sobrenome;
-                        window.localStorage["email"] = data.email;
-                        window.localStorage["logged"] = true;
-                        navigator.notification.alert("Cadastro efetuado com sucesso", function() { $("#frm_cadastro").submit() });
-                    } else {
-                        $("#btn_cadastro").removeAttr('disabled');
-                        navigator.notification.alert(data.error_string, function() {});
-                    }
-                }, "json"
-            );
-        });
-
         $("#user_foto").on("click", function(e) {
             e.preventDefault();
             alert("capture");
