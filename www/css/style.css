@@ -290,7 +290,7 @@ letter-spacing: 1px;}
 /*CSS Menu*/
 
 /*CSS Home*/
-.bloco1_home {background:url(http://www.walkey.com.br/app/img/bg_home.jpg) 50% 90% no-repeat; 
+.bloco1_home {background:url(../img/bg_home.jpg) 50% 90% no-repeat; 
 height: 640px; padding-top: 75px;   
   /*background-position: center center;*/
   background-repeat: no-repeat;

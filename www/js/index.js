@@ -83,12 +83,9 @@ var app = {
             );
         });
 
-        /*$("#user_foto").on("click", function(e) {
-            e.preventDefault();
-            alert("capture");
-            navigator.camera.getPicture(app.onPhotoUriSuccess, app.onFailCamera, { quality: 50,
-                destinationType: pictDestinationType.FILE_URI });
-        });*/
+        $("#user_foto").on("click", function(e) {
+            navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+        });
 
     },
 
@@ -101,8 +98,8 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
-    onPhotoUriSuccess: function() {
-        alert("tirou foto!");
+    onPhotoFileSuccess: function() {
+        alert(JSON.stringify(imageData));
     },
 
     onFailCamera: function() {
