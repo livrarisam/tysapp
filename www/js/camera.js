@@ -1,5 +1,4 @@
   var pictureSource;   // picture source
-  var destinationType; // sets the format of returned value 
 
   // Wait for PhoneGap to connect with the device
   //
@@ -33,9 +32,9 @@
   //
   function onPhotoFileSuccess(imageData) {
     // Get image handle
-    var imgSrc = JSON.stringify(imageData);
-    $(".thumbnail_foto").html("<img src=\""+imgSrc+"\">");
-  	  // Get image handle
+    pictureSource = JSON.stringify(imageData);
+    $(".thumbnail_foto").html("<img src=\""+pictureSource+"\">");
+    // Get image handle
   }
 
   // A button will call this function
