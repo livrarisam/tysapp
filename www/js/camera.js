@@ -44,7 +44,7 @@
 
     var options = new FileUploadOptions();
     options.fileKey = "photo"; //depends on the api
-    options.fileName = imageUriToUpload.substr(pictureSource.lastIndexOf('/')+1);
+    options.fileName = pictureSource.substr(pictureSource.lastIndexOf('/')+1);
     options.mimeType = "image/jpeg";
     options.params = params;
     options.chunkedMode = true; //this is important to send both data and files
@@ -53,7 +53,7 @@
     options.headers = headers;
 
     var ft = new FileTransfer();
-    ft.upload(imageUriToUpload, url, succesFileTransfer, errorFileTransfer, options);
+    ft.upload(pictureSource, url, succesFileTransfer, errorFileTransfer, options);
     // Get image handle
   }
 
