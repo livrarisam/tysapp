@@ -8,39 +8,21 @@
   //
   function onDeviceReady() {
       pictureSource=navigator.camera.PictureSourceType;
-      destinationType=navigator.camera.DestinationType;
-  }
-
-  // Called when a photo is successfully retrieved
-  //
-  function onPhotoDataSuccess(imageData) {
-    // Get image handle
-    //
-    var smallImage = document.getElementById('smallImage');
-
-    // Unhide image elements
-    //
-    smallImage.style.display = 'block';
-
-    // Show the captured photo
-    // The inline CSS rules are used to resize the image
-    //
-    smallImage.src = "data:image/jpeg;base64," + imageData;
   }
 
   // Called when a photo is successfully retrieved
   //
   function onPhotoFileSuccess(imageData) {
     // Get image handle
-    pictureSource = JSON.stringify(imageData);
+    alert(JSON.stringify(imageData));
+
+    pictureSource = imageData;
     // $(".thumbnail_foto").html("<img src=\""+pictureSource+"\">");
     var url=encodeURI("http://walkey.com.br/api/usuarios/photo_upload/");
-
-    var username='your_user';
-    var password='your_pwd';
-
+    alert(url);
     var params = new Object();
-    params.your_param_name = "something";  //you can send additional info with the file
+    params.value = "none";  //you can send additional info with the file
+    alert("params");
 
     var options = new FileUploadOptions();
     options.fileKey = "photo"; //depends on the api
@@ -48,11 +30,10 @@
     options.mimeType = "image/jpeg";
     options.params = params;
     options.chunkedMode = true; //this is important to send both data and files
-
-    var headers={'Authorization':"Basic " + Base64.encode(username + ":" + password)};
-    options.headers = headers;
+    alert("options");
 
     var ft = new FileTransfer();
+    alert("FileTransfer");
     ft.upload(pictureSource, url, succesFileTransfer, errorFileTransfer, options);
     // Get image handle
   }
