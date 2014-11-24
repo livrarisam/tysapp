@@ -84,7 +84,9 @@ var app = {
         });
 
         $("#user_foto").on("click", function(e) {
-            navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+            e.preventDefault();
+            alert("capture");
+            navigator.camera.getPicture(onPhotoFileSuccess, onFailCamera, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
         });
 
     },
@@ -94,7 +96,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        // setTimeout( function() { app.onDeviceReady(); }, 5000);
+        // app.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
