@@ -33,8 +33,37 @@
   function onPhotoFileSuccess(imageData) {
     // Get image handle
     pictureSource = JSON.stringify(imageData);
-    $(".thumbnail_foto").html("<img src=\""+pictureSource+"\">");
+    // $(".thumbnail_foto").html("<img src=\""+pictureSource+"\">");
+    var url=encodeURI("http://walkey.com.br/api/usuarios/photo_upload/");
+
+    var username='your_user';
+    var password='your_pwd';
+
+    var params = new Object();
+    params.your_param_name = "something";  //you can send additional info with the file
+
+    var options = new FileUploadOptions();
+    options.fileKey = "photo"; //depends on the api
+    options.fileName = imageUriToUpload.substr(pictureSource.lastIndexOf('/')+1);
+    options.mimeType = "image/jpeg";
+    options.params = params;
+    options.chunkedMode = true; //this is important to send both data and files
+
+    var headers={'Authorization':"Basic " + Base64.encode(username + ":" + password)};
+    options.headers = headers;
+
+    var ft = new FileTransfer();
+    ft.upload(imageUriToUpload, url, succesFileTransfer, errorFileTransfer, options);
     // Get image handle
+  }
+
+  function succesFileTransfer(data) {
+    alert("ok!");
+    alert(data);
+  }
+
+  function errorFileTransfer() {
+    alert("Error");
   }
 
   // A button will call this function
