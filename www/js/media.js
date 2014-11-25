@@ -122,15 +122,11 @@ var player = {
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
 
-            if (player.eventId == 0) {
-                player.songLoop();
-            } else {
-                setTimeout(function() { player.songLoop(); }, 10500)
-            }
+            setTimeout(function() { player.songLoop(); }, 10500);
         } else {
             alert("stop");
-            player.escuro.stop();
             player.sol.stop();
+            player.escuro.stop();
             player.mudanca_rua.stop();
             player.mudanca_rua_2.stop();
         }
