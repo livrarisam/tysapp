@@ -42,7 +42,7 @@
             <div class="row-fluid">
                 <div class="span12 bloco1_perfil">
                     <div class="span12 title_perfil">
-                        <a class="link_voltar" href="index.html"><img src="img/icon_menu.png" width="12" height="20" alt=""></a>
+                        <a class="link_voltar" id="abrir" href="index.html"><img src="img/icon_menu.png" width="12" height="20" alt=""></a>
                         <h1>Olá <span class="unome"></span></h1></div>
 
                         <div class="menu" id="menu">
@@ -77,10 +77,18 @@
         </div>
         <!-- Conteúdo -->
         <script type="text/javascript">
+
             $(".unome").text(window.localStorage["nome"]);
             $(".usnome").text(window.localStorage["sobrenome"]);
             $(".foto_perfil").css("background", "url(http://walkey.com.br/uploads/"+window.localStorage["idUsuario"]+".jpg) center center no-repeat");
             $(".foto_perfil").css("background-size", "114px 84px");
+        
+            $("#menu").hide();
+
+            $("a#abrir").click(function(){
+                $("#menu").toggle('fast');
+            });
+            
         </script>       
     </body>
 </html>
