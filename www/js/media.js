@@ -17,7 +17,7 @@ var player = {
     countdetails: 0,
 
     initialize: function() {
-                
+        alert("initialize");
         player.escuro = new Howl({
             urls: ['musicas/escuro.mp3'],
             loop: true,
@@ -74,11 +74,13 @@ var player = {
     },
 
     onDeviceReady: function() {
+        alert("onDeviceReady");
         player.loadNavigations();
         player.loadMap();
     },
 
     bindEvents: function() {
+        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },    
@@ -116,7 +118,7 @@ var player = {
     },
 
     playSong: function() {
-
+        alert(player.navId);
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
