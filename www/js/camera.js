@@ -42,8 +42,9 @@
   }
 
   function succesFileTransfer(data) {
-    alert(data.response.error_string);
-    if (data.result == "sucesso") {
+    alert(data.response);
+    return true;
+    if (data.response.result == "sucesso") {
       window.localStorage["idUsuario"] = data.response.idUsuario;
       window.localStorage["nome"] = data.response.nome;
       window.localStorage["sobrenome"] = data.response.sobrenome;
@@ -52,7 +53,7 @@
       navigator.notification.alert("Cadastro efetuado com sucesso", function() { $("#frm_cadastro").submit() });    
     } else {
       $("#btn_cadastro").removeAttr('disabled');
-      navigator.notification.alert(data.error_string, function() {});
+      navigator.notification.alert(data.response.error_string, function() {});
     }      
   }
 
