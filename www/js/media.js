@@ -8,7 +8,6 @@ var player = {
     mudanca_rua: null,
     mudanca_rua_2: null,
     rapido: null,
-    introd: null,
     navId: 0,
     lastEndereco: "",
     nextEvent: "",
@@ -18,6 +17,37 @@ var player = {
     countdetails: 0,
 
     initialize: function() {
+                
+        player.escuro = new Howl({
+            urls: ['musicas/escuro.mp3'],
+            loop: true,
+            volume: 0.0
+        });
+
+        player.sol = new Howl({
+            urls: ['musicas/sol.mp3'],
+            loop: true,
+            volume: 0.0
+        });  
+
+        player.mudanca = new Howl({
+            urls: ['musicas/mudanca_rua.mp3'],
+            loop: true,
+            volume: 0.0
+        });  
+
+        player.mudanca2 = new Howl({
+            urls: ['musicas/mudanca_rua_2.mp3'],
+            loop: true,
+            volume: 0.0
+        });  
+
+        player.fast = new Howl({
+            urls: ['musicas/rapido.mp3'],
+            loop: true,
+            volume: 0.0
+        });
+
         $("#link1").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
             alert(navId);
@@ -86,12 +116,6 @@ var player = {
     },
 
     playSong: function() {
-        var path = '/android_asset/www/musicas/';
-        player.escuro = new Media(path+'escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
-        player.sol    = new Media(path+'sol.mp3', player.nothing, player.nothing, player.onStatusSol);
-        player.mudanca_rua    = new Media(path+'mudanca_rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
-        player.mudanca_rua_2    = new Media(path+'mudanca_rua_2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
-        player.rapido    = new Media(path+'rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
 
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
@@ -111,24 +135,17 @@ var player = {
     songLoop: function() {
         if (player.eventId == 0) {
             player.escuro.play();
-            player.escuro.setVolume('0.0');
             player.sol.play();
-            player.sol.setVolume('0.0');
             player.mudanca_rua.play();
-            player.mudanca_rua.setVolume('0.0');
             player.mudanca_rua_2.play();
-            player.mudanca_rua_2.setVolume('0.0');
             player.rapido.play();
-            player.rapido.setVolume('0.0');
-            player.introd.play();
-            player.introd.setVolume('0.0');
         }
 
         if (player.eventId <= player.countdetails) {
             var detail = player.details[player.eventId];
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
-            setTimeout(function() { player.songLoop(); }, 9000)
+            setTimeout(function() { player.songLoop(); }, 11000)
         } else { 
             player.escuro.stop();
             player.sol.stop();

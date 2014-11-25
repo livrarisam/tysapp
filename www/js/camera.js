@@ -40,7 +40,7 @@
 
   function succesFileTransfer(data) {
     alert("ok!");
-    alert(data);
+    alert(data.response);
   }
 
   function errorFileTransfer() {
