@@ -106,7 +106,6 @@ var player = {
     },
 
     songLoop: function() {
-        alert(player.eventId);
         if (player.eventId == 0) {
             player.escuro.play();
             player.escuro.setVolume('0.0');
@@ -126,9 +125,10 @@ var player = {
             if (player.eventId == 0) {
                 player.songLoop();
             } else {
-                setTimeout(function() { player.songLoop(); }, 9000)
+                setTimeout(function() { player.songLoop(); }, 10500)
             }
-        } else { 
+        } else {
+            alert("stop");
             player.escuro.stop();
             player.sol.stop();
             player.mudanca_rua.stop();
