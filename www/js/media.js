@@ -145,7 +145,12 @@ var player = {
             var detail = player.details[player.eventId];
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
-            setTimeout(function() { player.songLoop(); }, 11000)
+            if (player.eventId == 0) {
+                player.songLoop();
+            } else {
+                setTimeout(function() { player.songLoop(); }, 11000);
+            }
+
         } else { 
             player.escuro.stop();
             player.sol.stop();
@@ -160,50 +165,50 @@ var player = {
         if (player.nextEvent == "") {
             player.lastEndereco = player.endereco;
             if (detail.temperatura < 20) {
-                player.sol.setVolume('0.0');
-                player.mudanca_rua.setVolume('0.0');
-                player.mudanca_rua_2.setVolume('0.0');
+                player.sol.fadeOut(0, 900);
+                player.mudanca_rua.fadeOut(0, 900);
+                player.mudanca_rua_2.fadeOut(0, 900);
 
-                player.escuro.setVolume('0.5');
+                player.escuro.fadeIn(0.4, 900);
                 player.nextEvent = "mudanca_rua_2";
             } else {
-                player.mudanca_rua.setVolume('0.0');
-                player.mudanca_rua_2.setVolume('0.0');                
-                player.escuro.setVolume('0.0');
+                player.mudanca_rua.fadeOut(0, 900);
+                player.mudanca_rua_2.fadeOut(0, 900);                
+                player.escuro.fadeOut(0, 900);
 
-                player.sol.setVolume('0.5');
+                player.sol.fadeIn(0.4, 900);
                 player.nextEvent = "mudanca_rua";
             }
         } else {
             if (detail.endereco != player.endereco) {
                 if (player.nextEvent == "mudanca_rua") {
-                    player.sol.setVolume('0.0');
-                    player.escuro.setVolume('0.0');
-                    player.mudanca_rua_2.setVolume('0.0');                    
+                    player.sol.fadeOut(0, 900);
+                    player.escuro.fadeOut(0, 900);
+                    player.mudanca_rua_2.fadeOut(0, 900);                    
 
-                    player.mudanca_rua.setVolume('0.5');
+                    player.mudanca_rua.fadeIn(0.4, 900);
                     player.nextEvent = "clima";
                 } else if (player.nextEvent == "mudanca_rua_2") {
-                    player.sol.setVolume('0.0');
-                    player.mudanca_rua.setVolume('0.0');
-                    player.escuro.setVolume('0.0');                    
+                    player.sol.fadeOut(0, 900);
+                    player.mudanca_rua.fadeOut(0, 900);
+                    player.escuro.fadeOut(0, 900);                    
 
-                    player.mudanca_rua_2.setVolume('0.5');
+                    player.mudanca_rua_2.fadeIn(0.4, 900);
                     player.nextEvent = "clima";
                 } else if (player.nextEvent == "clima") {
                     if (detail.temperatura < 20) {
-                        player.sol.setVolume('0.0');
-                        player.mudanca_rua.setVolume('0.0');
-                        player.mudanca_rua_2.setVolume('0.0');                    
+                        player.sol.fadeOut(0, 900);
+                        player.mudanca_rua.fadeOut(0, 900);
+                        player.mudanca_rua_2.fadeOut(0, 900);                    
 
-                        player.escuro.setVolume('0.5');
+                        player.escuro.fadeIn(0.4, 900);
                         player.nextEvent = "mudanca_rua";
                     } else {
-                        player.mudanca_rua.setVolume('0.0');
-                        player.escuro.setVolume('0.0');
-                        player.mudanca_rua_2.setVolume('0.0');
+                        player.mudanca_rua.fadeOut(0, 900);
+                        player.escuro.fadeOut(0, 900);
+                        player.mudanca_rua_2.fadeOut(0, 900);
 
-                        player.sol.setVolume('0.5');
+                        player.sol.fadeIn(0.4, 900);
                         player.nextEvent = "mudanca_rua_2";
                     }
                 }
@@ -211,9 +216,9 @@ var player = {
         }
 
         if (detail.velocidade > 17 && detail.velocidade < 25) {
-            player.rapido.setVolume('0.5');
+            player.rapido.fadeIn(0.4, 900);
         } else if (detail.velocidade > 25) {
-            player.rapido.setVolume('1.0');
+            player.rapido.fadeIn(0.8, 900);
         }
 
         var posicao_atual = new google.maps.LatLng(detail.latitude, detail.longitude);
@@ -233,40 +238,6 @@ var player = {
 
     nothing: function() {
         //zzz
-    },
-
-    onStatusEscuro: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
-            player.escuro.play();
-        }
-    },
-
-    onStatusSol: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
-            player.sol.play();
-        }
-    },
-
-    onStatusMudanca: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
-            player.mudanca_rua.play();
-        }
-    },
-
-    onStatusMudanca2: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
-            player.mudanca_rua_2.play();
-        }
-    },
-
-    onStatusRapido: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
-            player.rapido.play();
-        }
-    },
-
-    onStatusIntro: function(status) {
-        // zzzz
     }
 
 }
