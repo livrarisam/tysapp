@@ -92,12 +92,10 @@ var player = {
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
-                alert(JSON.stringify(data));
                 for (var key in data.details) {
                     player.countdetails = key;
                 }
 
-                alert(player.countdetails);
                 player.details = data.details;
                 player.songLoop();
 
@@ -122,7 +120,7 @@ var player = {
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
 
-            setTimeout(function() { player.songLoop(); }, 10500);
+            setTimeout(function() { player.songLoop(); }, 11000);
         } else {
             player.sol.stop();
             player.escuro.stop();
@@ -205,25 +203,25 @@ var player = {
     },
 
     onStatusEscuro: function(status) {
-        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
             player.escuro.play();
         }
     },
 
     onStatusSol: function(status) {
-        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
             player.sol.play();
         }
     },
 
     onStatusMudanca: function(status) {
-        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
             player.mudanca_rua.play();
         }
     },
 
     onStatusMudanca2: function(status) {
-        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
             player.mudanca_rua_2.play();
         }
     }
