@@ -15,44 +15,40 @@
     // Get image handle
     pictureSource = imageData;
     $(".thumbnail_foto").html("<img src=\""+pictureSource.replace("file://", "")+"\">");
-    alert("<img src=\""+pictureSource.replace("file://", "")+"\">");
 
   }
 
   function finishCadastro() {
     var url=encodeURI("http://walkey.com.br/api/usuarios/create/");
-    alert(url);
     var nome = $("#nome").val();
     var login = $("#login").val();
     var email = $("#email").val();
     var senha = $("#senha").val();
     var jsonparam = {"nome":nome, "sobrenome":login, "email":email, "senha":senha}; 
     var params = {data: JSON.stringify(jsonparam) }
-    alert("params");
     var options = new FileUploadOptions();
     options.fileKey = "photo"; //depends on the api
     options.fileName = pictureSource.substr(pictureSource.lastIndexOf('/')+1);
     options.mimeType = "image/jpeg";
     options.params = params;
     options.chunkedMode = true; //this is important to send both data and files
-    alert("options");
     var ft = new FileTransfer();
-    alert("FileTransfer");
     ft.upload(pictureSource, url, succesFileTransfer, errorFileTransfer, options);
   }
 
   function succesFileTransfer(data) {
     alert(data.response);
-    if (data.response.result == "sucesso") {
-      window.localStorage["idUsuario"] = data.response.idUsuario;
-      window.localStorage["nome"] = data.response.nome;
-      window.localStorage["sobrenome"] = data.response.sobrenome;
-      window.localStorage["email"] = data.response.email;
+    var result = JSON.parse(data.response);
+    if (result.result == "sucesso") {
+      window.localStorage["idUsuario"] = result.idUsuario;
+      window.localStorage["nome"] = result.nome;
+      window.localStorage["sobrenome"] = result.sobrenome;
+      window.localStorage["email"] = result.email;
       window.localStorage["logged"] = true;
       navigator.notification.alert("Cadastro efetuado com sucesso", function() { $("#frm_cadastro").submit() });    
     } else {
       $("#btn_cadastro").removeAttr('disabled');
-      navigator.notification.alert(data.response.error_string, function() {});
+      navigator.notification.alert(result.error_string, function() {});
     }      
   }
 
