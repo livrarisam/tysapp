@@ -42,8 +42,6 @@
   }
 
   function succesFileTransfer(data) {
-    alert(data.response);
-    return true;
     if (data.response.result == "sucesso") {
       window.localStorage["idUsuario"] = data.response.idUsuario;
       window.localStorage["nome"] = data.response.nome;
