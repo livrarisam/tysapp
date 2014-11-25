@@ -51,7 +51,6 @@
     <gap:plugin name="org.apache.cordova.media-capture" />
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="com.rjfun.cordova.plugin.lowlatencyaudio" version="1.0" />
     <gap:plugin name="org.apache.cordova.file-transfer" />
 
     <!-- Define app icon for each platform. This is a relative path to config.xml.
