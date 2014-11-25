@@ -122,7 +122,7 @@ var player = {
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
-                
+                alert(JSON.stringify(data));
                 for (var key in data.details) {
                     player.countdetails = key;
                 }
