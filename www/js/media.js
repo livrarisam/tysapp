@@ -122,7 +122,6 @@ var player = {
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
-                alert(JSON.stringify(data));
                 for (var key in data.details) {
                     player.countdetails = key;
                 }
@@ -135,6 +134,7 @@ var player = {
     },
 
     songLoop: function() {
+        alert(player.eventId);
         if (player.eventId == 0) {
             player.escuro.play();
             player.sol.play();

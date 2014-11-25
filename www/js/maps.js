@@ -61,7 +61,7 @@ var map = {
             navigator.geolocation.clearWatch(map.watchID);
             $(".button_final_trajeto").fadeOut();
             $(".title_iniciar_rota").fadeOut();
-            window.location.replace("play_musica.html");
+            window.location.replace("teste_musica.html");
             // player.initialize();
         });
 

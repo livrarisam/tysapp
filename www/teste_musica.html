@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Walkey"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Walkey</title>
+
+        <!-- CSS Bootstrap  -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+        <!-- CSS Bootstrap  -->
+
+        <!--  CSS Style -->
+        <link rel="stylesheet" href="css/style.css">
+        <!--  CSS Style -->
+
+        <!-- jQuery -->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <!-- jQuery -->
+
+        <!-- JavaScript @Font-Face -->
+        <link rel="stylesheet" href="js/specimen_stylesheet.css">
+        <!-- JavaScript @Font-Face -->
+
+        <!-- JavaScript Bootstrap -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <!-- JavaScript Bootstrap -->
+
+        <!-- JavaScript Google Maps -->
+        <script src="js/howler.min.js"></script>
+        <!-- JavaScript Google Maps -->
+    
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>          
+
+        <!-- Conteúdo -->
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span12 bloco1_play">
+                    <div class="span12 title_play">
+                        <h1>Teste</h1>
+                    </div>
+                    <h2> Outro teste </h2>
+                    <a id="start" href="#">Iniciar</a><br>
+                    <a id="play_mudanca" href="#">Mudança</a><br>
+                    <a id="play_mudanca2" href="#">Mudança2</a><br>
+                    <a id="play_fast" href="#">Fast</a><br>
+                    <a id="play_faster" href="#">Faster</a><br>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                
+                var escuro = new Howl({
+                    urls: ['musicas/escuro.mp3'],
+                    loop: true,
+                    volume: 0.4
+                });
+
+                var sol = new Howl({
+                    urls: ['musicas/sol.mp3'],
+                    loop: true,
+                    volume: 0.0
+                });  
+
+                var mudanca = new Howl({
+                    urls: ['musicas/mudanca_rua.mp3'],
+                    loop: true,
+                    volume: 0.0
+                });  
+
+                var mudanca2 = new Howl({
+                    urls: ['musicas/mudanca_rua_2.mp3'],
+                    loop: true,
+                    volume: 0.0
+                });  
+
+                var fast = new Howl({
+                    urls: ['musicas/rapido.mp3'],
+                    loop: true,
+                    volume: 0.0
+                });
+
+                $("#start").on("click", function() {
+                    mudanca.play();
+                    mudanca2.play();
+                    fast.play();
+                    escuro.play();
+                });
+
+                $("#play_mudanca").on("click", function() {
+                    escuro.fadeOut(0, 900);
+                    mudanca2.fadeOut(0, 900);
+                    mudanca.fadeIn(0.4, 900);
+                });
+
+                $("#play_mudanca2").on("click", function() {
+                    escuro.fadeOut(0, 900);
+                    mudanca.fadeOut(0, 900);
+                    mudanca2.fadeIn(0.4, 900);
+                });
+
+                $("#play_fast").on("click", function() {
+                    fast.fadeIn(0.3, 900);
+                });
+
+                $("#play_faster").on("click", function() {
+                    fast.fadeIn(1.0, 500);
+                });
+            });
+        </script>
+    </body>
+</html>
