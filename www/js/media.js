@@ -15,7 +15,7 @@ var player = {
     marker: null,
     coordinates: [],
     eventId: 0,
-    countdetails: 0,
+    countdetails: 1,
 
     initialize: function() {
         $("#link1").on("click", function() {
@@ -124,7 +124,6 @@ var player = {
 
             setTimeout(function() { player.songLoop(); }, 10500);
         } else {
-            alert("stop");
             player.sol.stop();
             player.escuro.stop();
             player.mudanca_rua.stop();
@@ -206,25 +205,25 @@ var player = {
     },
 
     onStatusEscuro: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
             player.escuro.play();
         }
     },
 
     onStatusSol: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
             player.sol.play();
         }
     },
 
     onStatusMudanca: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
             player.mudanca_rua.play();
         }
     },
 
     onStatusMudanca2: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
+        if( status==Media.MEDIA_STOPPED && player.eventId <= player.countdetails ) {
             player.mudanca_rua_2.play();
         }
     }
