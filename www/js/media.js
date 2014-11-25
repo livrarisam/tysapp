@@ -20,19 +20,16 @@ var player = {
     initialize: function() {
         $("#link1").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
-            alert(navId);
             player.navId = navId;
         });
 
         $("#link2").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
-            alert(navId);
             player.navId = navId;
         });
 
         $("#link3").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
-            alert(navId);
             player.navId = navId;
         });
 
@@ -91,16 +88,16 @@ var player = {
         player.sol    = new Media(path+'sol.mp3', player.nothing, player.nothing, player.onStatusSol);
         player.mudanca_rua    = new Media(path+'mudanca_rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
         player.mudanca_rua_2    = new Media(path+'mudanca_rua_2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
-        player.rapido    = new Media(path+'rapido.mp3', player.nothing, player.nothing, player.onStatusRapido);
 
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
-                
+                alert(JSON.stringify(data));
                 for (var key in data.details) {
                     player.countdetails = key;
                 }
 
+                alert(player.countdetails);
                 player.details = data.details;
                 player.songLoop();
 
@@ -109,6 +106,7 @@ var player = {
     },
 
     songLoop: function() {
+        alert(player.eventId);
         if (player.eventId == 0) {
             player.escuro.play();
             player.escuro.setVolume('0.0');
@@ -118,24 +116,23 @@ var player = {
             player.mudanca_rua.setVolume('0.0');
             player.mudanca_rua_2.play();
             player.mudanca_rua_2.setVolume('0.0');
-            player.rapido.play();
-            player.rapido.setVolume('0.0');
-            player.introd.play();
-            player.introd.setVolume('0.0');
         }
 
         if (player.eventId <= player.countdetails) {
             var detail = player.details[player.eventId];
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
-            setTimeout(function() { player.songLoop(); }, 9000)
+
+            if (player.eventId == 0) {
+                player.songLoop();
+            } else {
+                setTimeout(function() { player.songLoop(); }, 9000)
+            }
         } else { 
             player.escuro.stop();
             player.sol.stop();
             player.mudanca_rua.stop();
             player.mudanca_rua_2.stop();
-            player.rapido.stop();
-            player.introd.stop();
         }
     },
 
@@ -193,12 +190,6 @@ var player = {
             }
         }
 
-        if (detail.velocidade > 17 && detail.velocidade < 25) {
-            player.rapido.setVolume('0.5');
-        } else if (detail.velocidade > 25) {
-            player.rapido.setVolume('1.0');
-        }
-
         var posicao_atual = new google.maps.LatLng(detail.latitude, detail.longitude);
         player.mapa.panTo(posicao_atual);
         player.mapa.setZoom(15);
@@ -240,16 +231,6 @@ var player = {
         if( status==Media.MEDIA_STOPPED ) {
             player.mudanca_rua_2.play();
         }
-    },
-
-    onStatusRapido: function(status) {
-        if( status==Media.MEDIA_STOPPED ) {
-            player.rapido.play();
-        }
-    },
-
-    onStatusIntro: function(status) {
-        // zzzz
     }
 
 }

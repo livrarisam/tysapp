@@ -46,9 +46,19 @@
             <div class="row-fluid">
                 <div class="span12 bloco1_inicar_rota">
                     <div class="span12 title_iniciar_rota">
-                        <a class="link_voltar" href="index.html"><img src="img/icon_menu.png" width="12" height="20" alt="" id="imgHolder"></a>
+                        <a class="link_voltar" id="abrir" href="#"><img src="img/icon_menu.png" width="12" height="20" alt="" id="imgHolder"></a>
                         <h1>Corrida</h1>
                     </div>
+                    <div class="menu" id="menu">
+                        <ul>
+                            <li style="background:url(../img/ico_usuario.png) 25px 33px no-repeat;"><a href="perfil.html">usuário</a></li>
+                            <li style="background:url(../img/ico_inicio.png) 25px 33px no-repeat;"><a href="navegacao.html">inicio</a></li>
+                            <li style="background:url(../img/ico_pro.png) 25px 33px no-repeat;"><a href="#">pró</a></li>
+                            <li style="background:url(../img/ico_tour.png) 25px 33px no-repeat;"><a href="#">tour pelo app</a></li>
+                            <li style="background:url(../img/ico_sair.png) 25px 33px no-repeat;"><a href="index.html">sair</a></li>
+                        </ul>
+                    </div>
+
                     <div class="map"><img src="img/maps_api.png" alt="" style="visibility:hidden">
                         <div id="map_canvas"></div>
                         <!-- <div class="pin"><img src="img/pin_maps.png" alt=""></div> -->
@@ -83,7 +93,16 @@
         <script type="text/javascript" src="js/maps.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
+
+            $("#menu").hide();
+
+            $("a#abrir").on("click", function(e){
+                e.preventDefault();
+                $("#menu").toggle('fast');
+            });
+
             map.initialize();
+
         </script>     
     </body>
 </html>
