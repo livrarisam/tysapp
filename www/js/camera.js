@@ -14,8 +14,8 @@
   function onPhotoFileSuccess(imageData) {
     // Get image handle
     pictureSource = imageData;
-    $(".thumbnail_foto").html("<img src=\""+pictureSource.substr(pictureSource.lastIndexOf('/')+1)+"\">");
-    alert(pictureSource.substr(pictureSource.lastIndexOf('/')+1));
+    $(".thumbnail_foto").html("<img src=\""+pictureSource.replace("file://", "")+"\">");
+    alert("<img src=\""+pictureSource.replace("file://", "")+"\">");
 
   }
 
@@ -73,5 +73,5 @@
   $("#btn_cadastro").on("click", function(e) {
     e.preventDefault();
     $("#btn_cadastro").attr('disabled','disabled');
-    player.finishCadastro();
+    finishCadastro();
   });
