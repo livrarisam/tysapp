@@ -147,6 +147,8 @@ var map = {
                 );
             } else {
                 alert("Error: Endereço não encontrado.");
+                $(".button_comecar").fadeIn();
+                $(".partida").fadeIn();
             }
         });
     },
