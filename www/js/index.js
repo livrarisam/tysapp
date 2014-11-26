@@ -59,6 +59,7 @@ var app = {
                     }, "json"
                 );
             } else {
+                $("#btn_login").removeAttr('disabled');
                 navigator.notification.alert("Digite um e-mail válido.", function() {});
             }
         });

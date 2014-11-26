@@ -381,7 +381,7 @@ height: 640px; text-align: center;}
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 .title_ponto_partida {position: relative; height: 65px;}
 .partida { width: 245px; height: 53px; background: url(../img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 50%; padding-left: 10px; padding-top: 3px; margin-left: -125px; display: none; }
-.partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 13px !important; text-align: left !important; box-shadow: none !important;}
+.partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 20px !important; text-align: left !important; box-shadow: none !important; margin-bottom: 0px;}
 /*CSS Ponto de Partida*/
 
 
