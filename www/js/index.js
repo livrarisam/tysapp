@@ -38,24 +38,29 @@ var app = {
             e.preventDefault();
             $("#btn_login").attr('disabled','disabled');
             var u = $("#login_email").val();
-            var p = $("#login_senha").val();
-            var params = {"email":u, "senha":p};
-            $.post("http://walkey.com.br/api/usuarios/login", {data: JSON.stringify(params)}, 
-                function(data) {
-                    if (data.result == "sucesso") {
-                        window.localStorage["idUsuario"] = data.idUsuario;
-                        window.localStorage["nome"] = data.nome;
-                        window.localStorage["sobrenome"] = data.sobrenome;
-                        window.localStorage["email"] = data.email;
-                        window.localStorage["logged"] = true;
-                        // navigator.notification.alert("Login efetuado com sucesso", function() { $("#frm_login").submit() });
-                        $("#frm_login").submit();
-                    } else {
-                        $("#btn_login").removeAttr('disabled');
-                        navigator.notification.alert(data.error_string, function() {});
-                    }
-                }, "json"
-            );            
+            var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (emailReg.test(u)) {
+                var p = $("#login_senha").val();
+                var params = {"email":u, "senha":p};
+                $.post("http://walkey.com.br/api/usuarios/login", {data: JSON.stringify(params)}, 
+                    function(data) {
+                        if (data.result == "sucesso") {
+                            window.localStorage["idUsuario"] = data.idUsuario;
+                            window.localStorage["nome"] = data.nome;
+                            window.localStorage["sobrenome"] = data.sobrenome;
+                            window.localStorage["email"] = data.email;
+                            window.localStorage["logged"] = true;
+                            // navigator.notification.alert("Login efetuado com sucesso", function() { $("#frm_login").submit() });
+                            $("#frm_login").submit();
+                        } else {
+                            $("#btn_login").removeAttr('disabled');
+                            navigator.notification.alert(data.error_string, function() {});
+                        }
+                    }, "json"
+                );
+            } else {
+                navigator.notification.alert("Digite um e-mail válido.", function() {});
+            }
         });
 
         $("#user_foto").on("click", function(e) {

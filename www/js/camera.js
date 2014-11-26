@@ -24,16 +24,21 @@
     var login = $("#login").val();
     var email = $("#email").val();
     var senha = $("#senha").val();
-    var jsonparam = {"nome":nome, "sobrenome":login, "email":email, "senha":senha}; 
-    var params = {data: JSON.stringify(jsonparam) }
-    var options = new FileUploadOptions();
-    options.fileKey = "photo"; //depends on the api
-    options.fileName = pictureSource.substr(pictureSource.lastIndexOf('/')+1);
-    options.mimeType = "image/jpeg";
-    options.params = params;
-    options.chunkedMode = true; //this is important to send both data and files
-    var ft = new FileTransfer();
-    ft.upload(pictureSource, url, succesFileTransfer, errorFileTransfer, options);
+    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (emailReg.test(email)) {    
+      var jsonparam = {"nome":nome, "sobrenome":login, "email":email, "senha":senha}; 
+      var params = {data: JSON.stringify(jsonparam) }
+      var options = new FileUploadOptions();
+      options.fileKey = "photo"; //depends on the api
+      options.fileName = pictureSource.substr(pictureSource.lastIndexOf('/')+1);
+      options.mimeType = "image/jpeg";
+      options.params = params;
+      options.chunkedMode = true; //this is important to send both data and files
+      var ft = new FileTransfer();
+      ft.upload(pictureSource, url, succesFileTransfer, errorFileTransfer, options);
+    } else {
+      navigator.notification.alert("Digite um e-mail válido.", function() {});
+    }
   }
 
   function succesFileTransfer(data) {
