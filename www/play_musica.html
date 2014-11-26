@@ -107,6 +107,7 @@
     <script type="text/javascript" src="js/media.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
         player.initialize();
     </script>     
     </body>
