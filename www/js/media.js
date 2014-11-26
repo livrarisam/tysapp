@@ -18,13 +18,14 @@ var player = {
     countdetails: 1,
 
     initialize: function() {
-        alert("initialize");
         var path = '/android_asset/www/musicas/';
-
+        alert(path+'escuro.mp3');
+        
         player.escuro = new Howl({
             urls: [path+'escuro.mp3'],
             loop: true,
-            volume: 0.0
+            volume: 0.5,
+            autoplay: true
         });
 
         player.sol = new Howl({
@@ -68,19 +69,16 @@ var player = {
     },
 
     onDeviceReady: function() {
-        alert("onDeviceReady");
         player.loadNavigations();
         player.loadMap();
     },
 
     bindEvents: function() {
-        alert("bindEvents");
         // this.onDeviceReady();
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },    
 
     loadNavigations: function() {
-        alert("loadNavigations");
         var params = {"idUsuario":window.localStorage["idUsuario"]};
 
         $.post("http://walkey.com.br/api/navegacao/get_navegation", { data: JSON.stringify(params) }, 
@@ -99,7 +97,6 @@ var player = {
     },
 
     loadMap: function() {
-        alert("loadMap");
         var posicao_atual = new google.maps.LatLng(player.latitude, player.longitude);
         var mapOptions = {
             zoom: 16,
@@ -115,8 +112,6 @@ var player = {
     },
 
     playSong: function() {
-        alert("playSong");
-
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
@@ -134,7 +129,6 @@ var player = {
     },
 
     songLoop: function() {
-        alert("songLoop");
         if (player.eventId <= player.countdetails) {
             var detail = player.details[player.eventId];
             player.playEvent(detail);
@@ -150,7 +144,6 @@ var player = {
     },
 
     playEvent: function(detail) {
-        alert("playEvent");
         if (player.nextEvent == "") {
             player.lastEndereco = detail.endereco;
             if (detail.temperatura < 20) {
