@@ -246,15 +246,14 @@ h1, h2, h3, h4, h5, h6 {font-family: 'uni_sans_boldregular', 'Arial', 'sans-serf
 
 h1 {font-size: 18px !important; text-transform: uppercase !important;}
 
+a { -webkit-tap-highlight-color: transparent; }
 a:hover {text-decoration: none !important;}
-
-li {list-style: none;}
 
 .btn{background:url(../img/button_bg.png) !important;
 width: 250px !important;
 height: 54px !important;
 color: #FFFFFF !important;
-font-size: 12px !important;
+font-size: 14px !important;
 text-transform: uppercase !important;
 text-align: center !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';
@@ -268,20 +267,23 @@ border-radius: 40px !important;
      -moz-border-radius: 40px;
 width: 230px !important;
 height: 40px !important;
-border: 2px solid white !important;
+border: 3px solid white !important;
 color: #FFFFFF !important;
-font-size: 12px !important;
+font-size: 14px !important;
 text-transform: uppercase !important;
 text-align: center !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';
 letter-spacing: 1px;}
 
 .map {position: relative;}
+#map_canvas {position: absolute; top: 0px; left: 0px; bottom:0px; right: 0px; }
+#imgHolder {z-index: 1; visibility: hidden; }
+
 .pin {position: absolute; top: 25%; left: 50%;}
 .pin2 {position: absolute; top: 35%; left: 60%;}
 
 /*CSS Menu*/
-.menu {width: 264px; height: 640px; background-color: #f1f1f1; position: absolute; z-index: 9999;}
+.menu {width: 264px; height: 640px; background-color: #f1f1f1; position: absolute;}
 .menu ul {height: 640px; margin: 0; width: 100%;}
 .menu ul li {height: 36px !important; text-align: left; padding-left: 60px; padding-top: 30px;}
 .menu ul li a {font-size: 12px !important; font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; color: #7d7d7d !important; text-transform: uppercase;;}
@@ -303,34 +305,28 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; letter-spacing: 1px;
 
 
 /*CSS Cadastro*/
-.bloco1_cadastro {background: #ff2702; 
+.bloco1_cadastro {background: #fc140b; 
 height: 640px; text-align: center;}
-.bloco1_cadastro h1 {font-size: 12px !important; color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px;}
-.title_cadastro {margin-bottom: 48px; position: relative; background: #FFFFFF; height: 65px;}
-.link_voltar {position: absolute; width: 12px !important; height: 20px !important; z-index: 99999999; top: 50%;
-left: 10%; margin-top: -15px;}
+.bloco1_cadastro h1 {font-size: 14px; color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px;}
+.title_cadastro {margin-bottom: 30px; position: relative; background: #FFFFFF;}
+.link_voltar {position: absolute; width: 12px !important; height: 20px !important; z-index: 99999999; top: 10px;
+left: 10%;}
 .form_cadastro {text-align: center; margin: 0 !important;}
 .bloco_tumbnail {background-color: #000000;}
-span.thumbnail_foto {width: 68px; height: 68px; border-radius: 50%; background: #cccccc; position: absolute; bottom: 0%; margin-bottom: -20px; left: 0%;}
-.link_upload {position: relative; width: 250px; margin: auto; margin-bottom: 60px;}
+span.thumbnail_foto {width: 70px; height: 70px; border-radius: 50%; background: #cccccc; position: absolute; bottom: -30px;}
+.link_upload {position: relative; width: 250px; margin: auto; margin-bottom: 40px;}
 .link_upload a {margin-left: 80px; color: #FFFFFF !important; font-size: 12px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';  }
 /*CSS Cadastro*/
 
 /*CSS Cadastro Final*/
-.bloco1_cadastro_final {background:url(../img/bg_cadastro.jpg) 50% -60px no-repeat; 
-height: 640px; text-align: center;  background-color: #ff2702;
-/* background-image: url(images/background-photo.jpg); */
-/*background-position: center center;*/
-background-repeat: no-repeat;
-/* background-attachment: fixed; */
-background-size: cover;
-/* background-color: #464646; */}
-.bloco1_cadastro_final h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 12px !important; text-align: center;}
-.bloco1_cadastro_final p {color: #FFFFFF !important; font-size: 12px !important; text-transform: uppercase !important;
-font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi'; margin-bottom: 100px;}
-.title_cadastro_final {margin-bottom: 30px; position: relative; background: #FFFFFF; height: 65px;}
-.logo2 {text-align: center; margin-bottom: 60px; margin-left: 0px !important;}
+.bloco1_cadastro_final {background:url(../img/bg_cadastro.jpg) 50% 60% no-repeat; 
+height: 640px; text-align: center; background-color: #ff0008;}
+.bloco1_cadastro_final h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
+.bloco1_cadastro_final p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
+font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
+.title_cadastro_final {margin-bottom: 30px; position: relative; background: #FFFFFF;}
+.logo2 {text-align: center; margin-bottom: 50px;}
 img.loading {margin: 30px 0;}
 /*CSS Cadastro Final*/
 
@@ -338,47 +334,24 @@ img.loading {margin: 30px 0;}
 /*CSS Iniciar Rota*/
 .bloco1_inicar_rota {background: #FFFFFF;
 height: 640px; text-align: center;}
-.bloco1_inicar_rota h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 14px !important; text-align: center;}
+.bloco1_inicar_rota h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 45px; font-size: 14px !important; text-align: center;}
 .bloco1_inicar_rota p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
-.title_iniciar_rota {position: relative; height: 65px;}
-.buttons_velocidade { width: 163px; height: 80px; background: #36acea; border-radius: 60px; position: absolute; top: 0; left: 50%; top: 50%; margin-left: -85px;}
+.title_iniciar_rota {position: relative;}
+
+.buttons_velocidade {width: 163px; height: 80px; background: #36acea; border-radius: 60px; position: absolute; top: 0; left: 50%; top: 55%; margin-left: -85px; }
 .btn_carro {background: url(../img/button_carro.png) no-repeat center center; width: 67px; height: 67px; float: left; margin-top: 6px; margin-left: 10px;}
 .btn_pe {background: url(../img/button_pe.png) no-repeat center center; width: 67px; height: 67px; float: right; margin-top: 6px; margin-right: 10px;}
+
+.partida {width: 245px; height: 53px; background:url(../img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 50%; padding-left: 10px; padding-top: 3px; margin-left: -125px; display: none;}
+.partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 20px !important; text-align: left !important; box-shadow: none !important; margin-bottom: 0px;}
+.button_comecar {position: absolute; top: 0; left: 50%; top: 55%; margin-left: -125px; display: none;}
+.btn_comecar {background: url(../img/select_pe.png) no-repeat center center !important; width: 250px !important; height: 55px !important; font-size: 13px !important;}
+
+.button_final_trajeto {position: absolute; top: 0; left: 50%; top: 55%; margin-left: -125px; display: none;}
+.btn_final {background: url(../img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
 /*CSS Iniciar Rota*/
 
-/*CSS Começar Agora*/
-.bloco1_comecar_agora {background: #FFFFFF;
-height: 640px; text-align: center;}
-.bloco1_comecar_agora h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 12px !important; text-align: center;}
-.bloco1_comecar_agora p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
-font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
-.title_comecar_agora {position: relative; height: 65px;}
-.button_comecar { position: absolute; top: 0; left: 50%; top: 50%; margin-left: -125px;}
-.btn_comecar {background: url(../img/select_pe.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
-/*CSS Começar Agora*/
-
-/*CSS Final Trajeto*/
-.bloco1_final_trajeto {background: #FFFFFF;
-height: 640px; text-align: center;}
-.bloco1_final_trajeto h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 55px; font-size: 12px !important; text-align: center;}
-.bloco1_final_trajeto p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
-font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
-.title_final_trajeto {position: relative; height: 54px;}
-.button_final_trajeto { position: absolute; top: 0; left: 50%; top: 55%; margin-left: -125px; }
-.btn_final {background: url(../img/button_final.png) no-repeat center center !important; width: 250px !important; height: 55px !important;}
-/*CSS Finbal Trajeto*/
-
-/*CSS Ponto de Partida*/
-.bloco1_ponto_partida {background: #FFFFFF;
-height: 640px; text-align: center;}
-.bloco1_ponto_partida h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 12px !important; text-align: center;}
-.bloco1_ponto_partida p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
-font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
-.title_ponto_partida {position: relative; height: 65px;}
-.partida { width: 245px; height: 53px; background: url(../img/bg_ponto_partida.png) !important; position: absolute; top: 10%; left: 50%; padding-left: 10px; padding-top: 3px; margin-left: -125px; }
-.partida input {border-radius: inherit !important; border: none !important; font-size: 10px !important; height: 13px !important; text-align: left !important; box-shadow: none !important;}
-/*CSS Ponto de Partida*/
 
 
 /*CSS Perfil*/
@@ -401,7 +374,7 @@ background-size: cover;
 /*CSS Perfil*/
 
 /*CSS Play Musica*/
-.bloco1_play {background: #e5e5e5; height: 486px; text-align: center; position: relative;}
+.bloco1_play {background: #e5e5e5; height: 620px; text-align: center; position: relative;}
 .bloco1_play h1 {color:#3fb6ed !important;letter-spacing: 2px; margin: 0 !important; padding: 0 !important; line-height: 65px; font-size: 12px !important; text-align: center;}
 .bloco1_play p {color: #FFFFFF !important; font-size: 14px !important; text-transform: uppercase !important;
 font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
@@ -437,3 +410,5 @@ font-family: 'uni_sans_boldregular', 'Arial', 'sans-serfi';}
 
 /*Play Musica
 */
+
+.status_panel {width: 200px; height: 110px; position: absolute; bottom: 80px; right: 10px; border: 1px solid black; z-index: 9999; font-size: 12px; background-color: #fff}
