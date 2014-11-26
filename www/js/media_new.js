@@ -81,7 +81,6 @@ function songLoop() {
 }
 
 function playEvent(detail) {
-    console.log(detail);
     if (nextEvent == "") {
         lastEndereco = detail.endereco;
         if (detail.temperatura < 20) {
