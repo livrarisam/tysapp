@@ -47,7 +47,7 @@ var player = {
         player.sol = new Media(path+'sol.mp3', player.nothing, player.nothing, player.onStatusSol);
         player.mudanca_rua = new Media(path+'mudanca_rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
         player.mudanca_rua_2 = new Media(path+'mudanca_rua_2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
-                
+
         player.loadNavigations();
         player.loadMap();
     },
@@ -91,6 +91,10 @@ var player = {
     },
 
     playSong: function() {
+        
+        player.coordinates = [];
+        player.eventId = 0;
+
         var params = {"idNavegacao":player.navId};
         $.post("http://walkey.com.br/api/navegacao/get_details", { data: JSON.stringify(params) }, 
             function(data) {
@@ -99,8 +103,6 @@ var player = {
                 }
 
                 player.details = data.details;
-                player.coordinates = [];
-                player.eventId = 0;
                 player.songLoop();
 
             }, "json"
