@@ -135,7 +135,7 @@ var player = {
 
     songLoop: function() {
         alert("songLoop");
-        if (player.eventId <= countdetails) {
+        if (player.eventId <= player.countdetails) {
             var detail = player.details[eventId];
             player.playEvent(detail);
             player.eventId = player.eventId + 1;
