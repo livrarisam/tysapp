@@ -19,35 +19,11 @@ var player = {
 
     initialize: function() {
         var path = '/android_asset/www/musicas/';
-        alert(window.location.pathname);
 
-        player.escuro = new Howl({
-            urls: ['http://walkey.com.br/app/musicas/Escuro.mp3'],
-            loop: true,
-            buffer: true,
-            volume: 0.0
-        });
-
-        player.sol = new Howl({
-            urls: ['http://walkey.com.br/app/musicas/Sol.mp3'],
-            loop: true,
-            buffer: true,
-            volume: 0.0
-        });  
-
-        player.mudanca_rua = new Howl({
-            urls: ['http://walkey.com.br/app/musicas/Mudan.%20Rua.mp3'],
-            loop: true,
-            buffer: true,
-            volume: 0.0
-        });  
-
-        player.mudanca_rua_2 = new Howl({
-            urls: ['http://walkey.com.br/app/musicas/Mudan.%20Rua%202.mp3'],
-            loop: true,
-            buffer: true,
-            volume: 0.0
-        });         
+        player.escuro = new Media(path+'escuro.mp3', player.nothing, player.nothing, player.onStatusEscuro);
+        player.sol = new Media(path+'sol.mp3', player.nothing, player.nothing, player.onStatusSol);
+        player.mudanca_rua = new Media(path+'mudanca_rua.mp3', player.nothing, player.nothing, player.onStatusMudanca);
+        player.mudanca_rua_2 = new Media(path+'mudanca_rua_2.mp3', player.nothing, player.nothing, player.onStatusMudanca2);
         
         $("#link1").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
@@ -132,6 +108,18 @@ var player = {
     },
 
     songLoop: function() {
+
+        if (player.eventId == 0) {
+            player.escuro.play();
+            player.escuro.setVolume('0.0');
+            player.sol.play();
+            player.sol.setVolume('0.0');
+            player.mudanca_rua.play();
+            player.mudanca_rua.setVolume('0.0');
+            player.mudanca_rua_2.play();
+            player.mudanca_rua_2.setVolume('0.0');
+        }
+
         if (player.eventId <= player.countdetails) {
             var detail = player.details[player.eventId];
             player.playEvent(detail);
@@ -150,29 +138,30 @@ var player = {
         if (player.nextEvent == "") {
             player.lastEndereco = detail.endereco;
             if (detail.temperatura < 20) {
-                if (player.sol.volume() > 0) { player.sol.fadeOut(0, 900); }
-                if (player.mudanca_rua.volume() > 0) { player.mudanca_rua.fadeOut(0, 900); }
-                if (player.mudanca_rua_2.volume() > 0) { player.mudanca_rua_2.fadeOut(0, 900); }
+                player.sol.setVolume('0.0');
+                player.mudanca_rua.setVolume('0.0');
+                player.mudanca_rua_2.setVolume('0.0');
 
-                if (player.escuro.volume() == 0) { player.escuro.fadeIn(0.4, 900); }
+                player.escuro.setVolume('0.5');
+
                 player.nextEvent = "mudanca_rua_2";
             } else {
-                if (player.mudanca_rua.volume() > 0) { player.mudanca_rua.fadeOut(0, 900); }
-                if (player.mudanca_rua_2.volume() > 0) { player.mudanca_rua_2.fadeOut(0, 900); }
-                if (player.escuro.volume() > 0) { player.escuro.fadeOut(0, 900); }
+                player.mudanca_rua.setVolume('0.0');
+                player.mudanca_rua_2.setVolume('0.0');                
+                player.escuro.setVolume('0.0');
 
-                if (player.sol.volume() == 0) { player.sol.fadeIn(0.4, 900); }
+                player.sol.setVolume('0.5');
                 player.nextEvent = "mudanca_rua";
             }
         } else {
             if (detail.endereco != player.lastEndereco) {
                 player.lastEndereco = detail.endereco;
                 if (player.nextEvent == "mudanca_rua") {
-                    if (player.sol.volume() > 0) { player.sol.fadeOut(0, 900); }
-                    if (player.escuro.volume() > 0) { player.escuro.fadeOut(0, 900); }
-                    if (player.mudanca_rua_2.volume() > 0) { player.mudanca_rua_2.fadeOut(0, 900); }
+                    player.sol.setVolume('0.0');
+                    player.escuro.setVolume('0.0');
+                    player.mudanca_rua_2.setVolume('0.0');                    
 
-                    if (player.mudanca_rua.volume() == 0) { player.mudanca_rua.fadeIn(0.4, 900); }
+                    player.mudanca_rua.setVolume('0.5');
                     player.nextEvent = "clima";
                 } else if (player.nextEvent == "player.mudanca_rua_2") {
                     player.sol.fadeOut(0, 900);
@@ -183,18 +172,18 @@ var player = {
                     player.nextEvent = "clima";
                 } else if (player.nextEvent == "clima") {
                     if (detail.temperatura < 20) {
-                        player.sol.fadeOut(0, 900);
-                        player.mudanca_rua.fadeOut(0, 900);
-                        player.mudanca_rua_2.fadeOut(0, 900);                    
+                        player.sol.setVolume('0.0');
+                        player.mudanca_rua.setVolume('0.0');
+                        player.mudanca_rua_2.setVolume('0.0');                    
 
-                        player.escuro.fadeIn(0.4, 900);
+                        player.escuro.setVolume('0.5');
                         player.nextEvent = "mudanca_rua";
                     } else {
-                        player.mudanca_rua.fadeOut(0, 900);
-                        player.escuro.fadeOut(0, 900);
-                        player.mudanca_rua_2.fadeOut(0, 900);
+                        player.mudanca_rua.setVolume('0.0');
+                        player.escuro.setVolume('0.0');
+                        player.mudanca_rua_2.setVolume('0.0');
 
-                        player.sol.fadeIn(0.4, 900);
+                        player.sol.setVolume('0.5');
                         player.nextEvent = "mudanca_rua_2";
                     }
                 }
@@ -214,5 +203,34 @@ var player = {
             strokeWeight: 3
         });
         flightPath.setMap(player.mapa);
+    },
+
+    nothing: function() {
+        //zzz
+    },
+
+    onStatusEscuro: function(status) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
+            player.escuro.play();
+        }
+    },
+
+    onStatusSol: function(status) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
+            player.sol.play();
+        }
+    },
+
+    onStatusMudanca: function(status) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
+            player.mudanca_rua.play();
+        }
+    },
+
+    onStatusMudanca2: function(status) {
+        if( status==Media.MEDIA_STOPPED && player.eventId < player.countdetails ) {
+            player.mudanca_rua_2.play();
+        }
     }
+
 }
