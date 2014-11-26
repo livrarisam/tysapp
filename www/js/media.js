@@ -79,7 +79,7 @@ var player = {
 
         player.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-        $("#map_canvas").css("top", "230px");
+        $("#map_canvas").css("top", "330px");
     },
 
     playSong: function() {
