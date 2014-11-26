@@ -14,8 +14,8 @@
   function onPhotoFileSuccess(imageData) {
     // Get image handle
     pictureSource = imageData;
-    $(".thumbnail_foto").html("<img src=\""+pictureSource.replace("file://", "")+"\">");
-
+    $(".thumbnail_foto").css("background", "url("+pictureSource.replace("file://", "")+") center center no-repeat");
+    $(".thumbnail_foto").css("background-size", "114px 84px");
   }
 
   function finishCadastro() {
