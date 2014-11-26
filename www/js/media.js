@@ -98,6 +98,8 @@ var player = {
                 }
 
                 player.details = data.details;
+                player.coordinates = [];
+                player.eventId = 0;
                 player.songLoop();
 
             }, "json"
