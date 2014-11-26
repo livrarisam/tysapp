@@ -18,6 +18,32 @@ var player = {
     countdetails: 1,
 
     initialize: function() {
+        var path = '/android_asset/www/musicas/';
+
+        player.escuro = new Howl({
+            urls: [path+'escuro.mp3'],
+            loop: true,
+            volume: 0.0
+        });
+
+        player.sol = new Howl({
+            urls: [path+'sol.mp3'],
+            loop: true,
+            volume: 0.0
+        });  
+
+        player.mudanca_rua = new Howl({
+            urls: [path+'mudanca_rua.mp3'],
+            loop: true,
+            volume: 0.0
+        });  
+
+        player.mudanca_rua_2 = new Howl({
+            urls: [path+'mudanca_rua_2.mp3'],
+            loop: true,
+            volume: 0.0
+        });         
+        
         $("#link1").on("click", function() {
             var navId = $(this).attr('class').split(' ')[0];
             player.navId = navId;
