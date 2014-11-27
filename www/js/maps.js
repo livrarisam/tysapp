@@ -95,7 +95,8 @@ var map = {
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
-            navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError);
+            var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
+            navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError, options);
         });
         
     },
@@ -164,7 +165,6 @@ var map = {
         });
 
         var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
-        navigator.geolocation.getCurrentPosition( map.onWatchSuccess, map.onError, options );
         map.watchID = navigator.geolocation.watchPosition( map.onWatchSuccess, map.onError, options );
     },
 
