@@ -95,8 +95,6 @@ var map = {
         map.mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
         google.maps.event.addListenerOnce(map.mapa, 'idle', function(){
             map.directionsDisplay.setMap(map.mapa);
-            var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
-            navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError, options);
         });
         
     },
@@ -104,19 +102,7 @@ var map = {
     onSuccess: function(position) {
         map.longitude = position.coords.longitude;
         map.latitude = position.coords.latitude;
-    },
 
-    getCoords: function(address) {
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                return results[0].geometry.location.LatLng;
-            } else{
-                return status;
-            }
-        });
-    },
-
-    findRoute: function() {
         // var partida_address = document.getElementById("ponto_partida").value;
         var partida_address = map.latitude+", "+map.longitude;
         var destino_address = document.getElementById("ponto_destino").value;
@@ -151,7 +137,22 @@ var map = {
                 $(".button_comecar").fadeIn();
                 $(".partida").fadeIn();
             }
+        });        
+    },
+
+    getCoords: function(address) {
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                return results[0].geometry.location.LatLng;
+            } else{
+                return status;
+            }
         });
+    },
+
+    findRoute: function() {
+        var options = {enableHighAccuracy:true, maximumAge:0, timeout:30000 };
+        navigator.geolocation.getCurrentPosition(map.onSuccess, map.onError, options);
     },
 
     startNavigation: function() {
