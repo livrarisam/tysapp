@@ -104,7 +104,9 @@ var map = {
         map.latitude = position.coords.latitude;
 
         // var partida_address = document.getElementById("ponto_partida").value;
-        var partida_address = map.latitude+", "+map.longitude;
+        // var partida_address = map.latitude+", "+map.longitude;
+        var partida_address = new google.maps.LatLng(map.latitude, map.longitude);
+        
         var destino_address = document.getElementById("ponto_destino").value;
         var modo = null;
         if (map.velocidade == "C") {
